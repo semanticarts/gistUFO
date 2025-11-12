@@ -1,0 +1,51 @@
+
+@prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/semanticarts/ontology/gistUFO>
+	a owl:Ontology ;
+	owl:imports
+		<https://w3id.org/ontouml> ,
+		<https://w3id.org/semanticarts/ontology/gistCore14.0.0>
+		;
+	owl:versionIRI <https://w3id.org/semanticarts/ontology/gistUFOX.x.x> ;
+	skos:definition "An alignment of gist with UFO and OntoUML."^^xsd:string ;
+	skos:prefLabel "gistUFO"^^xsd:string ;
+	gist:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI ;
+	.
+
+gist:Person
+    ontouml:stereotype ontouml:kind ;
+    gist:isCategorizedBy gistx:_Rigidity_rigid ;
+    .
+
+gist:Event
+    ontouml:stereotype ontouml:kind ;
+    .
+
+gistx:_Rigidity_rigid
+    a gist:Rigidity ;
+    skos:prefLabel "Rigid" ;
+    .
+
+gistx:_Rigidity_semirigid
+    a gist:Rigidity ;
+    skos:prefLabel "Semi-rigid" ;
+    .
+
+gistx:_Rigidity_antirigid
+    a gist:Rigidity ;
+    skos:prefLabel "Anti-rigid" ;
+    .
+
+gist:Rigidity
+    a owl:Class ;
+    skos:prefLabel "Rigidity" ;
+    rdfs:subClassOf gist:Category ;
+    skos:definition "A category indicating whether a class is rigid, semi-rigid, or anti-rigid." ;
+    .
