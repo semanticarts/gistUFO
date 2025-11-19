@@ -20,7 +20,7 @@ WHERE {
     ?class_iri
         gist:isCategorizedBy
             gistx:_Rigidity_rigid ,
-            gistx:_IdentityProvision_provides_identity ,
+            gistx:_IdentityProvision_does_not_provide_identity ,
             gistx:_IdentityPrincipleType_simple ,
             gistx:_Dependency_optional ;
         .
