@@ -32,6 +32,9 @@ gist:Person
 	gist:isCategorizedBy gistx:_Rigidity_rigid ;
 	.
 
+gist:LivingThing ontouml:stereotype ontouml:kind .
+gist:Person rdfs:subClassOf gist:LivingThing .
+
 gist:Rigidity
 	a owl:Class ;
 	rdfs:subClassOf gist:Category ;
