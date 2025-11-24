@@ -23,23 +23,118 @@
 	gist:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI ;
 	.
 
-gist:Event
-	ontouml:stereotype ontouml:kind ;
+gist:Dependency
+	a owl:Class ;
+	rdfs:subClassOf gist:Category ;
+	skos:definition "A category indicating whether a class's instances are relationally dependent on other entities."^^xsd:string ;
 	.
 
-gist:Person
-	ontouml:stereotype ontouml:kind ;
-	gist:isCategorizedBy gistx:_Rigidity_rigid ;
+gist:GeoRegion
+	gist:isCategorizedBy
+		gistx:_Dependency_optional ,
+		gistx:_IdentityPrincipleProvision_does_not_provide_identity_principle ,
+		gistx:_IdentityPrincipleType_simple ,
+		gistx:_Rigidity_rigid
+		;
+	gist:ufoMappingNote "This is currently being used as an example to illustrate how we could infer classes into OntoUML stereotypes based on properties like rigidity, dependency, and identity."^^xsd:string ;
 	.
 
-gist:LivingThing ontouml:stereotype ontouml:kind .
-gist:Person rdfs:subClassOf gist:LivingThing .
+gist:IdentityPrincipleProvision
+	a owl:Class ;
+	rdfs:subClassOf gist:Category ;
+	skos:definition "A category indicating whether a class provides a principle of identity for its instances."^^xsd:string ;
+	.
+
+gist:IdentityPrincipleType
+	a owl:Class ;
+	rdfs:subClassOf gist:Category ;
+	skos:definition "A category indicating whether a class's instances are governed by a single princple of identity or multiple."^^xsd:string ;
+	.
 
 gist:Rigidity
 	a owl:Class ;
 	rdfs:subClassOf gist:Category ;
 	skos:definition "A category indicating whether a class is rigid, semi-rigid, or anti-rigid."^^xsd:string ;
 	skos:prefLabel "Rigidity"^^xsd:string ;
+	.
+
+gist:SubkindClass
+	a owl:Class ;
+	skos:prefLabel "Subkind Class" ;
+	skos:definition "A class that fits the ontoUML stereotype for subkind." ;
+	owl:equivalentClass
+		[
+			a owl:Restriction ;
+			owl:onProperty ontouml:stereotype ;
+			owl:hasValue ontouml:subkind ;
+		] ,
+		[
+			owl:intersectionOf (
+				[
+					a owl:Restriction ;
+					owl:onProperty gist:isCategorizedBy ;
+					owl:hasValue gistx:_IdentityPrincipleProvision_does_not_provide_identity_principle ;
+				]
+				[
+					a owl:Restriction ;
+					owl:onProperty gist:isCategorizedBy ;
+					owl:hasValue gistx:_Dependency_optional ;
+				]
+				[
+					a owl:Restriction ;
+					owl:onProperty gist:isCategorizedBy ;
+					owl:hasValue gistx:_IdentityPrincipleType_simple ;
+				]
+				[
+					a owl:Restriction ;
+					owl:onProperty gist:isCategorizedBy ;
+					owl:hasValue gistx:_Rigidity_rigid ;
+				]
+			) ;
+		]
+		;
+	.
+
+gist:ufoMappingNote
+	a owl:AnnotationProperty ;
+	rdfs:subPropertyOf skos:editorialNote ;
+	skos:prefLabel "UFO mapping note"^^xsd:string ;
+	.
+
+gistx:_Dependency_mandatory
+	a gist:Dependency ;
+	skos:prefLabel "Mandatory"^^xsd:string ;
+	.
+
+gistx:_Dependency_optional
+	a gist:Dependency ;
+	skos:prefLabel "Optional"^^xsd:string ;
+	.
+
+gistx:_IdentityPrincipleProvision_does_not_provide_identity_principle
+	a gist:IdentityPrincipleProvision ;
+	skos:prefLabel "Does Not Provide Identity Principle"^^xsd:string ;
+	.
+
+gistx:_IdentityPrincipleProvision_provides_identity_principle
+	a gist:IdentityPrincipleProvision ;
+	skos:prefLabel "Provides Identity Principle"^^xsd:string ;
+	.
+
+gistx:_IdentityPrincipleType_multiple
+	a gist:IdentityPrincipleType ;
+	skos:prefLabel "Multiple"^^xsd:string ;
+	.
+
+gistx:_IdentityPrincipleType_simple
+	a gist:IdentityPrincipleType ;
+	skos:editorialNote "Unclear what this value means and whether it is truly needed."^^xsd:string ;
+	skos:prefLabel "Simple"^^xsd:string ;
+	.
+
+gistx:_IdentityPrincipleType_single
+	a gist:IdentityPrincipleType ;
+	skos:prefLabel "Single"^^xsd:string ;
 	.
 
 gistx:_Rigidity_antirigid
