@@ -1,0 +1,187 @@
+@prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> .
+@prefix gistx: <https://w3id.org/semanticarts/ns/ontology/gistx/> .
+
+{
+    gist:Account gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Address gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:AddressUsageType gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Agreement gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Aspect gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Behavior gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Building gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:BundledCatalogItem gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:CatalogItem gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:Category gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Collection gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Component gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:ContemporaryEvent gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:Content gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:ContentExpression gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:ContingentEvent gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:ContingentObligation gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:Contract gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:ControlledVocabulary gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:CountryGeoRegion gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:CountryGovernment gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:DegreeOfCommitment gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Determination gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Discipline gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:ElectronicAddress gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:ElectronicAddressType gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Equipment gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:EquipmentType gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Event gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:EventSpecification gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:FormattedContent gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Function gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:GeneralMediaType gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:GeoLocation gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:GeoPoint gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:GeoRegion gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:GeoRoute gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:GeoVolume gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:GovernedGeoRegion gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:GovernmentOrganization gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:HistoricalEvent gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:ID gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:IntellectualProperty gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Intention gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:IntergovernmentalOrganization gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:Landmark gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:Language gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:LivingThing gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Magnitude gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:MediaType gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Medium gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Message gist:isCategorizedBy gistx:_Rigidity_semirigid .
+
+    gist:Network gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:NetworkLink gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:NetworkNode gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:Obligation gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Offer gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:OrderedCollection gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:OrderedMember gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Organization gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Permission gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Person gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:PhysicalActionType gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:PhysicalAddress gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:PhysicalAddressType gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:PhysicalEvent gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:PhysicalIdentifiableItem gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:PhysicalSubstance gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:ProductCategory gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:ProductSpecification gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:Project gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:ReferenceValue gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:RenderedContent gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Requirement gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Restriction gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:ScheduledEvent gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:ScheduledTask gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:ServiceSpecification gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Specification gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:SubCountryGovernment gist:isCategorizedBy gistx:_Rigidity_antirigid .
+
+    gist:System gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Tag gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Task gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:TaskTemplate gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Template gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:TemporalRelation gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Text gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:TimeInterval gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:Transaction gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:UnitGroup gist:isCategorizedBy gistx:_Rigidity_rigid .
+
+    gist:UnitOfMeasure gist:isCategorizedBy gistx:_Rigidity_rigid .
+}
+
