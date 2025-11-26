@@ -11,7 +11,7 @@ QUERY_KIND_C1 = (
     SELECT DISTINCT ?kind_class
     WHERE {
     ?kind_class ontouml:stereotype ontouml:kind ;
-    ontouml:specific* ?superClass .
+    ontouml:specific+ ?superClass .
     ?superClass gist:isCategorizedBy gistx:__ProvidesIdentity_True__ .
     """
     )
@@ -22,7 +22,7 @@ QUERY_KIND_C2= (
     SELECT DISTINCT ?kind_class
     WHERE {
     ?kind_class ontouml:stereotype ontouml:kind ;
-    ontouml:specific* ?superClass .
+    ontouml:specific+ ?superClass .
     ?superClass gist:isCategorizedBy gistx:__ProvidesIdentity_True__ .
     """
 )
@@ -33,7 +33,7 @@ QUERY_KIND_C3= (
     SELECT DISTINCT ?kind_class
     WHERE {
     ?kind_class ontouml:stereotype ontouml:kind ;
-    ontouml:specific* ?superClass .
+    ontouml:specific+ ?superClass .
     ?superClass gist:isCategorizedBy gistx:__IdentityPrinciple_Multiple__ .
     """
 )
