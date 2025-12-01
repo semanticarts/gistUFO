@@ -1,0 +1,20 @@
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix gist: <http://w3id.org/semanticarts/ns/ontology/gist#>
+
+CONSTRUCT {
+    ?s ?p ?o
+}
+
+WHERE {
+    bind ("https://w3id.org/semanticarts/ns/ontology/gist/" as ?gistNS )
+    bind ("https://w3id.org/semanticarts/ns/ontology/gistx/" as ?gistxNS )
+
+    bind ("[A-Za-z0-9-:]" as ?special)
+
+    bind(?gist_class as ?gistClass)
+    bind(?Rigidity_consensus_ as ?rigidity)
+}
