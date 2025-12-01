@@ -6,7 +6,7 @@ prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix gist: <http://w3id.org/semanticarts/ns/ontology/gist#>
 
 CONSTRUCT {
-    ?s ?p ?o
+    ?gist_Class gist:isCategorizedBy ?rigidity .
 }
 
 WHERE {
@@ -15,6 +15,6 @@ WHERE {
 
     bind ("[A-Za-z0-9-:]" as ?special)
 
-    bind(?gist_class as ?gistClass)
-    bind(?Rigidity_consensus_ as ?rigidity)
+    bind (uri(concat(?gistNS, substr(?gistclass, 6))) as ?gist_Class)
+    bind (uri(concat(?gistxNS, ?Rigidity_consensus_)) as ?rigidity)
 }
