@@ -3,18 +3,18 @@ prefix skos: <http://www.w3.org/2004/02/skos/core#>
 prefix owl: <http://www.w3.org/2002/07/owl#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-prefix gist: <http://w3id.org/semanticarts/ns/ontology/gist#>
+prefix gistUFO: <http://w3id.org/semanticarts/ns/ontology/gistUFO#>
 
 CONSTRUCT {
-    ?gist_Class gist:isCategorizedBy ?rigidity .
+    ?gist_Class gistUFO:hasCharacteristic ?rigidity .
 }
 
 WHERE {
     bind ("https://w3id.org/semanticarts/ns/ontology/gist/" as ?gistNS )
-    bind ("https://w3id.org/semanticarts/ns/ontology/gistx/" as ?gistxNS )
+    bind ("https://w3id.org/semanticarts/ns/ontology/gistUFO/" as ?gistUFONS )
 
     bind ("[A-Za-z0-9-:]" as ?special)
 
     bind (uri(concat(?gistNS, substr(?gistclass, 6))) as ?gist_Class)
-    bind (uri(concat(?gistxNS, ?Rigidity_consensus_)) as ?rigidity)
+    bind (uri(concat(?gistUFONS, "_Rigidity_", replace(lcase(?Rigidity_consensus_), "-", ""))) as ?rigidity)
 }
