@@ -11,10 +11,10 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 # Kind Constraint 1
 # A Kind cannot have an identity provider (Kind, Collective, Quality, Relator, Mode, or Quantity) as its direct or indirect super-type.
 
-SELECT ?invalid_kind_iri
+SELECT ?invalid ?error_msg
 WHERE {
 
-    ?invalid_kind_iri
+    ?invalid
         ontouml:stereotype ontouml:kind ;
         rdfs:subClassOf ?super_class_iri ;
         .
@@ -31,4 +31,6 @@ WHERE {
         ontouml:mode
         ontouml:quantity
     }
+
+    BIND("A Kind cannot have an identity prvider as its direct or indirect super-type" AS ?error_msg)
 }
