@@ -14,7 +14,7 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT DISTINCT ?invalid ?error_msg
 WHERE {
 ?invalid ontouml:stereotype gistx:_Rigidity_antirigid ;
-    ^rdfs:subClassOf* ?non_anti_rigid_class .
+    ^rdfs:subClassOf+ ?non_anti_rigid_class .
 FILTER NOT EXISTS {?non_anti_rigid_class ontouml:stereotype gistx:_Rigidity_antirigid}
 BIND("Anti-Rigid classes may not be the direct or indirect Super-Type of any Semi-Rigid or Rigid classes." AS ?error_msg)
 }
