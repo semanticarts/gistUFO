@@ -13,7 +13,7 @@ xsd = Namespace("http://www.w3.org/2001/XMLSchema#")
 saox = Namespace("https://taxonomies.semanticarts.com/SemArts/")
 gistx = Namespace("https://w3id.org/semanticarts/ns/ontology/gistx/")
 
-DEBUG = False
+DEBUG = True
 
 g = Graph()
 
@@ -54,3 +54,4 @@ def main():
 
 if __name__ == "__main__": 
     main()
+    
