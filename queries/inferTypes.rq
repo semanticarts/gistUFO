@@ -1,0 +1,42 @@
+# infer gufo Types a class belongs to
+# it will simplify validations to materialize these inferred relationships
+# BUT be sure to remove ones that are no longer valid if the mapping of classes to Types changes
+#
+# ?class is any class that is mapped to a gufo Type via rdf:type (punning)
+#
+# note that subclasses of the original class are not necessarily of the same Type as their superclass
+# (for example, Student is a subclass of the Rigid class Person but that does not imply that Student is a RigidType)
+# however, there might be specific cases in which subclasses must be of the same type as their superclass (enhancement)
+
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> 
+prefix gistd: <https://w3id.org/semanticarts/ns/data/gist/> 
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix skos: <http://www.w3.org/2004/02/skos/core#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+
+prefix gufo: <http://purl.org/nemo/gufo#> 
+
+# view inferred relationships
+construct {?class rdf:type ?gufoSuperType .}
+
+# insert inferred relationships
+# insert {graph ex:_NamedGraph_mapping {?class rdf:type ?gufoSuperType .}}
+
+
+where {
+  
+  ?class rdf:type ?gufoType .
+  
+  filter(contains(str(?class),    "gist"))  # can be generalized to any ontology mapped to gufo Types  
+  filter(contains(str(?gufoType), "gufo"))
+  
+  ?gufoType rdfs:subClassOf+ ?gufoSuperType .
+  
+  filter(?gufoSuperType != gufo:Type)                   # it is not necessary to map to the topmost level
+  
+#  filter not exists {?class rdf:type ?gufoSuperType .}  # filter out relationships that are already in the graph
+  }
+
+order by ?class    # comment out to do the insert
