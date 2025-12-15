@@ -32,5 +32,5 @@ WHERE {
         ontouml:quantity
     }
 
-    BIND("A Kind cannot have an identity prvider as its direct or indirect super-type" AS ?error_msg)
+    BIND("A Kind cannot have an identity provider as its direct or indirect super-type" AS ?error_msg)
 }
