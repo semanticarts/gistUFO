@@ -1,0 +1,45 @@
+# infer GUFO Individual or Type
+# some gufo Individuals have a matching Type
+# when a matching entry is missing, this script will find it and can insert it
+
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> 
+prefix gistd: <https://w3id.org/semanticarts/ns/data/gist/> 
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix skos: <http://www.w3.org/2004/02/skos/core#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+
+prefix gufo: <http://purl.org/nemo/gufo#> 
+
+# view missing triples
+construct {?class ?missingProperty ?missingObject)
+
+# insert missing triples
+# insert {graph ex:_NamedGraph_mapping {?class ?missingProperty ?missingObject .}
+
+where {
+
+   values (?gufoIndividual         ?gufoType) {
+          (gufo:AbstractIndividual gufo:AbstractIndividualType)
+          (gufo:ConcreteIndividual gufo:ConcreteIndividualType)
+          (gufo:Endurant           gufo:EndurantType          )
+          (gufo:Event              gufo:EventType             )
+          (gufo:Situation          gufo:SituationType         )
+          }
+
+   {
+   ?class rdfs:subClass ?gufoIndividual .
+   filter not exists {?class rdf:type ?gufoType .}
+   bind(rdf:type  as ?missingProperty)
+   bind(?gufoType as ?missingObject)
+   }
+   union
+   {
+   ?class rdf:type ?gufoType .
+   filter not exists {?class rdfs:subClassOf ?gufoIndividual .}
+   bind(rdfs:subClassOf as ?missingProperty)
+   bind(?gufoIndividual as ?missingObject)
+   }
+
+}
