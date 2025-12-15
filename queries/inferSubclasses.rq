@@ -1,0 +1,38 @@
+# infer subClassOf relationships between a class and gufo class
+# run after loading gistUFO to simplify validations by materializing additional relationships
+# (in the ttl file, only keep the main relationships)
+
+# ?class is any class that is mapped to gufo Individual or one of its subclasses
+#
+
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> 
+prefix gistd: <https://w3id.org/semanticarts/ns/data/gist/> 
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix skos: <http://www.w3.org/2004/02/skos/core#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+
+prefix gufo: <http://purl.org/nemo/gufo#> 
+
+# view the inferred relationships
+construct {?subClass rdfs:subClassOf ?gufoClass .}
+
+# materialize the inferred relationships
+# insert {graph ex:_NamedGraph_mapping {?subClass rdfs:subClassOf ?gufoClass .}}
+
+
+where {
+  
+  ?class rdfs:subClassOf ?gufoClass .
+  
+  filter(contains(str(?class), "gist"))  # can be generalized to other ontologies mapped to gufo  
+  filter(contains(str(?gufoClass), "gufo"))
+  
+  ?subClass  rdfs:subClassOf* ?class .          # includes the original class (can map to gufoSuperClasses)
+  ?gufoClass rdfs:subClassOf* ?gufoSuperClass . # includes the original gufoClass (subClasses can map to it)
+  
+  filter not exists {?subClass rdfs:subClassOf ?gufoSuperClass .}   # filter out existing relationships
+  }
+
+order by ?class      # comment out to do insert
