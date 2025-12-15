@@ -11,10 +11,15 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 # Anti-rigid classes may not be superclasses of Rigid or Semi-Rigid classes. 
 # All results should be considered issues in the ontology. 
 
-SELECT DISTINCT ?invalid ?error_msg
-WHERE {
-?invalid ontouml:stereotype gistx:_Rigidity_antirigid ;
-    ^rdfs:subClassOf+ ?non_anti_rigid_class .
-FILTER NOT EXISTS {?non_anti_rigid_class ontouml:stereotype gistx:_Rigidity_antirigid}
-BIND("Anti-Rigid classes may not be the direct or indirect Super-Type of any Semi-Rigid or Rigid classes." AS ?error_msg)
-}
+
+select ?invalid ?error_msg
+where{
+  
+  ?invalid a gufo:AntiRigidType . 
+  ?subClass rdfs:subClassOf* ?invalid .
+  filter not exists { ?subClass a gufo:RigidType .}
+  filter not exists { ?subClass a gufo:SemiRigidType .}
+
+  BIND("Anti-Rigid classes may not be the direct or indirect Super-Type of any Semi-Rigid or Rigid classes." AS ?error_msg)
+
+  }
