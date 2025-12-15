@@ -1,94 +1,160 @@
-# imports: http://purl.org/nemo/gufo#/1.0.0
-# imports: https://w3id.org/semanticarts/ontology/gistCore14.0.0
-
-@prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> .
-@prefix gistx: <https://w3id.org/semanticarts/ns/taxonomy/gist/> .
-@prefix gufo: <http://purl.org/nemo/gufo#> .
-@prefix ontouml: <https://w3id.org/ontouml#> .
+@prefix : <https://w3id.org/semanticarts/ontology/gistUFO#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix gistx: <https://w3id.org/semanticarts/ns/taxonomy/gist/> .
+@prefix ontouml: <https://w3id.org/ontouml#> .
+@base <https://w3id.org/semanticarts/ontology/gistUFO> .
 
-<https://w3id.org/semanticarts/ontology/gistUFO>
-	a owl:Ontology ;
-	owl:imports
-		<http://purl.org/nemo/gufo#/1.0.0> ,
-		<https://w3id.org/semanticarts/ontology/gistCore14.0.0>
-		;
-	owl:versionIRI <https://w3id.org/semanticarts/ontology/gistUFOX.x.x> ;
-	skos:definition "An alignment of gist with UFO."^^xsd:string ;
-	skos:prefLabel "gistUFO"^^xsd:string ;
-	gist:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI ;
-	.
+<https://w3id.org/semanticarts/ontology/gistUFO> rdf:type owl:Ontology ;
+                                                  owl:versionIRI <https://w3id.org/semanticarts/ontology/gistUFOX.x.x> ;
+                                                  owl:imports <http://purl.org/nemo/gufo#/1.0.0> ,
+                                                              <https://w3id.org/semanticarts/ontology/gistCore14.0.0> ;
+                                                  skos:definition "An alignment of gist with UFO." ;
+                                                  skos:prefLabel "gistUFO" ;
+                                                  gist:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI .
 
-gist:Aspect
-	rdfs:subClassOf gufo:AbstractIndividual ;
-	.
+#################################################################
+#    Classes
+#################################################################
 
-gist:Category
-	rdfs:subClassOf gufo:Type ;
-	.
+###  https://w3id.org/semanticarts/ns/ontology/gist/Aspect
+gist:Aspect rdfs:subClassOf gufo:AbstractIndividual .
 
-gist:Component
-	rdfs:subClassOf gufo:Individual ;
-	.
 
-gist:Composite
-	rdfs:subClassOf gufo:Collection ;
-	.
+###  https://w3id.org/semanticarts/ns/ontology/gist/Category
+gist:Category rdfs:subClassOf gufo:AbstractIndividual .
 
-gist:Content
-	rdfs:subClassOf gufo:AbstractIndividual ;
-	.
 
-gist:Event
-	rdfs:subClassOf gufo:Event ;
-	.
+###  https://w3id.org/semanticarts/ns/ontology/gist/Intention
+gist:Intention rdfs:subClassOf gufo:AbstractIndividual .
 
-gist:IntellectualProperty
-	rdfs:subClassOf gufo:AbstractIndividual ;
-	.
 
-gist:Intention
-	rdfs:subClassOf gufo:IntrinsicAspect ;
-	.
+###  https://w3id.org/semanticarts/ns/ontology/gist/KnowledgeConcept
+gist:KnowledgeConcept rdfs:subClassOf gufo:AbstractIndividual .
 
-gist:Language
-	rdfs:subClassOf gufo:AbstractIndividual ;
-	.
 
-gist:Magnitude
-	rdfs:subClassOf gufo:Aspect ;
-	.
+###  https://w3id.org/semanticarts/ns/ontology/gist/Language
+gist:Language rdfs:subClassOf gufo:AbstractIndividual .
 
-gist:Organization
-	rdfs:subClassOf gufo:Collection ;
-	.
 
-gist:PhysicalIdentifiableItem
-	rdfs:subClassOf gufo:Object ;
-	.
+###  https://w3id.org/semanticarts/ns/ontology/gist/Magnitude
+gist:Magnitude rdfs:subClassOf gufo:AbstractIndividual .
 
-gist:PhysicalSubstance
-	rdfs:subClassOf gufo:Quantity ;
-	.
 
-gist:SchemaMetaData
-	rdfs:subClassOf gufo:AbstractIndividual ;
-	.
+###  https://w3id.org/semanticarts/ns/ontology/gist/Network
+gist:Network rdfs:subClassOf gufo:AbstractIndividual .
 
-gist:Template
-	rdfs:subClassOf gufo:AbstractIndividual ;
-	.
 
-gist:TemporalRelation
-	rdfs:subClassOf gufo:Relator ;
-	.
+###  https://w3id.org/semanticarts/ns/ontology/gist/NetworkNode
+gist:NetworkNode rdfs:subClassOf gufo:AbstractIndividual .
 
-gist:UnitOfMeasure
-	rdfs:subClassOf gufo:AbstractIndividual ;
-	.
 
+###  https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink
+gist:NetworkLink rdfs:subClassOf gufo:AbstractIndividual .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection
+gist:OrderedCollection rdfs:subClassOf gufo:AbstractIndividual .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember
+gist:OrderedMember rdfs:subClassOf gufo:AbstractIndividual .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/SchemaMetadata
+gist:SchemaMetadata rdfs:subClassOf gufo:AbstractIndividual .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup
+gist:UnitGroup rdfs:subClassOf gufo:AbstractIndividual .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure
+gist:UnitOfMeasure rdfs:subClassOf gufo:AbstractIndividual .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/Aspect
+gist:Aspect rdf:type owl:NamedIndividual ,
+                     gufo:AbstractIndividualType .
+
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/Category
+gist:Category rdf:type owl:NamedIndividual ,
+                       gufo:AbstractIndividualType .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/Intention
+gist:Intention rdf:type owl:NamedIndividual ,
+                        gufo:AbstractIndividualType .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/KnowledgeConcept
+gist:KnowledgeConcept rdf:type owl:NamedIndividual ,
+                               gufo:AbstractIndividualType .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/Language
+gist:Language rdf:type owl:NamedIndividual ,
+                       gufo:AbstractIndividualType .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/Magnitude
+gist:Magnitude rdf:type owl:NamedIndividual ,
+                        gufo:AbstractIndividualType .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/Network
+gist:Network rdf:type owl:NamedIndividual ,
+                        gufo:AbstractIndividualType .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/NetworkNode
+gist:NetworkNode rdf:type owl:NamedIndividual ,
+                        gufo:AbstractIndividualType .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/NetworkLink
+gist:NetworkLink rdf:type owl:NamedIndividual ,
+                        gufo:AbstractIndividualType .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/OrderedCollection
+gist:OrderedCollection rdf:type owl:NamedIndividual ,
+                            gufo:AbstractIndividualType .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/OrderedMember
+gist:OrderedMember rdf:type owl:NamedIndividual ,
+                            gufo:AbstractIndividualType .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/SchemaMetadata
+gist:SchemaMetadata rdf:type owl:NamedIndividual ,
+                        gufo:AbstractIndividualType .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/UnitGroup
+gist:UnitGroup rdf:type owl:NamedIndividual ,
+                        gufo:AbstractIndividualType .
+
+
+###  https://w3id.org/semanticarts/ns/ontology/gist/UnitOfMeasure
+gist:UnitOfMeasure rdf:type owl:NamedIndividual ,
+                            gufo:AbstractIndividualType .
+
+
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
