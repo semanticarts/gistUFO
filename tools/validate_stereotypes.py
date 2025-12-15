@@ -29,15 +29,15 @@ g.bind("gistx", gistx)
 
 g.parse("../ontologies/gistUFO.ttl")
 
-def main():
-    print("Running validation queries...")
+def run_query_set(query_directory, query_kind):
+    print(f"Running {query_kind} queries...")
     violation_count = 0
     violation_dict = {}
-    for i in os.listdir("../queries/stereotype_validation"):
+    for i in os.listdir(f"../queries/{query_directory}"):
         if DEBUG:
             print(f"Running {i}")
 
-        with open("../queries/stereotype_validation/" + i) as query_file:
+        with open(f"../queries/{query_directory}/" + i) as query_file:
             query = query_file.read()
             results = g.query(query)
             violation_count += len(results)
@@ -46,11 +46,16 @@ def main():
             if len(results) > 0:
                 violation_dict[i] = results
 
-    print(f"Found {violation_count} violations total.")
+    print(f"Found {violation_count} {query_kind} violations total.")
     for k, v in violation_dict.items():
         print(f"Violations in {k}:")
         for row in v:
             print(f"{row.invalid} due to: {row.error_msg}")
+    
+# If this is every made into a command line tool, probably just have a few query kind options and alter main to just run the specified kind
+def main():
+    run_query_set("stereotype_validation", "Stereotype")
+    run_query_set("antipattern_detection", "Anti-Patterns")
 
 if __name__ == "__main__": 
     main()
