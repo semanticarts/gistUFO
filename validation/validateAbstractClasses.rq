@@ -12,14 +12,16 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix gufo: <http://purl.org/nemo/gufo#> 
 
 # view missing triples
-select ?class ?subclass ?message
+select ?class ?subClass ?message
 
 where {
+  
+    bind("class is Abstract but its subclass is not Abstract" as ?message)
 
-   ?class rdf:type gufo:AbstractType .
+   ?class rdf:type gufo:AbstractIndividualType .
   
    ?subClass rdfs:subClassOf* ?class .
   
-   filter not exists {?subClass rdf:type gufo:AbstractType .}
+   filter not exists {?subClass rdf:type gufo:AbstractIndividualType .}
   }
 order by ?class ?subclass
