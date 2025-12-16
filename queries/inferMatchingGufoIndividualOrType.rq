@@ -13,7 +13,7 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix gufo: <http://purl.org/nemo/gufo#> 
 
 # view missing triples
-construct {?class ?missingProperty ?missingObject)
+construct {?class ?missingProperty ?missingObject .}
 
 # insert missing triples
 # insert {graph ex:_NamedGraph_mapping {?class ?missingProperty ?missingObject .}
