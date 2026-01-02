@@ -12,14 +12,17 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 # All results should be considered issues in the ontology. 
 
 
-select ?invalid ?error_msg
-where{
+SELECT ?invalid ?subClass ?error_msg
+WHERE{
   
+  VALUES ?rigidity {
+  gufo:RigidType
+  gufo:SemiRigidType
+  }
   ?invalid a gufo:AntiRigidType . 
   ?subClass rdfs:subClassOf* ?invalid .
-  filter not exists { ?subClass a gufo:RigidType .}
-  filter not exists { ?subClass a gufo:SemiRigidType .}
+  ?subClass a ?rigidity .
 
   BIND("Anti-Rigid classes may not be the direct or indirect Super-Type of any Semi-Rigid or Rigid classes." AS ?error_msg)
 
-  }
+}
