@@ -1,5 +1,4 @@
-# finds subclasses of abstract types that are not abstract types
-# (it seems like they should be)
+# check subclass consistency
 
 prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> 
 prefix gistd: <https://w3id.org/semanticarts/ns/data/gist/> 
@@ -10,18 +9,28 @@ prefix skos: <http://www.w3.org/2004/02/skos/core#>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
 
 prefix gufo: <http://purl.org/nemo/gufo#> 
+prefix ex: <https://example.org/>
 
-# view missing triples
-select ?class ?subClass ?message
+select ?class ?gufoClass ?requiredSubClassType ?subClassInViolation
 
 where {
   
-    bind("class is Abstract but its subclass is not Abstract" as ?message)
-
-   ?class rdf:type gufo:AbstractIndividualType .
+  values (?gufoClass               ?requiredSubClassType) {
+          (gufo:AbstractIndividual  gufo:AbstractIndividual)    
+          (gufo:AntiRigidType       gufo:AntiRigidType)
+          (gufo:Aspect              gufo:Aspect)
+          (gufo:ConcreteIndividual  gufo:ConcreteIndividual)
+          (gufo:Endurant            gufo:Endurant)
+          (gufo:Event               gufo:Event)
+          (gufo:Situation           gufo:Situation)
+          (gufo:Sortal              gufo:Sortal)    
+          }
   
-   ?subClass rdfs:subClassOf* ?class .
+  ?class rdf:type|rdfs:subClassOf ?gufoClass .
+  filter(contains(str(?class), "gist"))
   
-   filter not exists {?subClass rdf:type gufo:AbstractIndividualType .}
+  ?subClassInViolation rdfs:subClassOf ?class .
+  filter not exists {?subClassInViolation rdf:type|rdfs:subClassOf ?requiredSubClassType .}
+  
   }
-order by ?class ?subclass
+order by ?class
