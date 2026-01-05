@@ -1,12 +1,6 @@
-# infer gufo Types a class belongs to
-# it will simplify validations to materialize these inferred relationships
-# BUT be sure to remove ones that are no longer valid if the mapping of classes to Types changes
-#
-# ?class is any class that is mapped to a gufo Type via rdf:type (punning)
-#
-# note that subclasses of the original class are not necessarily of the same Type as their superclass
-# (for example, Student is a subclass of the Rigid class Person but that does not imply that Student is a RigidType)
-# however, there might be specific cases in which subclasses must be of the same type as their superclass (enhancement)
+# infer Type from subclass of Individual
+# some gufo Individuals have a matching Type (e.g. Event and EventType)
+# when a matching entry is missing, this script will find it and can insert it
 
 prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> 
 prefix gistd: <https://w3id.org/semanticarts/ns/data/gist/> 
@@ -18,25 +12,25 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 
 prefix gufo: <http://purl.org/nemo/gufo#> 
 
-# view inferred relationships
-construct {?class rdf:type ?gufoSuperType .}
+# view missing triples
+#construct {?class rdf:type ?inferredType .}
+#select ?class ?inferredType
 
-# insert inferred relationships
-# insert {graph ex:_NamedGraph_mapping {?class rdf:type ?gufoSuperType .}}
-
+# insert missing triples
+ insert {graph ex:_NamedGraph_mapping {?class rdf:type ?inferredType .}}
 
 where {
-  
-  ?class rdf:type ?gufoType .
-  
-  filter(contains(str(?class),    "gist"))  # can be generalized to any ontology mapped to gufo Types  
-  filter(contains(str(?gufoType), "gufo"))
-  
-  ?gufoType rdfs:subClassOf+ ?gufoSuperType .
-  
-  filter(?gufoSuperType != gufo:Type)                   # it is not necessary to map to the topmost level
-  
-#  filter not exists {?class rdf:type ?gufoSuperType .}  # filter out relationships that are already in the graph
-  }
 
-order by ?class    # comment out to do the insert
+   values (?gufoIndividualClass    ?inferredType) {
+           (gufo:AbstractIndividual gufo:AbstractIndividualType)
+           (gufo:ConcreteIndividual gufo:ConcreteIndividualType)
+           (gufo:Endurant           gufo:EndurantType          )
+           (gufo:Event              gufo:EventType             )
+           (gufo:Situation          gufo:SituationType         )
+          }
+
+   ?class rdfs:subClassOf ?gufoIndividualClass .
+   filter not exists {?class rdf:type ?inferredType .}
+   
+}
+#order by ?class
