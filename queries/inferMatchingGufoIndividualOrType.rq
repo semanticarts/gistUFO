@@ -1,6 +1,6 @@
-# infer GUFO Individual or Type
-# some gufo Individuals have a matching Type
-# when a matching entry is missing, this script will find it and can insert it
+# infer subClassOf relationships between a class and gufo classes
+
+# ?class is any class that is mapped to a subclass of gufo Individual
 
 prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> 
 prefix gistd: <https://w3id.org/semanticarts/ns/data/gist/> 
@@ -11,35 +11,25 @@ prefix skos: <http://www.w3.org/2004/02/skos/core#>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
 
 prefix gufo: <http://purl.org/nemo/gufo#> 
+prefix ex: <https://example.org/>
 
-# view missing triples
-construct {?class ?missingProperty ?missingObject .}
+# view the inferred relationships
+#construct {?class rdfs:subClassOf ?gufoSuperClass .}
 
-# insert missing triples
-# insert {graph ex:_NamedGraph_mapping {?class ?missingProperty ?missingObject .}
+# materialize the inferred relationships
+ insert {graph ex:_NamedGraph_mapping {?class rdfs:subClassOf ?gufoSuperClass .}}
+
 
 where {
+  
+  ?class rdfs:subClassOf ?gufoClass .
+  
+  filter(contains(str(?class),     "gist"))  # can be generalized to other ontologies mapped to gufo  
+  filter(contains(str(?gufoClass), "gufo"))
+  
+  ?gufoClass rdfs:subClassOf+ ?gufoSuperClass .
+  filter(!isBlank(?gufoSuperClass))
+  filter not exists {?class rdfs:subClassOf ?gufoSuperClass .}  # makes the query idempotent
+  }
 
-   values (?gufoIndividual         ?gufoType) {
-          (gufo:AbstractIndividual gufo:AbstractIndividualType)
-          (gufo:ConcreteIndividual gufo:ConcreteIndividualType)
-          (gufo:Endurant           gufo:EndurantType          )
-          (gufo:Event              gufo:EventType             )
-          (gufo:Situation          gufo:SituationType         )
-          }
-
-   {
-   ?class rdfs:subClass ?gufoIndividual .
-   filter not exists {?class rdf:type ?gufoType .}
-   bind(rdf:type  as ?missingProperty)
-   bind(?gufoType as ?missingObject)
-   }
-   union
-   {
-   ?class rdf:type ?gufoType .
-   filter not exists {?class rdfs:subClassOf ?gufoIndividual .}
-   bind(rdfs:subClassOf as ?missingProperty)
-   bind(?gufoIndividual as ?missingObject)
-   }
-
-}
+#order by ?class      # comment out to do insert
