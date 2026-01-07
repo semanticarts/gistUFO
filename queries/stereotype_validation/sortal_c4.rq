@@ -13,7 +13,7 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 # Non-sortal types must be specialized by sortal types or share a common supertype to a sortal type
 # Examples Legally_Recognized_Conjugal_Relationship and Long-Term_Agreement
 
-select distinct ?invalid
+select distinct ?invalid ?error_msg
 where {
     ?invalid rdf:type/rdfs:subClassOf* gufo:NonSortal .
     filter not exists {
