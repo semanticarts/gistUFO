@@ -20,7 +20,7 @@ WHERE{
   gufo:SemiRigidType
   }
   ?invalid a gufo:AntiRigidType . 
-  ?subClass rdfs:subClassOf* ?invalid .
+  ?subClass rdfs:subClassOf ?invalid .
   ?subClass a ?rigidity .
 
   BIND("Anti-Rigid classes may not be the direct or indirect Super-Type of any Semi-Rigid or Rigid classes." AS ?error_msg)

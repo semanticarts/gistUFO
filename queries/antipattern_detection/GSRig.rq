@@ -11,7 +11,7 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 
 # A generalization set whose common super-type is rigid and from all its generalizations, at least one comes from an anti-rigid type and at least one comes from a rigid type.
 
-SELECT ?invalid ?error_msg
+SELECT DISTINCT ?invalid ?error_msg
 WHERE{
 
 ?invalid ^rdfs:subClassOf ?sub1 , ?sub2 .

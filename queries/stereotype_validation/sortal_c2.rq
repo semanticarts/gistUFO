@@ -25,7 +25,7 @@ where {
             ?ultimateSortal rdf:type gufo:Kind .
         }
         group by ?invalid
-        BIND(CONCAT("This sortal is the subclass of ", STR(?n), " ultimate sortals.") AS ?error_msg)
     }
+    BIND(CONCAT("This sortal is the subclass of ", STR(?n), " ultimate sortals.") AS ?error_msg)
     filter(?n > 1)
 }

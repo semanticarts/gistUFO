@@ -15,21 +15,21 @@ SELECT ?invalid ?error_msg
 WHERE {
 
     ?invalid
-        ontouml:stereotype ontouml:kind ;
+        a gufo:Kind ;
         rdfs:subClassOf ?super_class_iri ;
         .
 
     ?super_class_iri
-        ontouml:stereotype ?identity_provider_stereotype_iri ;
+        a ?identity_provider_stereotype_iri ;
         .
 
     VALUES ?identity_provider_stereotype_iri {
-        ontouml:kind
-        ontouml:collective
-        ontouml:quality
-        ontouml:relator
-        ontouml:mode
-        ontouml:quantity
+        gufo:Kind
+        gufo:Collection
+        gufo:Quality
+        gufo:Relator
+        gufo:IntrinsicMode
+        gufo:Quantity
     }
 
     BIND("A Kind cannot have an identity provider as its direct or indirect super-type" AS ?error_msg)

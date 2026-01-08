@@ -12,7 +12,8 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 # from the nemo repository https://github.com/nemo-ufes/ufo-types/blob/master/models/sparql-queries.rq, reformatted for ours.
 # Every specialization of endurant instantiates a single endurant type
 
-# Example: House iof Category and Kind while spec FunctionalComplex
+# Example: say the class 'House' is an instance of both Category and Kind. A case can be made for modeling it as one or the other, but UFO types are disjoint, so only one can be true
+
 select ?invalid ?error_msg
 where {
     {
