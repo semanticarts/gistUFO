@@ -60,8 +60,8 @@ gist:Transaction rdfs:subClassOf  gufo:Event.
 gist:GeoLocation rdfs:subClassOf  gufo:Object.
 gist:GeoPoint rdfs:subClassOf  gufo:Object.
 gist:GeoRegion rdfs:subClassOf  gufo:FixedCollection.
-gist:GovernedGeoRegion rdfs:subClassOf  gufo:ExtrinsicMode.
-gist:CountryGeoRegion rdfs:subClassOf  gufo:ExtrinsicMode.
+gist:GovernedGeoRegion rdfs:subClassOf  gufo:Relator.
+gist:CountryGeoRegion rdfs:subClassOf  gufo:Relator.
 gist:GeoVolume rdfs:subClassOf  gufo:FixedCollection.
 gist:IntellectualProperty rdfs:subClassOf  gufo:Object.
 gist:KnowledgeConcept rdfs:subClassOf  gufo:Object.
