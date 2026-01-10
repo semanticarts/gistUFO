@@ -24,7 +24,7 @@ gist:Aspect rdfs:subClassOf  gufo:AbstractIndividual.
 # gist:PhysicalAddressType rdfs:subClassOf  gufo:QualityValue.
 # gist:ProductCategory rdfs:subClassOf  gufo:QualityValue.
 # gist:Tag rdfs:subClassOf  gufo:QualityValue.
-gist:Component rdfs:subClassOf  gufo:Object.
+gist:Component rdfs:subClassOf  gufo:Individual.
 gist:NetworkLink rdfs:subClassOf  gufo:AbstractIndividual.
 gist:NetworkNode rdfs:subClassOf  gufo:AbstractIndividual.
 gist:OrderedMember rdfs:subClassOf  gufo:AbstractIndividual.
