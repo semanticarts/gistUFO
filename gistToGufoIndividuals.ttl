@@ -29,7 +29,7 @@ gist:NetworkLink rdfs:subClassOf  gufo:AbstractIndividual.
 gist:NetworkNode rdfs:subClassOf  gufo:AbstractIndividual.
 gist:OrderedMember rdfs:subClassOf  gufo:AbstractIndividual.
 gist:Composite rdfs:subClassOf  gufo:Individual.
-gist:Collection rdfs:subClassOf  gufo:Collection.
+gist:Collection rdfs:subClassOf  gufo:Individual.
 gist:ControlledVocabulary rdfs:subClassOf  gufo:VariableCollection.
 gist:OrderedCollection rdfs:subClassOf  gufo:Collection.
 gist:GeoRoute rdfs:subClassOf  gufo:AbstractIndividual.
