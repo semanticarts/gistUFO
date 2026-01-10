@@ -9,7 +9,7 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix gufo: <http://purl.org/nemo/gufo#> 
 prefix ex: <https://example.org/>
 
-gist:Component rdf:type  gufo:Category.
+gist:Component rdf:type  gufo:Type.
 gist:Composite rdf:type  gufo:Category.
 gist:Collection rdf:type  gufo:Category.
 gist:ControlledVocabulary rdf:type  gufo:Kind.
