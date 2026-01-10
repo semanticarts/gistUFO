@@ -13,13 +13,21 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 select distinct ?message
 
 where {
-  
+  {
   ?class rdf:type owl:Class .
   filter(contains(str(?class), "gist"))  # can be generalized to any ontology mapped to gufo
-  
-  filter not exists {?class rdf:type ?gufoType .              filter(contains(str(?gufoType),       "gufo")) }
-  filter not exists {?class rdfs:subClassOf ?gufoIndividual . filter(contains(str(?gufoIndividual), "gufo")) }
-                     
+  filter not exists {?class rdf:type ?gufoType . filter(contains(str(?gufoType), "gufo")) }
+  bind("is not mapped to any gUFO Type" as ?message)    
   }
+  
+  union
+  {
+  ?class rdf:type owl:Class .
+  filter(contains(str(?class), "gist"))  # can be generalized to any ontology mapped to gufo 
+  filter not exists {?class rdfs:subClassOf ?gufoIndividual . filter(contains(str(?gufoIndividual), "gufo")) }
+  bind("is not mapped to any gUFO Individual" as ?message)
+  }
+                      }
+ 
 
 order by ?class
