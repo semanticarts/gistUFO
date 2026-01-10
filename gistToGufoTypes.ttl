@@ -10,7 +10,7 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 prefix ex: <https://example.org/>
 
 gist:Component rdf:type  gufo:Type.
-gist:Composite rdf:type  gufo:Category.
+gist:Composite rdf:type  gufo:Type.
 gist:Collection rdf:type  gufo:Category.
 gist:ControlledVocabulary rdf:type  gufo:Kind.
 gist:System rdf:type  gufo:Category.
