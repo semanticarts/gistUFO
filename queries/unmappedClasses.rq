@@ -1,0 +1,31 @@
+# gist classes that have not been mapped to gufo
+
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix gistd: <https://w3id.org/semanticarts/ns/data/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+select distinct ?class ?message
+
+where {
+  {
+  ?class rdf:type owl:Class .
+  filter(contains(str(?class), "gist"))  # can be generalized to any ontology mapped to gufo
+  filter not exists {?class rdf:type ?gufoType . filter(contains(str(?gufoType), "gufo")) }
+  bind("is not mapped to any gUFO Type" as ?message)
+  }
+
+  union
+  {
+  ?class rdf:type owl:Class .
+  filter(contains(str(?class), "gist"))  # can be generalized to any ontology mapped to gufo
+  filter not exists {?class rdfs:subClassOf ?gufoIndividual . filter(contains(str(?gufoIndividual), "gufo")) }
+  bind("is not mapped to any gUFO Individual" as ?message)
+  }
+}
+order by ?class
