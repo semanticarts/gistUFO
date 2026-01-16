@@ -9,6 +9,20 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix gufo: <http://purl.org/nemo/gufo#> 
 prefix ex: <https://example.org/>
 
+gist:Category rdf:type  gufo:Type .
+gist:AddressUsageType rdf:type  gufo:Type .
+gist:Behavior rdf:type  gufo:Type .
+gist:DegreeOfCommitment rdf:type  gufo:Type .
+gist:Discipline rdf:type  gufo:Type .
+gist:ElectronicAddressType rdf:type  gufo:Type .
+gist:EquipmentType rdf:type  gufo:Type .
+gist:GeneralMediaType rdf:type  gufo:Type .
+gist:MediaType rdf:type  gufo:Type .
+gist:Medium rdf:type  gufo:Type .
+gist:PhysicalActionType rdf:type  gufo:Type .
+gist:PhysicalAddressType rdf:type  gufo:Type .
+gist:ProductCategory rdf:type  gufo:Type .
+gist:Tag rdf:type  gufo:Type .
 gist:Component rdf:type  gufo:Type.
 gist:Composite rdf:type  gufo:Type.
 gist:Collection rdf:type  gufo:Type.
