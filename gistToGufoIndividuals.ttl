@@ -10,20 +10,20 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 prefix ex: <https://example.org/>
 
 gist:Aspect rdfs:subClassOf  gufo:AbstractIndividual.
-# gist:Category rdfs:subClassOf  gufo:QualityValue.
-# gist:AddressUsageType rdfs:subClassOf  gufo:QualityValue.
-# gist:Behavior rdfs:subClassOf  gufo:QualityValue.
-# gist:DegreeOfCommitment rdfs:subClassOf  gufo:QualityValue.
-# gist:Discipline rdfs:subClassOf  gufo:QualityValue.
-# gist:ElectronicAddressType rdfs:subClassOf  gufo:QualityValue.
-# gist:EquipmentType rdfs:subClassOf  gufo:QualityValue.
-# gist:GeneralMediaType rdfs:subClassOf  gufo:QualityValue.
-# gist:MediaType rdfs:subClassOf  gufo:QualityValue.
-# gist:Medium rdfs:subClassOf  gufo:QualityValue.
-# gist:PhysicalActionType rdfs:subClassOf  gufo:QualityValue.
-# gist:PhysicalAddressType rdfs:subClassOf  gufo:QualityValue.
-# gist:ProductCategory rdfs:subClassOf  gufo:QualityValue.
-# gist:Tag rdfs:subClassOf  gufo:QualityValue.
+gist:Category rdfs:subClassOf  gufo:Individual.
+gist:AddressUsageType rdfs:subClassOf  gufo:Individual.
+gist:Behavior rdfs:subClassOf  gufo:Individual.
+gist:DegreeOfCommitment rdfs:subClassOf  gufo:Individual.
+gist:Discipline rdfs:subClassOf  gufo:Individual.
+gist:ElectronicAddressType rdfs:subClassOf  gufo:Individual.
+gist:EquipmentType rdfs:subClassOf  gufo:Individual.
+gist:GeneralMediaType rdfs:subClassOf  gufo:Individual.
+gist:MediaType rdfs:subClassOf  gufo:Individual.
+gist:Medium rdfs:subClassOf  gufo:Individual.
+gist:PhysicalActionType rdfs:subClassOf  gufo:Individual.
+gist:PhysicalAddressType rdfs:subClassOf  gufo:Individual.
+gist:ProductCategory rdfs:subClassOf  gufo:Individual.
+gist:Tag rdfs:subClassOf  gufo:Individual.
 gist:Component rdfs:subClassOf  gufo:Individual.
 gist:NetworkLink rdfs:subClassOf  gufo:AbstractIndividual.
 gist:NetworkNode rdfs:subClassOf  gufo:AbstractIndividual.
