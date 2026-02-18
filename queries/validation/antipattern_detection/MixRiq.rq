@@ -8,17 +8,16 @@ prefix skos: <http://www.w3.org/2004/02/skos/core#>
 prefix xml: <http://www.w3.org/XML/1998/namespace>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 
-# Heterogeneous Collective
+# Mixin With Same Rigidity
 
-# A collection type connected to two or more different member parts through «MemberOf» relations.
-# The multiple part types, the main characteristic of this anti-pattern, indicate that the modeler might have confused the concepts of collection and functional complex or the different relations of membership and sub-collection.
-# Only collections may instantiate the Whole.
+# A class stereotyped as Mixin specialized only by other classes that have the same rigidity property, i.e., are all rigid or all anti-rigid.
+# 
+
 
 SELECT DISTINCT ?invalid ?error_msg
 WHERE {
 
-?invalid rdfs:subClassOf* gufo:Collection ;
-    gufo:isProperPartOf ?class2, ?class3 .
+gufo:Mixin ^rdfs:subClassOf* ?subclass
 
 FILTER (?class2 != ?class3)
 
@@ -29,4 +28,3 @@ BIND("This class is an instance of the DecInt anti-pattern, see more at: https:/
 # Only collections and functional complexes may instantiate all Part-n.
 # Let M be the set of memberOf relations identified in an HetColl occurrence, w the class identified as the Whole, wholeType(r) the function that return the class connected to the whole end of a meronymic relation r, and ancestorSet(c) the function that returns all direct and indirect super types of a class c:
 # for all m in M, 
-
