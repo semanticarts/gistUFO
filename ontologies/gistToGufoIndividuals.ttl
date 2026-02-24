@@ -13,11 +13,11 @@ gist:Account
 	.
 
 gist:Address
-	rdfs:subClassOf gufo:Object ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
 	.
 
 gist:AddressUsageType
-	rdfs:subClassOf gufo:Individual ;
+	rdfs:subClassOf gufo:QualityValue ;
 	.
 
 gist:Agreement
@@ -33,7 +33,7 @@ gist:Assignment
 	.
 
 gist:Behavior
-	rdfs:subClassOf gufo:Individual ;
+	rdfs:subClassOf gufo:QualityValue ;
 	.
 
 gist:Building
@@ -49,15 +49,15 @@ gist:CatalogItem
 	.
 
 gist:Category
-	rdfs:subClassOf gufo:Individual ;
+	rdfs:subClassOf gufo:QualityValue ;
 	.
 
 gist:Collection
-	rdfs:subClassOf gufo:Individual ;
+	rdfs:subClassOf gufo:Collection ;
 	.
 
 gist:Commitment
-	rdfs:subClassOf gufo:ExtrinsicMode ;
+	rdfs:subClassOf gufo:Relator ;
 	.
 
 gist:Component
@@ -81,11 +81,11 @@ gist:ContentExpression
 	.
 
 gist:ContingentEvent
-	rdfs:subClassOf gufo:Situation ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
 	.
 
 gist:ContingentObligation
-	rdfs:subClassOf gufo:TemporaryRelationshipSituation ;
+	rdfs:subClassOf gufo:Relator ;
 	.
 
 gist:Contract
@@ -101,7 +101,7 @@ gist:ControlledVocabulary
 	.
 
 gist:CountryGeoRegion
-	rdfs:subClassOf gufo:Relator ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
 	.
 
 gist:CountryGovernment
@@ -109,7 +109,7 @@ gist:CountryGovernment
 	.
 
 gist:DegreeOfCommitment
-	rdfs:subClassOf gufo:Individual ;
+	rdfs:subClassOf gufo:QualityValue ;
 	.
 
 gist:Determination
@@ -117,15 +117,15 @@ gist:Determination
 	.
 
 gist:Discipline
-	rdfs:subClassOf gufo:Individual ;
+	rdfs:subClassOf gufo:QualityValue ;
 	.
 
 gist:ElectronicAddress
-	rdfs:subClassOf gufo:Object ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
 	.
 
 gist:ElectronicAddressType
-	rdfs:subClassOf gufo:Individual ;
+	rdfs:subClassOf gufo:QualityValue ;
 	.
 
 gist:Equipment
@@ -133,7 +133,7 @@ gist:Equipment
 	.
 
 gist:EquipmentType
-	rdfs:subClassOf gufo:Individual ;
+	rdfs:subClassOf gufo:QualityValue ;
 	.
 
 gist:Event
@@ -149,11 +149,11 @@ gist:FormattedContent
 	.
 
 gist:Function
-	rdfs:subClassOf gufo:Object ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
 	.
 
 gist:GeneralMediaType
-	rdfs:subClassOf gufo:Individual ;
+	rdfs:subClassOf gufo:QualityValue ;
 	.
 
 gist:GeoLocation
@@ -169,7 +169,7 @@ gist:GeoRegion
 	.
 
 gist:GeoRoute
-	rdfs:subClassOf gufo:AbstractIndividual ;
+	rdfs:subClassOf gufo:Collection ;
 	.
 
 gist:GeoVolume
@@ -177,7 +177,7 @@ gist:GeoVolume
 	.
 
 gist:GovernedGeoRegion
-	rdfs:subClassOf gufo:Relator ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
 	.
 
 gist:GovernmentOrganization
@@ -189,7 +189,7 @@ gist:HistoricalEvent
 	.
 
 gist:ID
-	rdfs:subClassOf gufo:Object ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
 	.
 
 gist:IntellectualProperty
@@ -197,7 +197,7 @@ gist:IntellectualProperty
 	.
 
 gist:Intention
-	rdfs:subClassOf gufo:IntrinsicMode ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
 	.
 
 gist:IntergovernmentalOrganization
@@ -225,15 +225,15 @@ gist:Magnitude
 	.
 
 gist:MediaType
-	rdfs:subClassOf gufo:Individual ;
+	rdfs:subClassOf gufo:QualityValue ;
 	.
 
 gist:Medium
-	rdfs:subClassOf gufo:Individual ;
+	rdfs:subClassOf gufo:QualityValue ;
 	.
 
 gist:Message
-	rdfs:subClassOf gufo:Object ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
 	.
 
 gist:Network
@@ -249,7 +249,7 @@ gist:NetworkNode
 	.
 
 gist:Offer
-	rdfs:subClassOf gufo:TemporaryInstantiationSituation ;
+	rdfs:subClassOf gufo:Relator ;
 	.
 
 gist:OrderedCollection
@@ -257,7 +257,7 @@ gist:OrderedCollection
 	.
 
 gist:OrderedMember
-	rdfs:subClassOf gufo:AbstractIndividual ;
+	rdfs:subClassOf gufo:Relator ;
 	.
 
 gist:Organization
@@ -265,7 +265,7 @@ gist:Organization
 	.
 
 gist:Permission
-	rdfs:subClassOf gufo:Object ;
+	rdfs:subClassOf gufo:Relator ;
 	.
 
 gist:Person
@@ -273,15 +273,15 @@ gist:Person
 	.
 
 gist:PhysicalActionType
-	rdfs:subClassOf gufo:Individual ;
+	rdfs:subClassOf gufo:QualityValue ;
 	.
 
 gist:PhysicalAddress
-	rdfs:subClassOf gufo:Object ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
 	.
 
 gist:PhysicalAddressType
-	rdfs:subClassOf gufo:Individual ;
+	rdfs:subClassOf gufo:QualityValue ;
 	.
 
 gist:PhysicalEvent
@@ -297,7 +297,7 @@ gist:PhysicalSubstance
 	.
 
 gist:ProductCategory
-	rdfs:subClassOf gufo:Individual ;
+	rdfs:subClassOf gufo:QualityValue ;
 	.
 
 gist:ProductSpecification
@@ -308,24 +308,28 @@ gist:Project
 	rdfs:subClassOf gufo:Event ;
 	.
 
+gist:ReferenceValue
+	rdfs:subClassOf gufo:Quality ;
+	.
+
 gist:RenderedContent
 	rdfs:subClassOf gufo:Object ;
 	.
 
 gist:Requirement
-	rdfs:subClassOf gufo:Object ;
+	rdfs:subClassOf gufo:Relator ;
 	.
 
 gist:Restriction
-	rdfs:subClassOf gufo:Object ;
+	rdfs:subClassOf gufo:Relator ;
 	.
 
 gist:ScheduledEvent
-	rdfs:subClassOf gufo:Situation ;
+	rdfs:subClassOf gufo:IntrinsicMode ;
 	.
 
 gist:ScheduledTask
-	rdfs:subClassOf gufo:Situation ;
+	rdfs:subClassOf gufo:IntrinsicMode ;
 	.
 
 gist:SchemaMetaData
@@ -345,11 +349,11 @@ gist:SubCountryGovernment
 	.
 
 gist:System
-	rdfs:subClassOf gufo:Object ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
 	.
 
 gist:Tag
-	rdfs:subClassOf gufo:Individual ;
+	rdfs:subClassOf gufo:QualityValue ;
 	.
 
 gist:Task
@@ -381,7 +385,7 @@ gist:Transaction
 	.
 
 gist:UnitGroup
-	rdfs:subClassOf gufo:AbstractIndividual ;
+	rdfs:subClassOf gufo:Collection ;
 	.
 
 gist:UnitOfMeasure
