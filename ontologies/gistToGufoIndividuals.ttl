@@ -8,383 +8,99 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-gist:Account
-	rdfs:subClassOf gufo:Relator ;
-	.
-
-gist:Address
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:AddressUsageType
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:Agreement
-	rdfs:subClassOf gufo:Relator ;
-	.
-
-gist:Aspect
-	rdfs:subClassOf gufo:AbstractIndividual ;
-	.
-
-gist:Assignment
-	rdfs:subClassOf gufo:TemporaryRelationshipSituation ;
-	.
-
-gist:Behavior
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:Building
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:BundledCatalogItem
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:CatalogItem
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:Category
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:Collection
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:Commitment
-	rdfs:subClassOf gufo:ExtrinsicMode ;
-	.
-
-gist:Component
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:Composite
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:ContemporaryEvent
-	rdfs:subClassOf gufo:Event ;
-	.
-
-gist:Content
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:ContentExpression
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:ContingentEvent
-	rdfs:subClassOf gufo:Situation ;
-	.
-
-gist:ContingentObligation
-	rdfs:subClassOf gufo:TemporaryRelationshipSituation ;
-	.
-
-gist:Contract
-	rdfs:subClassOf gufo:Relator ;
-	.
-
-gist:ContractTerm
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:ControlledVocabulary
-	rdfs:subClassOf gufo:VariableCollection ;
-	.
-
-gist:CountryGeoRegion
-	rdfs:subClassOf gufo:Relator ;
-	.
-
-gist:CountryGovernment
-	rdfs:subClassOf gufo:FunctionalComplex ;
-	.
-
-gist:DegreeOfCommitment
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:Determination
-	rdfs:subClassOf gufo:Event ;
-	.
-
-gist:Discipline
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:ElectronicAddress
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:ElectronicAddressType
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:Equipment
-	rdfs:subClassOf gufo:FunctionalComplex ;
-	.
-
-gist:EquipmentType
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:Event
-	rdfs:subClassOf gufo:Event ;
-	.
-
-gist:EventSpecification
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:FormattedContent
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:Function
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:GeneralMediaType
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:GeoLocation
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:GeoPoint
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:GeoRegion
-	rdfs:subClassOf gufo:FixedCollection ;
-	.
-
-gist:GeoRoute
-	rdfs:subClassOf gufo:AbstractIndividual ;
-	.
-
-gist:GeoVolume
-	rdfs:subClassOf gufo:FixedCollection ;
-	.
-
-gist:GovernedGeoRegion
-	rdfs:subClassOf gufo:Relator ;
-	.
-
-gist:GovernmentOrganization
-	rdfs:subClassOf gufo:FunctionalComplex ;
-	.
-
-gist:HistoricalEvent
-	rdfs:subClassOf gufo:Event ;
-	.
-
-gist:ID
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:IntellectualProperty
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:Intention
-	rdfs:subClassOf gufo:IntrinsicMode ;
-	.
-
-gist:IntergovernmentalOrganization
-	rdfs:subClassOf gufo:FunctionalComplex ;
-	.
-
-gist:KnowledgeConcept
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:Landmark
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:Language
-	rdfs:subClassOf gufo:FunctionalComplex ;
-	.
-
-gist:LivingThing
-	rdfs:subClassOf gufo:FunctionalComplex ;
-	.
-
-gist:Magnitude
-	rdfs:subClassOf gufo:Quality ;
-	.
-
-gist:MediaType
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:Medium
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:Message
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:Network
-	rdfs:subClassOf gufo:AbstractIndividual ;
-	.
-
-gist:NetworkLink
-	rdfs:subClassOf gufo:AbstractIndividual ;
-	.
-
-gist:NetworkNode
-	rdfs:subClassOf gufo:AbstractIndividual ;
-	.
-
-gist:Offer
-	rdfs:subClassOf gufo:TemporaryInstantiationSituation ;
-	.
-
-gist:OrderedCollection
-	rdfs:subClassOf gufo:Collection ;
-	.
-
-gist:OrderedMember
-	rdfs:subClassOf gufo:AbstractIndividual ;
-	.
-
-gist:Organization
-	rdfs:subClassOf gufo:FunctionalComplex ;
-	.
-
-gist:Permission
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:Person
-	rdfs:subClassOf gufo:FunctionalComplex ;
-	.
-
-gist:PhysicalActionType
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:PhysicalAddress
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:PhysicalAddressType
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:PhysicalEvent
-	rdfs:subClassOf gufo:Event ;
-	.
-
-gist:PhysicalIdentifiableItem
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:PhysicalSubstance
-	rdfs:subClassOf gufo:Quantity ;
-	.
-
-gist:ProductCategory
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:ProductSpecification
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:Project
-	rdfs:subClassOf gufo:Event ;
-	.
-
-gist:RenderedContent
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:Requirement
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:Restriction
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:ScheduledEvent
-	rdfs:subClassOf gufo:Situation ;
-	.
-
-gist:ScheduledTask
-	rdfs:subClassOf gufo:Situation ;
-	.
-
-gist:SchemaMetaData
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:ServiceSpecification
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:Specification
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:SubCountryGovernment
-	rdfs:subClassOf gufo:FunctionalComplex ;
-	.
-
-gist:System
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:Tag
-	rdfs:subClassOf gufo:Individual ;
-	.
-
-gist:Task
-	rdfs:subClassOf gufo:Event ;
-	.
-
-gist:TaskTemplate
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:Template
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:TemporalRelation
-	rdfs:subClassOf gufo:TemporaryRelationshipSituation ;
-	.
-
-gist:Text
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:TimeInterval
-	rdfs:subClassOf gufo:Object ;
-	.
-
-gist:Transaction
-	rdfs:subClassOf gufo:Event ;
-	.
-
-gist:UnitGroup
-	rdfs:subClassOf gufo:AbstractIndividual ;
-	.
-
-gist:UnitOfMeasure
-	rdfs:subClassOf gufo:AbstractIndividual ;
-	.
-
+gist:Aspect rdfs:subClassOf  gufo:AbstractIndividual .
+gist:Category rdfs:subClassOf  gufo:QualityValue .
+gist:AddressUsageType rdfs:subClassOf  gufo:QualityValue .
+gist:Behavior rdfs:subClassOf  gufo:QualityValue .
+gist:DegreeOfCommitment rdfs:subClassOf  gufo:QualityValue .
+gist:Discipline rdfs:subClassOf  gufo:QualityValue .
+gist:ElectronicAddressType rdfs:subClassOf  gufo:QualityValue .
+gist:EquipmentType rdfs:subClassOf  gufo:QualityValue .
+gist:GeneralMediaType rdfs:subClassOf  gufo:QualityValue .
+gist:MediaType rdfs:subClassOf  gufo:QualityValue .
+gist:Medium rdfs:subClassOf  gufo:QualityValue .
+gist:PhysicalActionType rdfs:subClassOf  gufo:QualityValue .
+gist:PhysicalAddressType rdfs:subClassOf  gufo:QualityValue .
+gist:ProductCategory rdfs:subClassOf  gufo:QualityValue .
+gist:Tag rdfs:subClassOf  gufo:QualityValue .
+gist:Component rdfs:subClassOf  gufo:Individual .
+gist:NetworkLink rdfs:subClassOf  gufo:AbstractIndividual .
+gist:NetworkNode rdfs:subClassOf  gufo:AbstractIndividual .
+gist:OrderedMember rdfs:subClassOf  gufo:Relator .
+gist:Composite rdfs:subClassOf  gufo:Individual .
+gist:Collection rdfs:subClassOf  gufo:Collection .
+gist:ControlledVocabulary rdfs:subClassOf  gufo:VariableCollection .
+gist:OrderedCollection rdfs:subClassOf  gufo:Collection .
+gist:GeoRoute rdfs:subClassOf  gufo:Collection .
+gist:UnitGroup rdfs:subClassOf  gufo:Collection .
+gist:Network rdfs:subClassOf  gufo:AbstractIndividual .
+gist:System rdfs:subClassOf  gufo:FunctionalComplex .
+gist:Content rdfs:subClassOf  gufo:Object .
+gist:Address rdfs:subClassOf  gufo:ExtrinsicMode .
+gist:ElectronicAddress rdfs:subClassOf  gufo:ExtrinsicMode .
+gist:PhysicalAddress rdfs:subClassOf  gufo:ExtrinsicMode .
+gist:ContentExpression rdfs:subClassOf  gufo:Object .
+gist:FormattedContent rdfs:subClassOf  gufo:Object .
+gist:RenderedContent rdfs:subClassOf  gufo:Object .
+gist:Message rdfs:subClassOf  gufo:ExtrinsicMode .
+gist:Text rdfs:subClassOf  gufo:Object .
+gist:ID rdfs:subClassOf  gufo:ExtrinsicMode .
+gist:Event rdfs:subClassOf  gufo:Event .
+gist:ContemporaryEvent rdfs:subClassOf  gufo:Event .
+gist:ContingentEvent rdfs:subClassOf  gufo:ExtrinsicMode .
+gist:Determination rdfs:subClassOf  gufo:Event .
+gist:HistoricalEvent rdfs:subClassOf  gufo:Event .
+gist:PhysicalEvent rdfs:subClassOf  gufo:Event .
+gist:ScheduledEvent rdfs:subClassOf  gufo:IntrinsicMode .
+gist:ScheduledTask rdfs:subClassOf  gufo:IntrinsicMode .
+gist:Task rdfs:subClassOf  gufo:Event .
+gist:Project rdfs:subClassOf  gufo:Event .
+gist:Transaction rdfs:subClassOf  gufo:Event .
+gist:GeoLocation rdfs:subClassOf  gufo:Object .
+gist:GeoPoint rdfs:subClassOf  gufo:Object .
+gist:GeoRegion rdfs:subClassOf  gufo:FixedCollection .
+gist:GovernedGeoRegion rdfs:subClassOf  gufo:ExtrinsicMode .
+gist:CountryGeoRegion rdfs:subClassOf  gufo:ExtrinsicMode .
+gist:GeoVolume rdfs:subClassOf  gufo:FixedCollection .
+gist:IntellectualProperty rdfs:subClassOf  gufo:Object .
+gist:KnowledgeConcept rdfs:subClassOf  gufo:Object .
+gist:Intention rdfs:subClassOf  gufo:AbstractIndividual .
+gist:Agreement rdfs:subClassOf  gufo:Relator .
+gist:Account rdfs:subClassOf  gufo:Relator .
+gist:Contract rdfs:subClassOf  gufo:Relator .
+gist:Commitment rdfs:subClassOf  gufo:Relator .
+gist:ContingentObligation rdfs:subClassOf  gufo:Relator .
+gist:Offer rdfs:subClassOf  gufo:Relator .
+gist:Function rdfs:subClassOf  gufo:AbstractIndividual .
+gist:Permission rdfs:subClassOf  gufo:Relator .
+gist:Requirement rdfs:subClassOf  gufo:Relator .
+gist:Restriction rdfs:subClassOf  gufo:Relator .
+gist:Specification rdfs:subClassOf  gufo:Object .
+gist:CatalogItem rdfs:subClassOf  gufo:Object .
+gist:BundledCatalogItem rdfs:subClassOf  gufo:Object .
+gist:ProductSpecification rdfs:subClassOf  gufo:Object .
+gist:ServiceSpecification rdfs:subClassOf  gufo:Object .
+gist:ContractTerm rdfs:subClassOf  gufo:Object .
+gist:EventSpecification rdfs:subClassOf  gufo:Object .
+gist:Language rdfs:subClassOf  gufo:FunctionalComplex .
+gist:Magnitude rdfs:subClassOf  gufo:Quality .
+gist:ReferenceValue rdfs:subClassOf  gufo:Quality .
+gist:Organization rdfs:subClassOf  gufo:FunctionalComplex .
+gist:GovernmentOrganization rdfs:subClassOf  gufo:FunctionalComplex .
+gist:CountryGovernment rdfs:subClassOf  gufo:FunctionalComplex .
+gist:SubCountryGovernment rdfs:subClassOf  gufo:FunctionalComplex .
+gist:IntergovernmentalOrganization rdfs:subClassOf  gufo:FunctionalComplex .
+gist:PhysicalIdentifiableItem rdfs:subClassOf  gufo:Object .
+gist:Equipment rdfs:subClassOf  gufo:FunctionalComplex .
+gist:Landmark rdfs:subClassOf  gufo:Object .
+gist:Building rdfs:subClassOf  gufo:Object .
+gist:LivingThing rdfs:subClassOf  gufo:FunctionalComplex .
+gist:Person rdfs:subClassOf  gufo:FunctionalComplex .
+gist:PhysicalSubstance rdfs:subClassOf  gufo:Quantity .
+gist:SchemaMetaData rdfs:subClassOf  gufo:Object .
+gist:Template rdfs:subClassOf  gufo:Object .
+gist:TaskTemplate rdfs:subClassOf  gufo:Object .
+gist:TemporalRelation rdfs:subClassOf  gufo:TemporaryRelationshipSituation .
+gist:Assignment rdfs:subClassOf  gufo:TemporaryRelationshipSituation .
+gist:TimeInterval rdfs:subClassOf  gufo:Object .
+gist:UnitOfMeasure rdfs:subClassOf  gufo:AbstractIndividual .
