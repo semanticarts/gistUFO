@@ -1,0 +1,26 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix gistx: <https://w3id.org/semanticarts/ns/taxonomy/gist/>
+prefix ontouml: <https://w3id.org/ontouml#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix xml: <http://www.w3.org/XML/1998/namespace>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+#Homogeneous Functional Complex
+
+# A functional complex type connected to a single part through a «ComponentOf» relation.
+# If a whole is composed by a unique type of part, it is most likely that all of the part’s instances play the same role w.r.t. their whole. That homogeneous structure is not a characteristic of a functional complex.
+
+SELECT ?invalid ?error_msg
+
+WHERE {
+?invalid a gufo:FunctionalComplex ;
+    ^gufo:isComponentOf ?part1 .
+
+FILTER NOT EXISTS {?invalid ^gufo:isComponentOf ?part2}
+
+BIND("This class is an instance of the HetColl anti-pattern, read more at https://ontouml.readthedocs.io/en/latest/anti-patterns/HetColl/index.html" AS ?error_msg)
+}

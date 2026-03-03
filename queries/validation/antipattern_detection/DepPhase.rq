@@ -1,0 +1,24 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix gistx: <https://w3id.org/semanticarts/ns/taxonomy/gist/>
+prefix ontouml: <https://w3id.org/ontouml#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix xml: <http://www.w3.org/XML/1998/namespace>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+# Relationally Dependent Phase 
+
+# A class stereotyped as «Phase» connected to one or more «Mediation» associations.
+# Phases are instantiated when there is a change in an intrinsic property. Roles are instantiated when there is a change in a relational property. Selecting the «Phase» stereotype for a class but connecting it to a mediation is “mixing up” the two meta-categories.
+
+SELECT ?invalid ?error_msg
+WHERE {
+
+?invalid a gufo:Phase ;
+    gufo:mediates ?relator1 . 
+
+BIND("This class is an instance of the DepPhase anti-pattern, read more at https://ontouml.readthedocs.io/en/latest/anti-patterns/DepPhase/index.html" AS ?error_msg)
+}

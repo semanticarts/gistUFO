@@ -7,27 +7,26 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix skos: <http://www.w3.org/2004/02/skos/core#>
 prefix xml: <http://www.w3.org/XML/1998/namespace>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-prefix gufo: <http://purl.org/nemo/gufo#>
 
 # Heterogeneous Collective
 
 # A collection type connected to two or more different member parts through «MemberOf» relations.
 # The multiple part types, the main characteristic of this anti-pattern, indicate that the modeler might have confused the concepts of collection and functional complex or the different relations of membership and sub-collection.
 # Only collections may instantiate the Whole.
-# Only collections and functional complexes may instantiate all Part-n.
 
+SELECT DISTINCT ?invalid ?error_msg
+WHERE {
 
+?invalid rdfs:subClassOf* gufo:Collection ;
+    gufo:isProperPartOf ?class2, ?class3 .
 
-SELECT ?invalid ?error_msg 
-WHERE { 
+FILTER (?class2 != ?class3)
 
-?invalid a gufo:Collection ;
-    ^gufo:isCollectionMemberOf ?part1, ?part2 .
-?part1 a ?class1 .
-?part2 a ?class2 .
-
-FILTER(?class1 != ?class2)
-
-BIND("This class is an instance of the HetColl anti-pattern, see more at: https://ontouml.readthedocs.io/en/latest/anti-patterns/HetColl/index.html" AS ?error_msg)
+BIND("This class is an instance of the DecInt anti-pattern, see more at: https://ontouml.readthedocs.io/en/latest/anti-patterns/DecInt/index.html" AS ?error_msg)
 
 }
+
+# Only collections and functional complexes may instantiate all Part-n.
+# Let M be the set of memberOf relations identified in an HetColl occurrence, w the class identified as the Whole, wholeType(r) the function that return the class connected to the whole end of a meronymic relation r, and ancestorSet(c) the function that returns all direct and indirect super types of a class c:
+# for all m in M, 
+
