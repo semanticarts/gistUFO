@@ -1,302 +1,105 @@
-@prefix ex: <https://example.org/> .
-@prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> .
-@prefix gistd: <https://w3id.org/semanticarts/ns/data/gist/> .
-@prefix gufo: <http://purl.org/nemo/gufo#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-gist:Account
-	a gufo:SubKind ;
-	.
-
-gist:Address
-	a gufo:SubKind ;
-	.
-
-gist:AddressUsageType
-	a gufo:Type ;
-	.
-
-gist:Agreement
-	a gufo:Kind ;
-	.
-
-gist:Behavior
-	a gufo:Type ;
-	.
-
-gist:Building
-	a gufo:SubKind ;
-	.
-
-gist:BundledCatalogItem
-	a gufo:SubKind ;
-	.
-
-gist:CatalogItem
-	a gufo:SubKind ;
-	.
-
-gist:Category
-	a gufo:Type ;
-	.
-
-gist:Collection
-	a gufo:Type ;
-	.
-
-gist:Commitment
-	a gufo:Kind ;
-	.
-
-gist:Component
-	a gufo:Type ;
-	.
-
-gist:Composite
-	a gufo:Type ;
-	.
-
-gist:Content
-	a gufo:Kind ;
-	.
-
-gist:ContentExpression
-	a gufo:SubKind ;
-	.
-
-gist:ContingentObligation
-	a gufo:SubKind ;
-	.
-
-gist:Contract
-	a gufo:SubKind ;
-	.
-
-gist:ContractTerm
-	a gufo:SubKind ;
-	.
-
-gist:ControlledVocabulary
-	a gufo:Kind ;
-	.
-
-gist:CountryGeoRegion
-	a gufo:Role ;
-	.
-
-gist:CountryGovernment
-	a gufo:SubKind ;
-	.
-
-gist:DegreeOfCommitment
-	a gufo:Type ;
-	.
-
-gist:Discipline
-	a gufo:Type ;
-	.
-
-gist:ElectronicAddress
-	a gufo:SubKind ;
-	.
-
-gist:ElectronicAddressType
-	a gufo:Type ;
-	.
-
-gist:Equipment
-	a gufo:Kind ;
-	.
-
-gist:EquipmentType
-	a gufo:Type ;
-	.
-
-gist:EventSpecification
-	a gufo:SubKind ;
-	.
-
-gist:FormattedContent
-	a gufo:SubKind ;
-	.
-
-gist:Function
-	a gufo:Role ;
-	.
-
-gist:GeneralMediaType
-	a gufo:Type ;
-	.
-
-gist:GeoLocation
-	a gufo:Kind ;
-	.
-
-gist:GeoPoint
-	a gufo:SubKind ;
-	.
-
-gist:GeoRegion
-	a gufo:SubKind ;
-	.
-
-gist:GeoVolume
-	a gufo:SubKind ;
-	.
-
-gist:GovernedGeoRegion
-	a gufo:Role ;
-	.
-
-gist:GovernmentOrganization
-	a gufo:SubKind ;
-	.
-
-gist:ID
-	a gufo:SubKind ;
-	.
-
-gist:IntellectualProperty
-	a gufo:Kind ;
-	.
-
-gist:IntergovernmentalOrganization
-	a gufo:SubKind ;
-	.
-
-gist:KnowledgeConcept
-	a gufo:SubKind ;
-	.
-
-gist:Landmark
-	a gufo:Kind ;
-	.
-
-gist:Language
-	a gufo:Kind ;
-	.
-
-gist:LivingThing
-	a gufo:Category ;
-	.
-
-gist:Magnitude
-	a gufo:Kind ;
-	.
-
-gist:MediaType
-	a gufo:Type ;
-	.
-
-gist:Medium
-	a gufo:Type ;
-	.
-
-gist:Message
-	a gufo:SubKind ;
-	.
-
-gist:Offer
-	a gufo:SubKind ;
-	.
-
-gist:Organization
-	a gufo:Kind ;
-	.
-
-gist:Permission
-	a gufo:SubKind ;
-	.
-
-gist:Person
-	a gufo:Kind ;
-	.
-
-gist:PhysicalActionType
-	a gufo:Type ;
-	.
-
-gist:PhysicalAddress
-	a gufo:SubKind ;
-	.
-
-gist:PhysicalAddressType
-	a gufo:Type ;
-	.
-
-gist:PhysicalIdentifiableItem
-	a gufo:Category ;
-	.
-
-gist:PhysicalSubstance
-	a gufo:Kind ;
-	.
-
-gist:ProductCategory
-	a gufo:Type ;
-	.
-
-gist:ProductSpecification
-	a gufo:SubKind ;
-	.
-
-gist:ReferenceValue
-	a gufo:SubKind ;
-	.
-
-gist:RenderedContent
-	a gufo:SubKind ;
-	.
-
-gist:Requirement
-	a gufo:SubKind ;
-	.
-
-gist:Restriction
-	a gufo:SubKind ;
-	.
-
-gist:SchemaMetaData
-	a gufo:Kind ;
-	.
-
-gist:ServiceSpecification
-	a gufo:SubKind ;
-	.
-
-gist:Specification
-	a gufo:Kind ;
-	.
-
-gist:SubCountryGovernment
-	a gufo:SubKind ;
-	.
-
-gist:System
-	a gufo:Category ;
-	.
-
-gist:Tag
-	a gufo:Type ;
-	.
-
-gist:TaskTemplate
-	a gufo:SubKind ;
-	.
-
-gist:Template
-	a gufo:Kind ;
-	.
-
-gist:Text
-	a gufo:SubKind ;
-	.
-
-gist:TimeInterval
-	a gufo:Kind ;
-	.
-
+@prefix ex:<https://example.org/> .
+@prefix gist:<https://w3id.org/semanticarts/ns/ontology/gist/> .
+@prefix gistd:<https://w3id.org/semanticarts/ns/data/gist/> .
+@prefix gufo:<http://purl.org/nemo/gufo#> .
+@prefix owl:<http://www.w3.org/2002/07/owl#> .
+@prefix rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:<http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:<http://www.w3.org/2001/XMLSchema#> .
+
+gist:Aspect rdf:type  gufo:AbstractIndividualType .
+gist:Category rdf:type  gufo:AbstractIndividualType .
+gist:AddressUsageType rdf:type  gufo:AbstractIndividualType .
+gist:Behavior rdf:type  gufo:AbstractIndividualType .
+gist:DegreeOfCommitment rdf:type  gufo:AbstractIndividualType .
+gist:Discipline rdf:type  gufo:AbstractIndividualType .
+gist:ElectronicAddressType rdf:type  gufo:AbstractIndividualType .
+gist:EquipmentType rdf:type  gufo:AbstractIndividualType .
+gist:GeneralMediaType rdf:type  gufo:AbstractIndividualType .
+gist:MediaType rdf:type  gufo:AbstractIndividualType .
+gist:Medium rdf:type  gufo:AbstractIndividualType .
+gist:PhysicalActionType rdf:type  gufo:AbstractIndividualType .
+gist:PhysicalAddressType rdf:type  gufo:AbstractIndividualType .
+gist:ProductCategory rdf:type  gufo:AbstractIndividualType .
+gist:Tag rdf:type  gufo:AbstractIndividualType .
+gist:Component rdf:type  gufo:Category .
+gist:NetworkLink rdf:type  gufo:AbstractIndividualType .
+gist:NetworkNode rdf:type  gufo:AbstractIndividualType .
+gist:OrderedMember rdf:type  gufo:Kind .
+gist:Composite rdf:type  gufo:Category .
+gist:Collection rdf:type  gufo:EndurantType .
+gist:ControlledVocabulary rdf:type  gufo:EndurantType .
+gist:OrderedCollection rdf:type  gufo:EndurantType .
+gist:GeoRoute rdf:type  gufo:EndurantType .
+gist:UnitGroup rdf:type  gufo:EndurantType .
+gist:Network rdf:type  gufo:AbstractIndividualType .
+gist:System rdf:type  gufo:Category .
+gist:Content rdf:type  gufo:Category .
+gist:Address rdf:type  gufo:Category .
+gist:ElectronicAddress rdf:type  gufo:Category .
+gist:PhysicalAddress rdf:type  gufo:Category .
+gist:ContentExpression rdf:type  gufo:Category .
+gist:FormattedContent rdf:type  gufo:Category .
+gist:RenderedContent rdf:type  gufo:Category .
+gist:Message rdf:type  gufo:Role .
+gist:Text rdf:type  gufo:Kind .
+gist:ID rdf:type  gufo:Kind .
+gist:Event rdf:type  gufo:EventType .
+gist:ContemporaryEvent rdf:type  gufo:EventType .
+gist:ContingentEvent rdf:type  gufo:Kind .
+gist:Determination rdf:type  gufo:EventType .
+gist:HistoricalEvent rdf:type  gufo:EventType .
+gist:PhysicalEvent rdf:type  gufo:EventType .
+gist:ScheduledEvent rdf:type  gufo:Kind .
+gist:ScheduledTask rdf:type  gufo:SubKind .
+gist:Task rdf:type  gufo:EventType .
+gist:Project rdf:type  gufo:EventType .
+gist:Transaction rdf:type  gufo:EventType .
+gist:GeoLocation rdf:type  gufo:Kind .
+gist:GeoPoint rdf:type  gufo:SubKind .
+gist:GeoRegion rdf:type  gufo:SubKind .
+gist:GovernedGeoRegion rdf:type  gufo:Role .
+gist:CountryGeoRegion rdf:type  gufo:Role .
+gist:GeoVolume rdf:type  gufo:SubKind .
+gist:IntellectualProperty rdf:type  gufo:Category .
+gist:KnowledgeConcept rdf:type  gufo:Category .
+gist:Intention rdf:type  gufo:AbstractIndividualType .
+gist:Agreement rdf:type  gufo:Kind .
+gist:Account rdf:type  gufo:SubKind .
+gist:Contract rdf:type  gufo:SubKind .
+gist:Commitment rdf:type  gufo:Kind .
+gist:ContingentObligation rdf:type  gufo:Phase .
+gist:Offer rdf:type  gufo:Phase .
+gist:Function rdf:type  gufo:AbstractIndividualType .
+gist:Permission rdf:type  gufo:Kind .
+gist:Requirement rdf:type  gufo:Kind .
+gist:Restriction rdf:type  gufo:Kind .
+gist:Specification rdf:type  gufo:Category .
+gist:CatalogItem rdf:type  gufo:Category .
+gist:BundledCatalogItem rdf:type  gufo:EndurantType .
+gist:ProductSpecification rdf:type  gufo:Role .
+gist:ServiceSpecification rdf:type  gufo:Role .
+gist:ContractTerm rdf:type  gufo:Role .
+gist:EventSpecification rdf:type  gufo:Kind .
+gist:Language rdf:type  gufo:Kind .
+gist:Magnitude rdf:type  gufo:Kind .
+gist:ReferenceValue rdf:type  gufo:SubKind .
+gist:Organization rdf:type  gufo:Kind .
+gist:GovernmentOrganization rdf:type  gufo:SubKind .
+gist:CountryGovernment rdf:type  gufo:SubKind .
+gist:SubCountryGovernment rdf:type  gufo:SubKind .
+gist:IntergovernmentalOrganization rdf:type  gufo:SubKind .
+gist:PhysicalIdentifiableItem rdf:type  gufo:Category .
+gist:Equipment rdf:type  gufo:Category .
+gist:Landmark rdf:type  gufo:Category .
+gist:Building rdf:type  gufo:Kind .
+gist:LivingThing rdf:type  gufo:Category .
+gist:Person rdf:type  gufo:Kind .
+gist:PhysicalSubstance rdf:type  gufo:Kind .
+gist:SchemaMetaData rdf:type  gufo:Category .
+gist:Template rdf:type  gufo:Category .
+gist:TaskTemplate rdf:type  gufo:Category .
+gist:TemporalRelation rdf:type  gufo:SituationType .
+gist:Assignment rdf:type  gufo:SituationType .
+gist:TimeInterval rdf:type  gufo:Kind .
