@@ -1,0 +1,36 @@
+@prefix ex:<https://example.org/> .
+@prefix gist:<https://w3id.org/semanticarts/ns/ontology/gist/> .
+@prefix gistd:<https://w3id.org/semanticarts/ns/data/gist/> .
+@prefix gufo:<http://purl.org/nemo/gufo#> .
+@prefix owl:<http://www.w3.org/2002/07/owl#> .
+@prefix rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:<http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:<http://www.w3.org/2001/XMLSchema#> .
+
+gufo:AbstractIndividual  rdf:type gufo:AbstractIndividualType .
+gufo:QualityValue  rdf:type gufo:AbstractIndividualType .
+gufo:Instant  rdf:type gufo:AbstractIndividualType .
+gufo:ConcreteIndividual  rdf:type gufo:ConcreteIndividualType .
+gufo:Endurant  rdf:type gufo:Category .
+gufo:Aspect  rdf:type gufo:Category .
+gufo:ExtrinsicAspect  rdf:type gufo:Category .
+gufo:ExtrinsicMode  rdf:type gufo:Category .
+gufo:Relator  rdf:type gufo:Category .
+gufo:IntrinsicAspect  rdf:type gufo:Category .
+gufo:IntrinsicMode  rdf:type gufo:Category .
+gufo:Quality  rdf:type gufo:Category .
+gufo:Object  rdf:type gufo:Category .
+gufo:Collection  rdf:type gufo:Category .
+gufo:FixedCollection  rdf:type gufo:Category .
+gufo:VariableCollection  rdf:type gufo:Category .
+gufo:FunctionalComplex  rdf:type gufo:Category .
+gufo:Quantity  rdf:type gufo:Category .
+gufo:Event  rdf:type gufo: .
+gufo:Participation  rdf:type gufo: .
+gufo:Situation  rdf:type gufo:SituationType .
+gufo:QualityValueAttributionSituation  rdf:type gufo:SituationType .
+gufo:TemporaryConstitutionSituation  rdf:type gufo:SituationType .
+gufo:TemporaryInstantiationSituation  rdf:type gufo:SituationType .
+gufo:TemporaryParthoodSituation  rdf:type gufo:SituationType .
+gufo:TemporaryRelationshipSituation  rdf:type gufo:SituationType .
