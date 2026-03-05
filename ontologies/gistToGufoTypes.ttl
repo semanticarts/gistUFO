@@ -1,0 +1,390 @@
+@prefix ex: <https://example.org/> .
+@prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> .
+@prefix gistd: <https://w3id.org/semanticarts/ns/data/gist/> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+gist:Account
+	a gufo:SubKind ;
+	.
+
+gist:Address
+	a gufo:Category ;
+	.
+
+gist:AddressUsageType
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:Agreement
+	a gufo:Kind ;
+	.
+
+gist:Aspect
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:Assignment
+	a gufo:SituationType ;
+	.
+
+gist:Behavior
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:Building
+	a gufo:Kind ;
+	.
+
+gist:BundledCatalogItem
+	a gufo:EndurantType ;
+	.
+
+gist:CatalogItem
+	a gufo:Category ;
+	.
+
+gist:Category
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:Collection
+	a gufo:EndurantType ;
+	.
+
+gist:Commitment
+	a gufo:Kind ;
+	.
+
+gist:Component
+	a gufo:Category ;
+	.
+
+gist:Composite
+	a gufo:Category ;
+	.
+
+gist:ContemporaryEvent
+	a gufo:EventType ;
+	.
+
+gist:Content
+	a gufo:Category ;
+	.
+
+gist:ContentExpression
+	a gufo:Category ;
+	.
+
+gist:ContingentEvent
+	a gufo:Kind ;
+	.
+
+gist:ContingentObligation
+	a gufo:Phase ;
+	.
+
+gist:Contract
+	a gufo:SubKind ;
+	.
+
+gist:ContractTerm
+	a gufo:Role ;
+	.
+
+gist:ControlledVocabulary
+	a gufo:EndurantType ;
+	.
+
+gist:CountryGeoRegion
+	a gufo:Role ;
+	.
+
+gist:CountryGovernment
+	a gufo:SubKind ;
+	.
+
+gist:DegreeOfCommitment
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:Determination
+	a gufo:EventType ;
+	.
+
+gist:Discipline
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:ElectronicAddress
+	a gufo:Category ;
+	.
+
+gist:ElectronicAddressType
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:Equipment
+	a gufo:Category ;
+	.
+
+gist:EquipmentType
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:Event
+	a gufo:EventType ;
+	.
+
+gist:EventSpecification
+	a gufo:Kind ;
+	.
+
+gist:FormattedContent
+	a gufo:Category ;
+	.
+
+gist:Function
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:GeneralMediaType
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:GeoLocation
+	a gufo:Kind ;
+	.
+
+gist:GeoPoint
+	a gufo:SubKind ;
+	.
+
+gist:GeoRegion
+	a gufo:SubKind ;
+	.
+
+gist:GeoRoute
+	a gufo:EndurantType ;
+	.
+
+gist:GeoVolume
+	a gufo:SubKind ;
+	.
+
+gist:GovernedGeoRegion
+	a gufo:Role ;
+	.
+
+gist:GovernmentOrganization
+	a gufo:SubKind ;
+	.
+
+gist:HistoricalEvent
+	a gufo:EventType ;
+	.
+
+gist:ID
+	a gufo:Kind ;
+	.
+
+gist:IntellectualProperty
+	a gufo:Category ;
+	.
+
+gist:Intention
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:IntergovernmentalOrganization
+	a gufo:SubKind ;
+	.
+
+gist:KnowledgeConcept
+	a gufo:Category ;
+	.
+
+gist:Landmark
+	a gufo:Category ;
+	.
+
+gist:Language
+	a gufo:Kind ;
+	.
+
+gist:LivingThing
+	a gufo:Category ;
+	.
+
+gist:Magnitude
+	a gufo:Kind ;
+	.
+
+gist:MediaType
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:Medium
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:Message
+	a gufo:Role ;
+	.
+
+gist:Network
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:NetworkLink
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:NetworkNode
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:Offer
+	a gufo:Phase ;
+	.
+
+gist:OrderedCollection
+	a gufo:EndurantType ;
+	.
+
+gist:OrderedMember
+	a gufo:Kind ;
+	.
+
+gist:Organization
+	a gufo:Kind ;
+	.
+
+gist:Permission
+	a gufo:Kind ;
+	.
+
+gist:Person
+	a gufo:Kind ;
+	.
+
+gist:PhysicalActionType
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:PhysicalAddress
+	a gufo:Category ;
+	.
+
+gist:PhysicalAddressType
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:PhysicalEvent
+	a gufo:EventType ;
+	.
+
+gist:PhysicalIdentifiableItem
+	a gufo:Category ;
+	.
+
+gist:PhysicalSubstance
+	a gufo:Kind ;
+	.
+
+gist:ProductCategory
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:ProductSpecification
+	a gufo:Role ;
+	.
+
+gist:Project
+	a gufo:EventType ;
+	.
+
+gist:ReferenceValue
+	a gufo:SubKind ;
+	.
+
+gist:RenderedContent
+	a gufo:Category ;
+	.
+
+gist:Requirement
+	a gufo:Kind ;
+	.
+
+gist:Restriction
+	a gufo:Kind ;
+	.
+
+gist:ScheduledEvent
+	a gufo:Kind ;
+	.
+
+gist:ScheduledTask
+	a gufo:SubKind ;
+	.
+
+gist:SchemaMetaData
+	a gufo:Category ;
+	.
+
+gist:ServiceSpecification
+	a gufo:Role ;
+	.
+
+gist:Specification
+	a gufo:Category ;
+	.
+
+gist:SubCountryGovernment
+	a gufo:SubKind ;
+	.
+
+gist:System
+	a gufo:Category ;
+	.
+
+gist:Tag
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:Task
+	a gufo:EventType ;
+	.
+
+gist:TaskTemplate
+	a gufo:Category ;
+	.
+
+gist:Template
+	a gufo:Category ;
+	.
+
+gist:TemporalRelation
+	a gufo:SituationType ;
+	.
+
+gist:Text
+	a gufo:Kind ;
+	.
+
+gist:TimeInterval
+	a gufo:Kind ;
+	.
+
+gist:Transaction
+	a gufo:EventType ;
+	.
+
+gist:UnitGroup
+	a gufo:EndurantType ;
+	.
+

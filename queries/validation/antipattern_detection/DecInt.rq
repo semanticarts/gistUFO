@@ -1,0 +1,19 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix gistx: <https://w3id.org/semanticarts/ns/taxonomy/gist/>
+prefix ontouml: <https://w3id.org/ontouml#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix xml: <http://www.w3.org/XML/1998/namespace>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# Deceiving Intersection
+# An occurrence of the DecInt anti-pattern occurs when a type specializes two or more concrete types.
+# Investigate if the subtype with multiple generalizations is intentional or derived by the intersection (main) and if its extension is not empty.
+
+
+# The specialization of the parents into Type must be syntactically valid, e.g. if type is a relator, all its parents must also be relators.
+# There must be at least two parents for which the following conditions evaluate to true:
+# Parent:subscript:`n`.isAbstract = false
+# For all gs: Generalization Set whose common supertype is Parent:subscript:`n`, gs.isCovering = true
