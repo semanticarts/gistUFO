@@ -8,17 +8,23 @@ prefix skos: <http://www.w3.org/2004/02/skos/core#>
 prefix xml: <http://www.w3.org/XML/1998/namespace>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix gufo: <http://purl.org/nemo/gufo#>
+ 
+# Phase Constraint 2
 
-# Kind Constraint 1
-# A Kind cannot have an identity provider as its direct or indirect super-type.
+# A «Phase» must always be part of a partition (a generalization set disjoint and complete). 
 
-SELECT ?invalid ?super_class_iri ?error_msg
+SELECT ?invalid ?union ?error_msg
 WHERE {
 
-    ?superclass a gufo:Kind .
+    ?invalid a gufo:Phase ;
+        rdfs:subClassOf ?superclass .
 
-    ?invalid a gufo:Kind ;
-        rdfs:subClassOf+ ?superclass .
+    ?superclass owl:disjointUnionOf ?union .
 
-    BIND("A Kind cannot have an identity provider as its direct or indirect super-type" AS ?error_msg)
+    #FILTER NOT EXISTS 
+        #?phase2 a gufo:Phase ;
+           # rdfs:subClassOf ?superclass .
+    
+
+    BIND("A Phase must always be part of a partition (a generalization set disjoint and complete)." AS ?error_msg)
 }

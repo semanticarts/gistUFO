@@ -9,16 +9,19 @@ prefix xml: <http://www.w3.org/XML/1998/namespace>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix gufo: <http://purl.org/nemo/gufo#>
 
-# Kind Constraint 1
-# A Kind cannot have an identity provider as its direct or indirect super-type.
+# Subkind Constraint 2
 
-SELECT ?invalid ?super_class_iri ?error_msg
+# Because it is a rigid type, a «Subkind» cannot have an anti-rigid type («Role», «Phase», «RoleMixin») as an ancestor.
+
+SELECT ?invalid ?anti_rigid_superclass ?error_msg
 WHERE {
 
-    ?superclass a gufo:Kind .
+    ?anti_rigid_type rdfs:subClassOf gufo:AntiRigidType .
 
-    ?invalid a gufo:Kind ;
-        rdfs:subClassOf+ ?superclass .
+    ?anti_rigid_superclass a ?anti_rigid_type .
 
-    BIND("A Kind cannot have an identity provider as its direct or indirect super-type" AS ?error_msg)
+    ?invalid a gufo:SubKind ;
+        rdfs:subClassOf+ ?anti_rigid_superclass
+
+    BIND ("A Subkind cannot have an anti-rigid type (Role, Phase, RoleMixin) as an ancestor." AS ?error_msg)
 }

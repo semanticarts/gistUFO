@@ -1,0 +1,24 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix gistx: <https://w3id.org/semanticarts/ns/taxonomy/gist/>
+prefix ontouml: <https://w3id.org/ontouml#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix xml: <http://www.w3.org/XML/1998/namespace>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+# Multiple Relational Dependency 
+
+# An object class directly connected to two distinct «Relator» types through «Mediation» associations. The relators may not be direct or indirect specializations of one another.
+# Externally dependent types, like all roles, require on dependency to characterize them. Whenever more than one is provided, it can indicate redundancy, scope issues and/or modeling an extra relation between the relators that characterize the dependency.
+
+SELECT ?invalid ?error_msg 
+WHERE {
+
+?invalid a owl:Class ;
+    ^gufo:hasParticipant ?relator1, ?relator2 .
+
+BIND("This class is an instance of the MultDep anti-pattern, read more at https://ontouml.readthedocs.io/en/latest/anti-patterns/MultDep/index.html" AS ?error_msg)
+}

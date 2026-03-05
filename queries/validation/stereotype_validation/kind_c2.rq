@@ -9,16 +9,24 @@ prefix xml: <http://www.w3.org/XML/1998/namespace>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix gufo: <http://purl.org/nemo/gufo#>
 
-# Kind Constraint 1
-# A Kind cannot have an identity provider as its direct or indirect super-type.
+# Kind Constraint 2
 
-SELECT ?invalid ?super_class_iri ?error_msg
+# A «Kind» cannot have types that inherit identity («Subkind», «Role» and «Phase») as its direct or indirect super-type.
+
+SELECT ?invalid ?superclass ?error_msg
 WHERE {
 
-    ?superclass a gufo:Kind .
+    VALUES ?identity_inheritor {
+        gufo:Subkind
+        gufo:Role
+        gufo:Phase
+    }
+
+    ?superclass a ?identity_inheritor .
 
     ?invalid a gufo:Kind ;
         rdfs:subClassOf+ ?superclass .
 
-    BIND("A Kind cannot have an identity provider as its direct or indirect super-type" AS ?error_msg)
+
+    BIND("A Kind cannot have types that inherit identity (Subkind, Role and Phase) as its direct or indirect super-type." AS ?error_msg)
 }
