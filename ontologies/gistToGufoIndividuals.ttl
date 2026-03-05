@@ -253,7 +253,7 @@ gist:Offer
 	.
 
 gist:OrderedCollection
-	rdfs:subClassOf gufo:Collection ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
 	.
 
 gist:OrderedMember
@@ -385,7 +385,7 @@ gist:Transaction
 	.
 
 gist:UnitGroup
-	rdfs:subClassOf gufo:Collection ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
 	.
 
 gist:UnitOfMeasure

@@ -13,39 +13,47 @@ gist:Account
 	.
 
 gist:Address
-	a gufo:SubKind ;
+	a gufo:Category ;
 	.
 
 gist:AddressUsageType
-	a gufo:Type ;
+	a gufo:AbstractIndividualType ;
 	.
 
 gist:Agreement
 	a gufo:Kind ;
 	.
 
+gist:Aspect
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:Assignment
+	a gufo:SituationType ;
+	.
+
 gist:Behavior
-	a gufo:Type ;
+	a gufo:AbstractIndividualType ;
 	.
 
 gist:Building
-	a gufo:SubKind ;
+	a gufo:Kind ;
 	.
 
 gist:BundledCatalogItem
-	a gufo:SubKind ;
+	a gufo:EndurantType ;
 	.
 
 gist:CatalogItem
-	a gufo:SubKind ;
+	a gufo:Category ;
 	.
 
 gist:Category
-	a gufo:Type ;
+	a gufo:AbstractIndividualType ;
 	.
 
 gist:Collection
-	a gufo:Type ;
+	a gufo:EndurantType ;
 	.
 
 gist:Commitment
@@ -53,23 +61,31 @@ gist:Commitment
 	.
 
 gist:Component
-	a gufo:Type ;
+	a gufo:Category ;
 	.
 
 gist:Composite
-	a gufo:Type ;
+	a gufo:Category ;
+	.
+
+gist:ContemporaryEvent
+	a gufo:EventType ;
 	.
 
 gist:Content
-	a gufo:Kind ;
+	a gufo:Category ;
 	.
 
 gist:ContentExpression
-	a gufo:SubKind ;
+	a gufo:Category ;
+	.
+
+gist:ContingentEvent
+	a gufo:Kind ;
 	.
 
 gist:ContingentObligation
-	a gufo:SubKind ;
+	a gufo:Phase ;
 	.
 
 gist:Contract
@@ -77,11 +93,11 @@ gist:Contract
 	.
 
 gist:ContractTerm
-	a gufo:SubKind ;
+	a gufo:Role ;
 	.
 
 gist:ControlledVocabulary
-	a gufo:Kind ;
+	a gufo:EndurantType ;
 	.
 
 gist:CountryGeoRegion
@@ -93,43 +109,51 @@ gist:CountryGovernment
 	.
 
 gist:DegreeOfCommitment
-	a gufo:Type ;
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:Determination
+	a gufo:EventType ;
 	.
 
 gist:Discipline
-	a gufo:Type ;
+	a gufo:AbstractIndividualType ;
 	.
 
 gist:ElectronicAddress
-	a gufo:SubKind ;
+	a gufo:Category ;
 	.
 
 gist:ElectronicAddressType
-	a gufo:Type ;
+	a gufo:AbstractIndividualType ;
 	.
 
 gist:Equipment
-	a gufo:Kind ;
+	a gufo:Category ;
 	.
 
 gist:EquipmentType
-	a gufo:Type ;
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:Event
+	a gufo:EventType ;
 	.
 
 gist:EventSpecification
-	a gufo:SubKind ;
+	a gufo:Kind ;
 	.
 
 gist:FormattedContent
-	a gufo:SubKind ;
+	a gufo:Category ;
 	.
 
 gist:Function
-	a gufo:Role ;
+	a gufo:AbstractIndividualType ;
 	.
 
 gist:GeneralMediaType
-	a gufo:Type ;
+	a gufo:AbstractIndividualType ;
 	.
 
 gist:GeoLocation
@@ -144,6 +168,10 @@ gist:GeoRegion
 	a gufo:SubKind ;
 	.
 
+gist:GeoRoute
+	a gufo:EndurantType ;
+	.
+
 gist:GeoVolume
 	a gufo:SubKind ;
 	.
@@ -156,12 +184,20 @@ gist:GovernmentOrganization
 	a gufo:SubKind ;
 	.
 
+gist:HistoricalEvent
+	a gufo:EventType ;
+	.
+
 gist:ID
-	a gufo:SubKind ;
+	a gufo:Kind ;
 	.
 
 gist:IntellectualProperty
-	a gufo:Kind ;
+	a gufo:Category ;
+	.
+
+gist:Intention
+	a gufo:AbstractIndividualType ;
 	.
 
 gist:IntergovernmentalOrganization
@@ -169,11 +205,11 @@ gist:IntergovernmentalOrganization
 	.
 
 gist:KnowledgeConcept
-	a gufo:SubKind ;
+	a gufo:Category ;
 	.
 
 gist:Landmark
-	a gufo:Kind ;
+	a gufo:Category ;
 	.
 
 gist:Language
@@ -189,19 +225,39 @@ gist:Magnitude
 	.
 
 gist:MediaType
-	a gufo:Type ;
+	a gufo:AbstractIndividualType ;
 	.
 
 gist:Medium
-	a gufo:Type ;
+	a gufo:AbstractIndividualType ;
 	.
 
 gist:Message
-	a gufo:SubKind ;
+	a gufo:Role ;
+	.
+
+gist:Network
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:NetworkLink
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:NetworkNode
+	a gufo:AbstractIndividualType ;
 	.
 
 gist:Offer
-	a gufo:SubKind ;
+	a gufo:Phase ;
+	.
+
+gist:OrderedCollection
+	a gufo:EndurantType ;
+	.
+
+gist:OrderedMember
+	a gufo:Kind ;
 	.
 
 gist:Organization
@@ -209,7 +265,7 @@ gist:Organization
 	.
 
 gist:Permission
-	a gufo:SubKind ;
+	a gufo:Kind ;
 	.
 
 gist:Person
@@ -217,15 +273,19 @@ gist:Person
 	.
 
 gist:PhysicalActionType
-	a gufo:Type ;
+	a gufo:AbstractIndividualType ;
 	.
 
 gist:PhysicalAddress
-	a gufo:SubKind ;
+	a gufo:Category ;
 	.
 
 gist:PhysicalAddressType
-	a gufo:Type ;
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:PhysicalEvent
+	a gufo:EventType ;
 	.
 
 gist:PhysicalIdentifiableItem
@@ -237,11 +297,15 @@ gist:PhysicalSubstance
 	.
 
 gist:ProductCategory
-	a gufo:Type ;
+	a gufo:AbstractIndividualType ;
 	.
 
 gist:ProductSpecification
-	a gufo:SubKind ;
+	a gufo:Role ;
+	.
+
+gist:Project
+	a gufo:EventType ;
 	.
 
 gist:ReferenceValue
@@ -249,27 +313,35 @@ gist:ReferenceValue
 	.
 
 gist:RenderedContent
-	a gufo:SubKind ;
+	a gufo:Category ;
 	.
 
 gist:Requirement
-	a gufo:SubKind ;
+	a gufo:Kind ;
 	.
 
 gist:Restriction
+	a gufo:Kind ;
+	.
+
+gist:ScheduledEvent
+	a gufo:Kind ;
+	.
+
+gist:ScheduledTask
 	a gufo:SubKind ;
 	.
 
 gist:SchemaMetaData
-	a gufo:Kind ;
+	a gufo:Category ;
 	.
 
 gist:ServiceSpecification
-	a gufo:SubKind ;
+	a gufo:Role ;
 	.
 
 gist:Specification
-	a gufo:Kind ;
+	a gufo:Category ;
 	.
 
 gist:SubCountryGovernment
@@ -281,22 +353,38 @@ gist:System
 	.
 
 gist:Tag
-	a gufo:Type ;
+	a gufo:AbstractIndividualType ;
+	.
+
+gist:Task
+	a gufo:EventType ;
 	.
 
 gist:TaskTemplate
-	a gufo:SubKind ;
+	a gufo:Category ;
 	.
 
 gist:Template
-	a gufo:Kind ;
+	a gufo:Category ;
+	.
+
+gist:TemporalRelation
+	a gufo:SituationType ;
 	.
 
 gist:Text
-	a gufo:SubKind ;
+	a gufo:Kind ;
 	.
 
 gist:TimeInterval
 	a gufo:Kind ;
+	.
+
+gist:Transaction
+	a gufo:EventType ;
+	.
+
+gist:UnitGroup
+	a gufo:EndurantType ;
 	.
 
