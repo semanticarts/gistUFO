@@ -30,6 +30,6 @@ WHERE {
         }
     }
 
-    BIND("This non-sortal class is neither superclass to a sortal nor does it share a common superclass with a sortal class" AS ?error_msg)
+    BIND("This non-sortal class is neither superclass to a sortal nor does it share a common superclass with a sortal class." AS ?error_msg)
 
 }

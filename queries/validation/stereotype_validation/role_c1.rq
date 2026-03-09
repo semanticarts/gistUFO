@@ -17,16 +17,23 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 
 SELECT ?invalid_class ?identity_provider ?identity_provider_2 ?error_msg
 WHERE {
-    
-    ?invalid_class a gufo:Role . 
 
-    ?identity_provider a gufo:Kind .
-   
-    ?identity_provider_2 a gufo:Kind .
+    {
+        ?invalid_class a gufo:Role . 
 
-    ?invalid_class rdfs:subClassOf+ ?identity_provider, ?identity_provider_2 .
+        ?identity_provider a gufo:Kind .
 
-    FILTER (?identity_provider != ?identity_provider_2 || !BOUND(?identity_provider)) 
+        ?identity_provider_2 a gufo:Kind .
+
+        ?invalid_class rdfs:subClassOf+ ?identity_provider, ?identity_provider_2 .
+
+        FILTER (STR(?identity_provider) < STR(?identity_provider_2))
+    }
+    UNION 
+    {
+        ?invalid_class a gufo:Role . 
+        FILTER NOT EXISTS { ?invalid_class rdfs:subClassOf+/rdf:type gufo:Kind . }
+    }
 
     BIND("A Role must always have exactly one identity provider as an ancestor." AS ?error_msg)
 }

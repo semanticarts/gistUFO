@@ -20,9 +20,7 @@ WHERE {
 
     ?invalid_class rdf:type gufo:Kind .
 
-    FILTER EXISTS {
-        ?invalid_class rdfs:subClassOf+/rdf:type gufo:Kind .
-    }
+    FILTER EXISTS { ?invalid_class rdfs:subClassOf+/rdf:type gufo:Kind . }
 
     BIND("This class is an ultimate sortal, but is the subclass of another ultimate sortal." AS ?error_msg)
 

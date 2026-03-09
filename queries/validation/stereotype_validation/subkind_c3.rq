@@ -28,4 +28,5 @@ WHERE {
         rdfs:subClassOf+ ?invalid_class . 
 
     BIND("Since every instance of a Subkind follows the same identity principle, a Subkind cannot have a mixin type as a descendant." AS ?error_msg)
+    
 }

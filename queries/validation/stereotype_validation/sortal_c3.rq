@@ -20,6 +20,6 @@ WHERE {
 
     ?sortal rdf:type/rdfs:subClassOf* gufo:Sortal .
 
-    BIND("This non-sortal class is a subclass of a sortal class" AS ?error_msg)
+    BIND("This non-sortal class is a subclass of a sortal class." AS ?error_msg)
 
 }

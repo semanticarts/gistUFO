@@ -20,7 +20,9 @@ WHERE {
 
     {
         ?invalid_class a gufo:Phase . 
+
         ?identity_provider a gufo:Kind .
+
         ?identity_provider_2 a gufo:Kind .
 
         ?invalid_class rdfs:subClassOf+ ?identity_provider, ?identity_provider_2 .
@@ -33,5 +35,5 @@ WHERE {
         FILTER NOT EXISTS { ?invalid_class rdfs:subClassOf+/rdf:type gufo:Kind . }
     }
 
-    BIND("A Subkind must always have exactly one identity provider as an ancestor." AS ?error_msg)
+    BIND("A Phase must always have exactly one identity provider as an ancestor." AS ?error_msg)
 }

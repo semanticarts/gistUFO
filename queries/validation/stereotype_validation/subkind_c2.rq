@@ -24,4 +24,5 @@ WHERE {
         rdfs:subClassOf+ ?anti_rigid_superclass
 
     BIND ("A Subkind cannot have an anti-rigid type (Role, Phase, RoleMixin) as an ancestor." AS ?error_msg)
+    
 }
