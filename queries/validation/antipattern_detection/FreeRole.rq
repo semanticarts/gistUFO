@@ -1,0 +1,30 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix gistx: <https://w3id.org/semanticarts/ns/taxonomy/gist/>
+prefix ontouml: <https://w3id.org/ontouml#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix xml: <http://www.w3.org/XML/1998/namespace>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+# Free Role Specialization 
+
+# A «Role» type connected to a «Relator» type through a «Mediation» association, is specialized in one or more «Role» types, which in turn are not connected to an additional «Mediation» association.
+
+SELECT ?invalid_class ?error_msg
+WHERE {
+
+    ?superclass a gufo:Role .
+
+    ?relator_subclass a owl:Class ;
+        
+        rdfs:subClassOf [ a owl:Restriction ; owl:onProperty gist:hasParticipant ; owl:someValuesFrom ?superclass ]
+
+    ?invalid_class a gufo:Role ;
+        rdfs:subClassOf ?superclass .
+
+    FILTER NOT EXISTS { ?relator_subclass_2 a owl:Class ;rdfs:subClassOf [ a owl:Restriction ; owl:onProperty gist:hasParticipant ; owl:someValuesFrom [] ]  }
+
+}

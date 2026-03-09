@@ -15,4 +15,7 @@ Annotations/definitions for queries are from the [OntoUML documentation](https:/
 
 The sortal and endurant constraints have been pulled from the [nemo-ufes ufo-types repository](https://github.com/nemo-ufes/ufo-types/blob/master/models/sparql-queries.rq) and reformatted. 
 
+While some antipatterns ought to be avoided, some are closer to guidelines than requirements. It is recommended that modelers take a look at the definitions of each antipattern before deciding whether or not to use their corresponding queries. 
+
 The antipatterns BinOver, ImpAbs, MixIden, PartOver, RelComp, RelOver, RelSpec, RepRel, UndefFormal, UndefPhase and WholeOver have been determined to not be of immediate relevance to our work and have not been implemented at this time. 
+
