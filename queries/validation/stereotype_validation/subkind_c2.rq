@@ -16,7 +16,7 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 SELECT ?invalid_class ?anti_rigid_superclass ?error_msg
 WHERE {
 
-    ?anti_rigid_type rdfs:subClassOf gufo:AntiRigidType .
+    ?anti_rigid_type rdfs:subClassOf* gufo:AntiRigidType .
 
     ?anti_rigid_superclass a ?anti_rigid_type .
 
