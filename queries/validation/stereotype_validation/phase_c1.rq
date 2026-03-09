@@ -13,18 +13,25 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 
 # A «Phase» must always have exactly one identity provider as an ancestor (a direct or indirect super-type).
 
-SELECT ?invalid ?identity_provider ?identity_provider_2 ?error_msg
+# This query only checks for gufo:Kind, as it is the only gUFO Type that provides identity. 
+
+SELECT ?invalid_class ?identity_provider ?identity_provider_2 ?error_msg
 WHERE {
-    
-    ?invalid a gufo:Phase . 
 
-    ?identity_provider a gufo:Kind .
-    
-    ?identity_provider_2 a gufo:Kind .
-       
-    ?invalid rdfs:subClassOf+ ?identity_provider, ?identity_provider_2 .
+    {
+        ?invalid_class a gufo:Phase . 
+        ?identity_provider a gufo:Kind .
+        ?identity_provider_2 a gufo:Kind .
 
-    FILTER (?identity_provider != ?identity_provider_2 || !BOUND(?identity_provider)) 
+        ?invalid_class rdfs:subClassOf+ ?identity_provider, ?identity_provider_2 .
 
-    BIND("A Phase must always have exactly one identity provider as an ancestor." AS ?error_msg)
+        FILTER (STR(?identity_provider) < STR(?identity_provider_2))
+    }
+    UNION 
+    {
+        ?invalid_class a gufo:Phase . 
+        FILTER NOT EXISTS { ?invalid_class rdfs:subClassOf+/rdf:type gufo:Kind . }
+    }
+
+    BIND("A Subkind must always have exactly one identity provider as an ancestor." AS ?error_msg)
 }

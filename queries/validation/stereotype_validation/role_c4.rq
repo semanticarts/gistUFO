@@ -13,7 +13,7 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 
 # A «Role» cannot be a super-type of a mixin types («Category», «RoleMixin», «Mixin»).
 
-SELECT ?invalid ?mixin_subclass ?error_msg
+SELECT ?invalid_class ?mixin_subclass ?error_msg
 WHERE {
 
     VALUES ?mixin_type {
@@ -24,8 +24,9 @@ WHERE {
 
     ?mixin_subclass a ?mixin_type .
 
-    ?invalid a gufo:Role ;
+    ?invalid_class a gufo:Role ;
         ^rdfs:subClassOf ?mixin_subclass .
 
     BIND("A Role cannot be a super-type of a mixin type (Category, RoleMixin, Mixin)." AS ?error_msg)
+    
 }

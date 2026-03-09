@@ -13,7 +13,7 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 
 # A «Kind» cannot have types that aggregate individuals with different identity principles («Category», «RoleMixin» and «Mixin») as its direct or indirect subtypes.
 
-SELECT ?invalid ?subclass ?error_msg
+SELECT ?invalid_class ?subclass ?error_msg
 WHERE {
 
     VALUES ?diff_identity_aggregator {
@@ -22,10 +22,10 @@ WHERE {
         gufo:Mixin
     }
 
-    ?invalid a gufo:Kind . 
+    ?invalid_class a gufo:Kind . 
 
     ?subclass a ?diff_identity_aggregator ;
-        rdfs:subClassOf+ ?invalid .
+        rdfs:subClassOf+ ?invalid_class .
 
     BIND("A Kind cannot have types that aggregate individuals with different identity principles (Category, RoleMixin, and Mixin) as its direct or indirect subtypes." AS ?error_msg)
 }

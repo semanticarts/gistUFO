@@ -13,18 +13,15 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 
 # A «Phase» must always be part of a partition (a generalization set disjoint and complete). 
 
-SELECT ?invalid ?union ?error_msg
+SELECT ?invalid_class ?error_msg
 WHERE {
 
-    ?invalid a gufo:Phase ;
+    ?invalid_class a gufo:Phase ;
+        
         rdfs:subClassOf ?superclass .
 
-    ?superclass owl:disjointUnionOf ?union .
-
-    #FILTER NOT EXISTS 
-        #?phase2 a gufo:Phase ;
-           # rdfs:subClassOf ?superclass .
-    
+    FILTER NOT EXISTS { ?superclass owl:disjointUnionOf/rdf:rest*/rdf:first ?invalid_class . } 
 
     BIND("A Phase must always be part of a partition (a generalization set disjoint and complete)." AS ?error_msg)
+
 }

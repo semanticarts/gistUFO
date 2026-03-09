@@ -12,15 +12,18 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 #Homogeneous Functional Complex
 
 # A functional complex type connected to a single part through a «ComponentOf» relation.
+
 # If a whole is composed by a unique type of part, it is most likely that all of the part’s instances play the same role w.r.t. their whole. That homogeneous structure is not a characteristic of a functional complex.
 
-SELECT ?invalid ?error_msg
-
+SELECT ?invalid_class ?error_msg
 WHERE {
-?invalid a gufo:FunctionalComplex ;
-    ^gist:isMemberOf ?part1 .
 
-FILTER NOT EXISTS {?invalid ^gist:isMemberOf ?part2}
+    ?invalid_class a gufo:FunctionalComplex ;
+        
+        ^gist:isMemberOf ?part1 .
 
-BIND("This class is an instance of the HetColl anti-pattern, read more at https://ontouml.readthedocs.io/en/latest/anti-patterns/HetColl/index.html" AS ?error_msg)
+    FILTER NOT EXISTS {?invalid_class ^gist:isMemberOf ?part2}
+
+    BIND("This class is an instance of the HomoFunc anti-pattern." AS ?error_msg)
+ 
 }

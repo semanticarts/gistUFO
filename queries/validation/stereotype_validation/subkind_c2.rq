@@ -13,14 +13,14 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 
 # Because it is a rigid type, a «Subkind» cannot have an anti-rigid type («Role», «Phase», «RoleMixin») as an ancestor.
 
-SELECT ?invalid ?anti_rigid_superclass ?error_msg
+SELECT ?invalid_class ?anti_rigid_superclass ?error_msg
 WHERE {
 
     ?anti_rigid_type rdfs:subClassOf gufo:AntiRigidType .
 
     ?anti_rigid_superclass a ?anti_rigid_type .
 
-    ?invalid a gufo:SubKind ;
+    ?invalid_class a gufo:SubKind ;
         rdfs:subClassOf+ ?anti_rigid_superclass
 
     BIND ("A Subkind cannot have an anti-rigid type (Role, Phase, RoleMixin) as an ancestor." AS ?error_msg)

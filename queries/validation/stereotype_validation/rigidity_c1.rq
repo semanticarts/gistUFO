@@ -8,19 +8,25 @@ prefix skos: <http://www.w3.org/2004/02/skos/core#>
 prefix xml: <http://www.w3.org/XML/1998/namespace>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 
+# Rigidity Constraint 1 
+
 # Anti-rigid classes may not be superclasses of Rigid or Semi-Rigid classes. 
+
 # All results should be considered issues in the ontology. 
 
 
-SELECT ?invalid ?subClass ?error_msg
+SELECT ?invalid_class ?subClass ?error_msg
 WHERE{
   
   VALUES ?rigidity {
   gufo:RigidType
   gufo:SemiRigidType
   }
-  ?invalid a gufo:AntiRigidType . 
-  ?subClass rdfs:subClassOf ?invalid .
+
+  ?invalid_class a gufo:AntiRigidType . 
+
+  ?subClass rdfs:subClassOf ?invalid_class .
+
   ?subClass a ?rigidity .
 
   BIND("Anti-Rigid classes may not be the direct or indirect Super-Type of any Semi-Rigid or Rigid classes." AS ?error_msg)

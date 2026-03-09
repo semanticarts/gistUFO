@@ -13,14 +13,14 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 
 # A «Phase» cannot be a super-type of a rigid type.
 
-SELECT ?invalid ?rigid_class ?error_msg
+SELECT ?invalid_class ?rigid_class ?error_msg
 WHERE {
 
     ?rigid_type rdfs:subClassOf gufo:RigidType .
 
     ?rigid_class a ?rigid_type .
 
-    ?invalid a gufo:Phase ;
+    ?invalid_class a gufo:Phase ;
         ^rdfs:subClassOf+ ?rigid_class .
 
     BIND("A Phase cannot be a superclass of a rigid class." AS ?error_msg)

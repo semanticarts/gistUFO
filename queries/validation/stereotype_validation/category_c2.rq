@@ -9,19 +9,18 @@ prefix xml: <http://www.w3.org/XML/1998/namespace>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix gufo: <http://purl.org/nemo/gufo#>
 
-# Generalization Set with Mixed Rigidity
+# Category Constraint 2
 
-# A generalization set whose common super-type is rigid and from all its generalizations, at least one comes from an anti-rigid type and at least one comes from a rigid type.
+# A «Category» is a rigid construct, therefore it cannot have as ancestor an anti-rigid type, as: «Role», «RoleMixin», «Phase».
 
-SELECT DISTINCT ?invalid_class ?error_msg
+SELECT ?invalid_class ?rigid_ancestor ?error_msg
 WHERE{
 
-    ?invalid_class ^rdfs:subClassOf ?subclass1 , ?subclass2 .
+    ?rigid_ancestor_type rdfs:subClassOf gufo:RigidType .
 
-    ?subclass1 a gufo:RigidType .
+    ?rigid_ancestor a ?rigid_ancestor_type .
 
-    ?subclass2 a gufo:AntiRigidType .
-
-    BIND("This class is an instance of the GSRig anti-pattern." AS ?error_msg)
-
+    ?invalid_class a gufo:Category ;
+        rdfs:subClassOf ?rigid_ancestor .
+    
 }

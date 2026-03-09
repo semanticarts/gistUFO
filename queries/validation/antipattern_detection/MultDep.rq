@@ -14,11 +14,21 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 # An object class directly connected to two distinct «Relator» types through «Mediation» associations. The relators may not be direct or indirect specializations of one another.
 # Externally dependent types, like all roles, require on dependency to characterize them. Whenever more than one is provided, it can indicate redundancy, scope issues and/or modeling an extra relation between the relators that characterize the dependency.
 
-SELECT ?invalid ?error_msg 
+SELECT DISTINCT ?invalid_class ?error_msg 
 WHERE {
 
-?invalid a owl:Class ;
-    ^gufo:hasParticipant ?relator1, ?relator2 .
+    ?invalid_class a owl:Class ;
+        
+        ^gist:hasParticipant ?relator_subclass1, ?relator_subclass2 .
 
-BIND("This class is an instance of the MultDep anti-pattern, read more at https://ontouml.readthedocs.io/en/latest/anti-patterns/MultDep/index.html" AS ?error_msg)
+    ?relator_subclass1 a owl:Class ;
+        
+        rdfs:subClassOf [ a owl:Restriction ; owl:onProperty gist:hasParticipant ; owl:someValuesFrom ?invalid_class ] .
+    
+    ?relator_subclass2 a owl:Class ;
+        
+        rdfs:subClassOf [ a owl:Restriction ; owl:onProperty gist:hasParticipant ; owl:someValuesFrom ?invalid_class ] .
+
+    BIND("This class is an instance of the MultDep anti-pattern." AS ?error_msg)
+
 }

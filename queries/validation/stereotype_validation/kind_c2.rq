@@ -13,7 +13,7 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 
 # A «Kind» cannot have types that inherit identity («Subkind», «Role» and «Phase») as its direct or indirect super-type.
 
-SELECT ?invalid ?superclass ?error_msg
+SELECT ?invalid_class ?superclass ?error_msg
 WHERE {
 
     VALUES ?identity_inheritor {
@@ -24,7 +24,7 @@ WHERE {
 
     ?superclass a ?identity_inheritor .
 
-    ?invalid a gufo:Kind ;
+    ?invalid_class a gufo:Kind ;
         rdfs:subClassOf+ ?superclass .
 
 

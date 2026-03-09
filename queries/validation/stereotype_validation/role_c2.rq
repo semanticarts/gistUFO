@@ -13,16 +13,13 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 
 # Every «Role» must be connected, directly or indirectly, to a «Mediation» relation, since it is a relationally dependent construct.
 
-SELECT ?invalid ?error_msg
+SELECT ?invalid_class ?error_msg
 WHERE {
 
-    ?invalid a gufo:Role .
-
-    FILTER NOT EXISTS {
-        { ?s gist:hasParticipant ?invalid }
-        UNION 
-        { ?invalid gist:hasParticipant ?o }
-    }
+    ?invalid_class a gufo:Role . 
+        
+    FILTER NOT EXISTS {?invalid_class rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ?participationProperty ; owl:someValuesFrom [] ] . ?participationProperty rdfs:subPropertyOf* gist:hasParticipant . }
 
     BIND("Every Role must be connected, directly or indirectly, to a Mediation relation, since it is a relationally dependent construct." AS ?error_msg)
+
 }

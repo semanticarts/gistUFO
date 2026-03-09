@@ -7,29 +7,27 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix skos: <http://www.w3.org/2004/02/skos/core#>
 prefix xml: <http://www.w3.org/XML/1998/namespace>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
 
+# Every specialization of endurant instantiates a single endurant type.
 
-# from the nemo repository https://github.com/nemo-ufes/ufo-types/blob/master/models/sparql-queries.rq, reformatted for ours.
-# Every specialization of endurant instantiates a single endurant type
-
-# Example: say the class 'House' is an instance of both Category and Kind. A case can be made for modeling it as one or the other, but UFO types are disjoint, so only one can be true
-
-select ?invalid ?error_msg
+select ?invalid_class ?error_msg
 where {
     {
-        select ?invalid (count(?invalid) as ?n)
+        select ?invalid_class (count(?invalid_class) as ?n)
         where {
-                  { ?invalid rdf:type gufo:Category . }
-            union { ?invalid rdf:type gufo:RoleMixin . }
-            union { ?invalid rdf:type gufo:PhaseMixin . }
-            union { ?invalid rdf:type gufo:Mixin . }
-            union { ?invalid rdf:type gufo:Kind . }
-            union { ?invalid rdf:type gufo:SubKind . }
-            union { ?invalid rdf:type gufo:Role . }
-            union { ?invalid rdf:type gufo:Phase . }
+                  { ?invalid_class rdf:type gufo:Category . }
+            union { ?invalid_class rdf:type gufo:RoleMixin . }
+            union { ?invalid_class rdf:type gufo:PhaseMixin . }
+            union { ?invalid_class rdf:type gufo:Mixin . }
+            union { ?invalid_class rdf:type gufo:Kind . }
+            union { ?invalid_class rdf:type gufo:SubKind . }
+            union { ?invalid_class rdf:type gufo:Role . }
+            union { ?invalid_class rdf:type gufo:Phase . }
         }
-        group by ?invalid
+        group by ?invalid_class
     }
     filter (?n > 1)
     BIND("This instance is of multiple Endurant Types." as ?error_msg)
+    
 }

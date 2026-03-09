@@ -12,12 +12,16 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 # Mixin With Same Rigidity 
 
 # A class stereotyped as «Mixin» specialized only by other classes that have the same rigidity property, i.e., are all rigid or all anti-rigid.
+
 # As all non-sortals, mixins aggregated individuals that follow different identity principles. Its distinguishing characteristic, though, is that is semi-rigid, i.e., it behaves as a rigid type for some individuals as an anti-rigid for others. This anti-pattern analyzes mixins that, despite their capabilities, only generalize types with the same rigidity.
 
-SELECT ?invalid ?error_msg 
+SELECT DISTINCT ?invalid_class ?error_msg 
 WHERE {
 
-?invalid a gufo:Mixin ;
-    ^rdfs:subClassOf ?sub1 
+    ?invalid_class a gufo:Mixin .
 
+    FILTER NOT EXISTS { ?invalid_class ^rdfs:subClassOf ?subclass1, ?subclass2 . ?subclass1 a gufo:AntiRigidType . ?subclass2 a gufo:RigidType }
+
+    BIND("This class is an instance of the MixRig anti-pattern." AS ?error_msg)
+    
 }

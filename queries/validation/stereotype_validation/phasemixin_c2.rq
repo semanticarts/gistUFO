@@ -9,19 +9,23 @@ prefix xml: <http://www.w3.org/XML/1998/namespace>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix gufo: <http://purl.org/nemo/gufo#>
 
-# Generalization Set with Mixed Rigidity
+# PhaseMixin Constraint 2
 
-# A generalization set whose common super-type is rigid and from all its generalizations, at least one comes from an anti-rigid type and at least one comes from a rigid type.
+# «PhaseMixin» is a anti-rigid construct, therefore it cannot have as descendant any rigid or semi-rigid type.
 
-SELECT DISTINCT ?invalid_class ?error_msg
-WHERE{
+SELECT ?invalid_class ?subclass ?error_msg
+WHERE {
 
-    ?invalid_class ^rdfs:subClassOf ?subclass1 , ?subclass2 .
+    VALUES ?subclass_type {
+        gufo:Category
+        gufo:Kind
+        gufo:SubKind
+        gufo:Mixin
+    }
 
-    ?subclass1 a gufo:RigidType .
+    ?invalid_class a gufo:PhaseMixin ;
+        ^rdfs:subClassOf+ ?subclass .
 
-    ?subclass2 a gufo:AntiRigidType .
-
-    BIND("This class is an instance of the GSRig anti-pattern." AS ?error_msg)
+    BIND("A PhaseMixin is a rigid construct, therefore it cannot have as descendant any rigid or semi-rigid type." AS ?error_msg)
 
 }

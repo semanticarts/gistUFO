@@ -9,21 +9,22 @@ prefix xml: <http://www.w3.org/XML/1998/namespace>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix gufo: <http://purl.org/nemo/gufo#>
 
-# from the nemo repository https://github.com/nemo-ufes/ufo-types/blob/master/models/sparql-queries.rq, reformatted for ours.
+# Category Constraint 1
 
-# Ultimate sortals cannot specialize other ultimate sortals
+# A «Category» aggregates individuals that follow different identity principles, therefore it may not have as ancestor the following constructs: «Kind», «Subkind», «Role», «Phase».
 
-# Example Person spec Organization
-
-SELECT DISTINCT ?invalid_class ?error_msg
+SELECT ?invalid_class ?forbidden_ancestor ?error_msg
 WHERE {
 
-    ?invalid_class rdf:type gufo:Kind .
-
-    FILTER EXISTS {
-        ?invalid_class rdfs:subClassOf+/rdf:type gufo:Kind .
+    VALUES ?forbidden_ancestor_type {
+        gufo:Kind
+        gufo:SubKind 
+        gufo:Role
+        gufo:Phase
     }
-
-    BIND("This class is an ultimate sortal, but is the subclass of another ultimate sortal." AS ?error_msg)
-
+    
+    ?forbidden_ancestor a ?forbidden_ancestor_type .
+    
+    ?invalid_class a gufo:Category ;
+        rdfs:subClassOf ?forbidden_ancestor . 
 }

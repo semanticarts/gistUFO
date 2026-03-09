@@ -13,10 +13,10 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 
 # Since every instance of a «Subkind» follows the same identity principle, a «Subkind» cannot have an mixin type («Category», «Mixin», «RoleMixin») as a descendant.
 
-SELECT ?invalid ?subclass ?error_msg
+SELECT ?invalid_class ?subclass ?error_msg
 WHERE {
 
-    ?invalid a gufo:SubKind .
+    ?invalid_class a gufo:SubKind .
 
     VALUES ?subclass_type {
         gufo:Category
@@ -25,7 +25,7 @@ WHERE {
     } 
 
     ?subclass a ?subclass_type ;
-        rdfs:subClassOf+ ?invalid . 
+        rdfs:subClassOf+ ?invalid_class . 
 
     BIND("Since every instance of a Subkind follows the same identity principle, a Subkind cannot have a mixin type as a descendant." AS ?error_msg)
 }

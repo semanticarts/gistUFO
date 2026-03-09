@@ -15,7 +15,7 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 
 # if A rdf:type Phase and B rdf:type RoleMixin || Category, A cannot directly subclass B
 
-SELECT ?invalid ?superclass ?error_msg
+SELECT ?invalid_class ?superclass ?error_msg
 WHERE {
 
     VALUES ?superclass_type {
@@ -25,10 +25,8 @@ WHERE {
 
     ?superclass a ?superclass_type .
 
-    ?invalid a gufo:Phase ;
+    ?invalid_class a gufo:Phase ;
         rdfs:subClassOf ?superclass . 
 
     BIND("A Phase cannot be a direct subclass of a RoleMixin or Category." AS ?error_msg)
 }
-
-# Issue: it is permissible for a Phase to indirectly subtype RoleMixin or Category, but asserting all subClassOf relationships means that this query flags classes that do not violate the constraint

@@ -14,12 +14,15 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 # A «Relator» connected to one or more rigid types through mediations.
 # When a type is connected to a mediation association, it means that it is externally dependent, i.e. for an individual to instantiate it, it must be related to another type. Usually, mediations define roles and roleMixins – anti-rigid types.
 
-SELECT ?invalid ?error_msg
-WHERE {
+SELECT DISTINCT ?invalid_class ?rigid_class ?error_msg
+    WHERE {
 
-?invalid a gufo:Relator ;
-    gist:hasParticipant ?rigid1 .
-?rigid1 a gufo:RigidType .
+    ?invalid_class a owl:Class ;
 
-BIND("This class is an instance of the RelRig anti-pattern, read more at https://ontouml.readthedocs.io/en/latest/anti-patterns/RelRig/index.html" AS ?error_msg)
+        rdfs:subClassOf [ a owl:Restriction ; owl:onProperty gist:hasParticipant ; owl:someValuesFrom ?rigid_class ] .
+
+    ?rigid_class a gufo:RigidType .
+
+    BIND("This class is an instance of the RelRig anti-pattern." AS ?error_msg)
+    
 }

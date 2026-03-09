@@ -13,17 +13,16 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 
 # A «Role» cannot be a super-type of a rigid type.
 
-SELECT ?invalid ?rigid_subclass ?error_msg
+SELECT ?invalid_class ?rigid_subclass ?error_msg
 WHERE {
 
     ?rigid_type rdfs:subClassOf gufo:RigidType .
 
     ?rigid_class a ?rigid_type .
 
-    ?invalid a gufo:Role ;
+    ?invalid_class a gufo:Role ;
         ^rdfs:subClassOf+ ?rigid_class .
 
     BIND("A Role cannot be a superclass of a rigid class." AS ?error_msg)
 
 }
-

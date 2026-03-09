@@ -10,25 +10,24 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix gufo: <http://purl.org/nemo/gufo#>
 
 # Deceiving Intersection
-# An occurrence of the DecInt anti-pattern occurs when a type specializes two or more concrete types.
-# Investigate if the subtype with multiple generalizations is intentional or derived by the intersection (main) and if its extension is not empty.
 
-SELECT DISTINCT ?invalid ?error_msg
+# An occurrence of the DecInt anti-pattern occurs when a type specializes two or more concrete types.
+
+SELECT DISTINCT ?invalid_class ?error_msg
 WHERE {
 
-?super1 rdfs:subClassOf* gufo:ConcreteIndividualType .
-?super2 rdfs:subClassOf* gufo:ConcreteIndividualType .
+    ?super1 rdfs:subClassOf* gufo:ConcreteIndividualType .
 
-?invalid rdfs:subClassOf ?super1, ?super2 .
+    ?super2 rdfs:subClassOf* gufo:ConcreteIndividualType .
 
-{ ?super1 owl:disjointWith ?super2 }
-UNION
-{ ?super2 owl:disjointWith ?super1 }
+    ?invalid_class rdfs:subClassOf ?super1, ?super2 .
 
-FILTER (?super1 != ?super2)
+    { ?super1 owl:disjointWith ?super2 }
+    UNION
+    { ?super2 owl:disjointWith ?super1 }
 
-BIND("This class is an instance of the DecInt anti-pattern, see more at: https://ontouml.readthedocs.io/en/latest/anti-patterns/DecInt/index.html" AS ?error_msg)
+    FILTER (?super1 != ?super2)
+
+    BIND("This class is an instance of the DecInt anti-pattern." AS ?error_msg)
 
 }
-
-# The description of this antipattern in the OntoUML documentation depends on OntoUML properties like isAbstract and isCovering. This implementation of the antipattern has been modified for use with gUFO. 

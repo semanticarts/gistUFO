@@ -7,25 +7,30 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix skos: <http://www.w3.org/2004/02/skos/core#>
 prefix xml: <http://www.w3.org/XML/1998/namespace>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
 
+# Sortals cannot specialize multiple ultimate sortals.
 
-# from the nemo repository https://github.com/nemo-ufes/ufo-types/blob/master/models/sparql-queries.rq, reformatted for ours.
-# Sortals cannot specialize multiple ultimate sortals
-# Example Client spec Organization and Person
-
-select ?invalid ?error_msg
-where {
+SELECT ?invalid_class ?error_msg
+WHERE {
     {
-        select ?invalid (count(?invalid) as ?n)
-        where {
-            { ?invalid rdf:type gufo:SubKind . }
-            union { ?invalid rdf:type gufo:Phase . }
-            union { ?invalid rdf:type gufo:Role . }
-            ?invalid rdfs:subClassOf+ ?ultimateSortal .
+        SELECT ?invalid_class (count(?invalid_class) as ?n)
+        WHERE {
+            { ?invalid_class rdf:type gufo:SubKind . }
+
+            UNION { ?invalid_class rdf:type gufo:Phase . }
+
+            UNION { ?invalid_class rdf:type gufo:Role . }
+
+            ?invalid_class rdfs:subClassOf+ ?ultimateSortal .
+
             ?ultimateSortal rdf:type gufo:Kind .
         }
-        group by ?invalid
+        GROUP BY ?invalid_class
     }
+
     BIND(CONCAT("This sortal is the subclass of ", STR(?n), " ultimate sortals.") AS ?error_msg)
+
     filter(?n > 1)
+
 }

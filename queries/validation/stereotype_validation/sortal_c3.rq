@@ -7,15 +7,19 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix skos: <http://www.w3.org/2004/02/skos/core#>
 prefix xml: <http://www.w3.org/XML/1998/namespace>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
 
+# Non-sortal types cannot specialize sortal types.
 
-# from the nemo repository https://github.com/nemo-ufes/ufo-types/blob/master/models/sparql-queries.rq, reformatted for ours.
-# Non-sortal types cannot specialize sortal types
-# Example Agent spec Organization and Person
-select distinct ?invalid ?error_msg
-where {
-    ?invalid rdf:type/rdfs:subClassOf* gufo:NonSortal .
-    ?invalid rdfs:subClassOf+ ?sortal .
+SELECT DISTINCT ?invalid_class ?error_msg
+WHERE {
+
+    ?invalid_class rdf:type/rdfs:subClassOf* gufo:NonSortal .
+
+    ?invalid_class rdfs:subClassOf+ ?sortal .
+
     ?sortal rdf:type/rdfs:subClassOf* gufo:Sortal .
+
     BIND("This non-sortal class is a subclass of a sortal class" AS ?error_msg)
+
 }

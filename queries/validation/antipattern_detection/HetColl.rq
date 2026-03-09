@@ -12,22 +12,26 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 # Heterogeneous Collective
 
 # A collection type connected to two or more different member parts through «MemberOf» relations.
+
 # The multiple part types, the main characteristic of this anti-pattern, indicate that the modeler might have confused the concepts of collection and functional complex or the different relations of membership and sub-collection.
+
 # Only collections may instantiate the Whole.
+
 # Only collections and functional complexes may instantiate all Part-n.
 
-
-
-SELECT ?invalid ?error_msg 
+SELECT ?invalid_class ?error_msg 
 WHERE { 
 
-?invalid a gufo:Collection ;
-    ^gufo:isMemberOf ?part1, ?part2 .
-?part1 a ?class1 .
-?part2 a ?class2 .
+    ?invalid_class a gufo:Collection ;
 
-FILTER(?class1 != ?class2)
+        ^gist:isMemberOf ?part1, ?part2 .
 
-BIND("This class is an instance of the HetColl anti-pattern, see more at: https://ontouml.readthedocs.io/en/latest/anti-patterns/HetColl/index.html" AS ?error_msg)
+    ?part1 a ?class1 .
+
+    ?part2 a ?class2 .
+
+    FILTER(?class1 != ?class2)
+
+    BIND("This class is an instance of the HetColl anti-pattern." AS ?error_msg)
 
 }

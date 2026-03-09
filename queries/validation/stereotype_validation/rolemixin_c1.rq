@@ -1,0 +1,33 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix gistx: <https://w3id.org/semanticarts/ns/taxonomy/gist/>
+prefix ontouml: <https://w3id.org/ontouml#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix xml: <http://www.w3.org/XML/1998/namespace>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+# RoleMixin Constraint 1
+ 
+# A «RoleMixin» aggregates individuals that follow different identity principles, therefore it may not have as ancestor the following constructs: «Kind», «Subkind», «Role», «Phase».
+
+SELECT ?invalid_class ?forbidden_ancestor ?error_msg
+WHERE {
+
+    VALUES ?forbidden_ancestor_type {
+        gufo:Kind
+        gufo:SubKind
+        gufo:Role
+        gufo:Phase
+    }
+
+    ?forbidden_ancestor a ?forbidden_ancestor_type .
+
+    ?invalid_class a gufo:RoleMixin ;
+        rdfs:subClassOf ?forbidden_ancestor .
+
+    BIND("A RoleMixin aggregates individuals that follow different identity principles, therefore it may not have as ancestor the following constructs: Kind, Subkind, Role, Phase." AS ?error_msg)
+
+}

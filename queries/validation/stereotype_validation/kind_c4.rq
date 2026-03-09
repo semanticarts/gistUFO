@@ -13,15 +13,15 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 
 # As a rigid type, a «Kind» cannot have any anti-rigid type («Role», «RoleMixin» and «Phase») as its direct or indirect super-type.
 
-SELECT ?invalid ?superclass ?error_msg
+SELECT ?invalid_class ?superclass ?error_msg
 WHERE {
 
     ?anti_rigid_type rdfs:subClassOf gufo:AntiRigidType .
 
     ?anti_rigid_class a ?anti_rigid_type . 
 
-    ?invalid a gufo:Kind ;
-        rdfs:subClassOf+ ?superclass .
+    ?invalid_class a gufo:Kind ;
+        rdfs:subClassOf+ ?anti_rigid_class .
 
     BIND("As a rigid type, a Kind cannot have any anti-rigid type (Role, RoleMixin, and Phase) as its direct or direct super-type." AS ?error_msg)
 }
