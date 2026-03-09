@@ -20,7 +20,7 @@ WHERE {
 
     ?relator_subclass a owl:Class ;
         
-        rdfs:subClassOf [ a owl:Restriction ; owl:onProperty gist:hasParticipant ; owl:someValuesFrom ?superclass ]
+        rdfs:subClassOf [ a owl:Restriction ; owl:onProperty gist:hasParticipant ; owl:someValuesFrom ?superclass ] .
 
     ?invalid_class a gufo:Role ;
         rdfs:subClassOf ?superclass .
