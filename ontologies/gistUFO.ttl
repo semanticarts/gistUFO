@@ -1,7 +1,9 @@
 # imports: http://purl.org/nemo/gufo#/1.0.0
 # imports: https://w3id.org/semanticarts/ontology/gistCore14.0.0
 
+@prefix ex: <https://example.org/> .
 @prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> .
+@prefix gistd: <https://w3id.org/semanticarts/ns/data/gist/> .
 @prefix gistx: <https://w3id.org/semanticarts/ns/taxonomy/gist/> .
 @prefix gufo: <http://purl.org/nemo/gufo#> .
 @prefix ontouml: <https://w3id.org/ontouml#> .
@@ -19,73 +21,587 @@
 		<https://w3id.org/semanticarts/ontology/gistCore14.0.0>
 		;
 	owl:versionIRI <https://w3id.org/semanticarts/ontology/gistUFOX.x.x> ;
-	skos:definition "An alignment of gist with UFO."^^xsd:string ;
+	skos:definition """gistUFO is the union of gist, gUFO, and a mapping between them. There are three components to the mapping:
+	
+	(1) A mapping from gist classes to gUFO classes on the gufo:Individual side of the hierarchy using rdfs:subClassOf;
+	(2) A mapping from gist classes to gUFO classes on the gufo:Type side of the hierarchy using rdf:type;
+	(3) A mapping from gUFO classes to gUFO classes on the gufo:Type side of the hierarchy using rdf:type.
+	
+	An initial version of each of these mappings is stored in our GitHub respository. The version of the mapping contained in gistUFO uses these mappings as a starting place but makes amendments to preserve logical consistency.
+	"""^^xsd:string ;
 	skos:prefLabel "gistUFO"^^xsd:string ;
 	gist:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI ;
 	.
 
+gufo:AbstractIndividual
+	a gufo:AbstractIndividualType ;
+	.
+
+gufo:Aspect
+	a gufo:Category ;
+	.
+
+gufo:Collection
+	a gufo:Category ;
+	.
+
+gufo:ConcreteIndividual
+	a gufo:ConcreteIndividualType ;
+	.
+
+gufo:Endurant
+	a gufo:Category ;
+	.
+
+gufo:ExtrinsicAspect
+	a gufo:Category ;
+	.
+
+gufo:ExtrinsicMode
+	a gufo:Category ;
+	.
+
+gufo:FixedCollection
+	a gufo:Category ;
+	.
+
+gufo:FunctionalComplex
+	a gufo:Category ;
+	.
+
+gufo:Instant
+	a gufo:AbstractIndividualType ;
+	.
+
+gufo:IntrinsicAspect
+	a gufo:Category ;
+	.
+
+gufo:IntrinsicMode
+	a gufo:Category ;
+	.
+
+gufo:Object
+	a gufo:Category ;
+	.
+
+gufo:Quality
+	a gufo:Category ;
+	.
+
+gufo:QualityValue
+	a gufo:AbstractIndividualType ;
+	.
+
+gufo:QualityValueAttributionSituation
+	a gufo:SituationType ;
+	.
+
+gufo:Quantity
+	a gufo:Category ;
+	.
+
+gufo:Relator
+	a gufo:Category ;
+	.
+
+gufo:Situation
+	a gufo:SituationType ;
+	.
+
+gufo:TemporaryConstitutionSituation
+	a gufo:SituationType ;
+	.
+
+gufo:TemporaryInstantiationSituation
+	a gufo:SituationType ;
+	.
+
+gufo:TemporaryParthoodSituation
+	a gufo:SituationType ;
+	.
+
+gufo:TemporaryRelationshipSituation
+	a gufo:SituationType ;
+	.
+
+gufo:VariableCollection
+	a gufo:Category ;
+	.
+
+gist:Account
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:Address
+	a gufo:Category ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
+	.
+
+gist:AddressUsageType
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Agreement
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
 gist:Aspect
+	a gufo:AbstractIndividualType ;
 	rdfs:subClassOf gufo:AbstractIndividual ;
 	.
 
+gist:Assignment
+	a gufo:SituationType ;
+	rdfs:subClassOf gufo:TemporaryRelationshipSituation ;
+	.
+
+gist:Behavior
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Building
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:BundledCatalogItem
+	a gufo:EndurantType ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:CatalogItem
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
 gist:Category
-	rdfs:subClassOf gufo:Type ;
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Collection
+	a gufo:EndurantType ;
+	rdfs:subClassOf gufo:Collection ;
+	.
+
+gist:Commitment
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Relator ;
 	.
 
 gist:Component
+	a gufo:Category ;
 	rdfs:subClassOf gufo:Individual ;
 	.
 
 gist:Composite
-	rdfs:subClassOf gufo:Collection ;
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Individual ;
 	.
 
-gist:Content
-	rdfs:subClassOf gufo:AbstractIndividual ;
-	.
-
-gist:Event
+gist:ContemporaryEvent
+	a gufo:EventType ;
 	rdfs:subClassOf gufo:Event ;
 	.
 
-gist:IntellectualProperty
+gist:Content
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:ContentExpression
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:ContingentEvent
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
+	.
+
+gist:ContingentObligation
+	a gufo:Phase ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:Contract
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:ContractTerm
+	a gufo:Role ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:ControlledVocabulary
+	a gufo:EndurantType ;
+	rdfs:subClassOf gufo:VariableCollection ;
+	.
+
+gist:CountryGeoRegion
+	a gufo:Role ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
+	.
+
+gist:CountryGovernment
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:DegreeOfCommitment
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Determination
+	a gufo:EventType ;
+	rdfs:subClassOf gufo:Event ;
+	.
+
+gist:Discipline
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:ElectronicAddress
+	a gufo:Category ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
+	.
+
+gist:ElectronicAddressType
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Equipment
+	a gufo:Category ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:EquipmentType
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Event
+	a gufo:EventType ;
+	rdfs:subClassOf gufo:Event ;
+	.
+
+gist:EventSpecification
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:FormattedContent
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Function
+	a gufo:AbstractIndividualType ;
 	rdfs:subClassOf gufo:AbstractIndividual ;
 	.
 
-gist:Intention
-	rdfs:subClassOf gufo:IntrinsicAspect ;
+gist:GeneralMediaType
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
 	.
 
-gist:Language
-	rdfs:subClassOf gufo:AbstractIndividual ;
+gist:GeoLocation
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Object ;
 	.
 
-gist:Magnitude
-	rdfs:subClassOf gufo:Aspect ;
+gist:GeoPoint
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:Object ;
 	.
 
-gist:Organization
+gist:GeoRegion
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:FixedCollection ;
+	.
+
+gist:GeoRoute
+	a gufo:EndurantType ;
 	rdfs:subClassOf gufo:Collection ;
 	.
 
+gist:GeoVolume
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:FixedCollection ;
+	.
+
+gist:GovernedGeoRegion
+	a gufo:Role ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
+	.
+
+gist:GovernmentOrganization
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:HistoricalEvent
+	a gufo:EventType ;
+	rdfs:subClassOf gufo:Event ;
+	.
+
+gist:ID
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
+	.
+
+gist:IntellectualProperty
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Intention
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
+	.
+
+gist:IntergovernmentalOrganization
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:KnowledgeConcept
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Landmark
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Language
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:LivingThing
+	a gufo:Category ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:Magnitude
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Quality ;
+	.
+
+gist:MediaType
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Medium
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Message
+	a gufo:Role ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
+	.
+
+gist:Network
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
+	.
+
+gist:NetworkLink
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
+	.
+
+gist:NetworkNode
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
+	.
+
+gist:Offer
+	a gufo:Phase ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:OrderedCollection
+	a gufo:EndurantType ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
+	.
+
+gist:OrderedMember
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:Organization
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:Permission
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:Person
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:PhysicalActionType
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:PhysicalAddress
+	a gufo:Category ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
+	.
+
+gist:PhysicalAddressType
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:PhysicalEvent
+	a gufo:EventType ;
+	rdfs:subClassOf gufo:Event ;
+	.
+
 gist:PhysicalIdentifiableItem
+	a gufo:Category ;
 	rdfs:subClassOf gufo:Object ;
 	.
 
 gist:PhysicalSubstance
+	a gufo:Kind ;
 	rdfs:subClassOf gufo:Quantity ;
 	.
 
+gist:ProductCategory
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:ProductSpecification
+	a gufo:Role ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Project
+	a gufo:EventType ;
+	rdfs:subClassOf gufo:Event ;
+	.
+
+gist:ReferenceValue
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:Quality ;
+	.
+
+gist:RenderedContent
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Requirement
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:Restriction
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:ScheduledEvent
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:IntrinsicMode ;
+	.
+
+gist:ScheduledTask
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:IntrinsicMode ;
+	.
+
 gist:SchemaMetaData
-	rdfs:subClassOf gufo:AbstractIndividual ;
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:ServiceSpecification
+	a gufo:Role ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Specification
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:SubCountryGovernment
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:System
+	a gufo:Category ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:Tag
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Task
+	a gufo:EventType ;
+	rdfs:subClassOf gufo:Event ;
+	.
+
+gist:TaskTemplate
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
 	.
 
 gist:Template
-	rdfs:subClassOf gufo:AbstractIndividual ;
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
 	.
 
 gist:TemporalRelation
-	rdfs:subClassOf gufo:Relator ;
+	a gufo:SituationType ;
+	rdfs:subClassOf gufo:TemporaryRelationshipSituation ;
+	.
+
+gist:Text
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:TimeInterval
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Transaction
+	a gufo:EventType ;
+	rdfs:subClassOf gufo:Event ;
+	.
+
+gist:UnitGroup
+	a gufo:EndurantType ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
 	.
 
 gist:UnitOfMeasure
