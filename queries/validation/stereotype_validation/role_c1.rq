@@ -36,4 +36,5 @@ WHERE {
     }
 
     BIND("A Role must always have exactly one identity provider as an ancestor." AS ?error_msg)
+    
 }
