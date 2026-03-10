@@ -2,7 +2,7 @@
 
 This directory is a place to store queries used for inference and validation. The validation directory contains three subdirectories:
 - antipattern_detection, used to check for antipatterns defined in Tiago Prince Sales' thesis [Ontology Validation for Managers](https://nemo.inf.ufes.br/wp-content/papercite-data/pdf/ontology_validation_for_managers_2014.pdf)
-- stereotype_validation, used to ensure that classes mapped to OntoUML stereotypes conform to their [associated constraints](https://ontouml.readthedocs.io/en/latest/classes/index.html)
+- stereotype_validation, used to ensure that classes mapped to OntoUML stereotypes conform to their associated constraints, based on the [OntoUML documentation](https://ontouml.readthedocs.io/en/latest/classes/index.html) and [Giancarlo Guizzardi's thesis](https://www.researchgate.net/publication/215697579_Ontological_Foundations_for_Structural_Conceptual_Models).
 - mapping_checks, used to find errors in ontologies that have been mapped to [gUFO](https://nemo-ufes.github.io/gufo/) 
 
 ## Notes
