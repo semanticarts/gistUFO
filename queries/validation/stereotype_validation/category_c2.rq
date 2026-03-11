@@ -18,4 +18,5 @@ WHERE{
     ?invalid_class a gufo:Category ;
         rdfs:subClassOf ?rigid_ancestor .
     
+    BIND("A Category is a rigid construct, therefore it cannot have as ancestor an anti-rigid type." AS ?error_msg)
 }
