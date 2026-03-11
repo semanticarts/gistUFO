@@ -79,8 +79,8 @@ def run_query_set(query_directory, query_kind):
     
 # If this is every made into a command line tool, probably just have a few query kind options and alter main to just run the specified kind
 def main():
-    #run_query_set("stereotype_validation", "Stereotype")
-    #run_query_set("antipattern_detection", "Anti-Patterns")
+    run_query_set("stereotype_validation", "Stereotype")
+    run_query_set("antipattern_detection", "Anti-Patterns")
     run_query_set("mapping_checks", "Mapping Checks")
 
 if __name__ == "__main__": 
