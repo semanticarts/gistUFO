@@ -1,31 +1,28 @@
 prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
-prefix gistx: <https://w3id.org/semanticarts/ns/taxonomy/gist/>
-prefix ontouml: <https://w3id.org/ontouml#>
 prefix owl: <http://www.w3.org/2002/07/owl#>
 prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-prefix skos: <http://www.w3.org/2004/02/skos/core#>
-prefix xml: <http://www.w3.org/XML/1998/namespace>
-prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix gufo: <http://purl.org/nemo/gufo#>
+
+# from the nemo repository https://github.com/nemo-ufes/ufo-types/blob/master/models/sparql-queries.rq, reformatted.
 
 # Every specialization of endurant instantiates a single endurant type.
 
-select ?invalid_class ?error_msg
+select ?invalid ?error_msg
 where {
     {
-        select ?invalid_class (count(?invalid_class) as ?n)
+        select ?invalid (count(?invalid) as ?n)
         where {
-                  { ?invalid_class rdf:type gufo:Category . }
-            union { ?invalid_class rdf:type gufo:RoleMixin . }
-            union { ?invalid_class rdf:type gufo:PhaseMixin . }
-            union { ?invalid_class rdf:type gufo:Mixin . }
-            union { ?invalid_class rdf:type gufo:Kind . }
-            union { ?invalid_class rdf:type gufo:SubKind . }
-            union { ?invalid_class rdf:type gufo:Role . }
-            union { ?invalid_class rdf:type gufo:Phase . }
+                  { ?invalid rdf:type gufo:Category . }
+            union { ?invalid rdf:type gufo:RoleMixin . }
+            union { ?invalid rdf:type gufo:PhaseMixin . }
+            union { ?invalid rdf:type gufo:Mixin . }
+            union { ?invalid rdf:type gufo:Kind . }
+            union { ?invalid rdf:type gufo:SubKind . }
+            union { ?invalid rdf:type gufo:Role . }
+            union { ?invalid rdf:type gufo:Phase . }
         }
-        group by ?invalid_class
+        group by ?invalid
     }
     filter (?n > 1)
     BIND("This instance is of multiple Endurant Types." as ?error_msg)
