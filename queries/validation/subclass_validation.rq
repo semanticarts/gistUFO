@@ -11,7 +11,7 @@ prefix ex: <https://example.org/>
 # check subclass consistency
 # subclass of AbstractIndividual must also be an AbstractIndividual, a subclass of an Aspect must also be an Aspect, a subclass of a class that is an AntiRigidType must be an AntiRigidType.
 
-select ?invalid ?error_msg
+select ?invalid_class ?error_msg
 
 where {
   
@@ -26,10 +26,10 @@ where {
           (gufo:Sortal              gufo:Sortal)    
           }
   
-  ?invalid rdf:type|rdfs:subClassOf ?gufoClass .
-  filter(contains(str(?invalid), "gist"))
+  ?invalid_class rdf:type|rdfs:subClassOf ?gufoClass .
+  filter(contains(str(?invalid_class), "gist"))
   
-  ?violation rdfs:subClassOf ?invalid .
+  ?violation rdfs:subClassOf ?invalid_class .
   filter not exists {?violation rdf:type|rdfs:subClassOf ?requiredSubClassType .}
   
   BIND(CONCAT("This class is of type ", str(?gufoClass), " and its sub classes must be of type ", str(?requiredSubClassType), ", but the subClass ", str(?violation), " is not of that type.") as ?error_msg)

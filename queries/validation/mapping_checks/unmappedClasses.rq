@@ -10,22 +10,22 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 
 prefix gufo: <http://purl.org/nemo/gufo#>
 
-select distinct ?class ?message
+select distinct ?invalid_class ?error_msg
 
 where {
   {
-  ?class rdf:type owl:Class .
-  filter(contains(str(?class), "gist"))  # can be generalized to any ontology mapped to gufo
-  filter not exists {?class rdf:type ?gufoType . filter(contains(str(?gufoType), "gufo")) }
-  bind("is not mapped to any gUFO Type" as ?message)
+  ?invalid_class rdf:type owl:Class .
+  filter(contains(str(?invalid_class), "gist"))  # can be generalized to any ontology mapped to gufo
+  filter not exists {?invalid_class rdf:type ?gufoType . filter(contains(str(?gufoType), "gufo")) }
+  bind("is not mapped to any gUFO Type" as ?error_msg)
   }
 
   union
   {
-  ?class rdf:type owl:Class .
-  filter(contains(str(?class), "gist"))  # can be generalized to any ontology mapped to gufo
-  filter not exists {?class rdfs:subClassOf ?gufoIndividual . filter(contains(str(?gufoIndividual), "gufo")) }
-  bind("is not mapped to any gUFO Individual" as ?message)
+  ?invalid_class rdf:type owl:Class .
+  filter(contains(str(?invalid_class), "gist"))  # can be generalized to any ontology mapped to gufo
+  filter not exists {?invalid_class rdfs:subClassOf ?gufoIndividual . filter(contains(str(?gufoIndividual), "gufo")) }
+  bind("is not mapped to any gUFO Individual" as ?error_msg)
   }
 }
-order by ?class
+order by ?invalid_class

@@ -1,0 +1,26 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+# RoleMixin Constraint 2
+
+# «RoleMixin» is a anti-rigid construct, therefore it cannot have as descendant any rigid or semi-rigid type.
+
+SELECT ?invalid_class ?subclass ?error_msg
+WHERE {
+
+    VALUES ?subclass_type {
+        gufo:Category
+        gufo:Kind
+        gufo:SubKind
+        gufo:Mixin
+    }
+
+    ?invalid_class a gufo:RoleMixin ;
+        ^rdfs:subClassOf+ ?subclass .
+
+    BIND("A RoleMixin is a rigid construct, therefore it cannot have as descendant any rigid or semi-rigid type." AS ?error_msg)
+
+}
