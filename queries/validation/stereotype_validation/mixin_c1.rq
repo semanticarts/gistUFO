@@ -19,9 +19,12 @@ WHERE {
         gufo:Role 
         gufo:RoleMixin
     }
+    
+    ?invalid_class a gufo:Mixin .
 
     ?forbidden_ancestor a ?forbidden_ancestor_type ;
         ^rdfs:subClassOf ?invalid_class .
+        
 
     BIND("A Mixin is a semi-rigid construct and therefore cannot have either a rigid (other than Category) or an anti-rigid type as an ancestor." AS ?error_msg)
     

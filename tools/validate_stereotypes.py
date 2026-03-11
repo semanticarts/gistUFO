@@ -15,36 +15,33 @@ gistx = Namespace("https://w3id.org/semanticarts/ns/ontology/gistx/")
 
 DEBUG = True
 
-initial_mapping = Graph()
-initial_mapping.bind("gist", gist)
-initial_mapping.bind("owl", owl)
-initial_mapping.bind("rdf", rdf)
-initial_mapping.bind("rdfs", rdfs)
-initial_mapping.bind("sh", sh)
-initial_mapping.bind("skos", skos)
-initial_mapping.bind("xsd", xsd)
-initial_mapping.bind("saox", saox)
-initial_mapping.bind("gistx", gistx)
-initial_mapping.parse("./ontologies/gistToGufoTypes.ttl")
-initial_mapping.parse("./ontologies/gistToGufoIndividuals.ttl")
-initial_mapping.parse("./ontologies/gistCore14.0.0/gistCore14.0.0.ttl")
-initial_mapping.parse("./ontologies/gistCore14.0.0/gistSubClassAssertions14.0.0.ttl")
-initial_mapping.parse("./ontologies/gUFO1.0.0/gUFO1.0.0.ttl")
+NAMESPACES = {
+    "gist": gist, "owl": owl, "rdf": rdf, "rdfs": rdfs,
+    "sh": sh, "skos": skos, "xsd": xsd, "saox": saox, "gistx": gistx,
+}
 
-gistUFO = Graph()
-gistUFO.bind("gist", gist)
-gistUFO.bind("owl", owl)
-gistUFO.bind("rdf", rdf)
-gistUFO.bind("rdfs", rdfs)
-gistUFO.bind("sh", sh)
-gistUFO.bind("skos", skos)
-gistUFO.bind("xsd", xsd)
-gistUFO.bind("saox", saox)
-gistUFO.bind("gistx", gistx)
-gistUFO.parse("./ontologies/gistUFO.ttl")
-gistUFO.parse("./ontologies/gistCore14.0.0/gistCore14.0.0.ttl")
-gistUFO.parse("./ontologies/gistCore14.0.0/gistSubClassAssertions14.0.0.ttl")
-gistUFO.parse("./ontologies/gUFO1.0.0/gUFO1.0.0.ttl")
+def make_graph(sources):
+    g = Graph()
+    for prefix, ns in NAMESPACES.items():
+        g.bind(prefix, ns)
+    for src in sources:
+        g.parse(src)
+    return g
+
+initial_mapping = make_graph([
+    "./ontologies/gistToGufoTypes.ttl",
+    "./ontologies/gistToGufoIndividuals.ttl",
+    "./ontologies/gistCore14.0.0/gistCore14.0.0.ttl",
+    "./ontologies/gistCore14.0.0/gistSubClassAssertions14.0.0.ttl",
+    "./ontologies/gUFO1.0.0/gUFO1.0.0.ttl",
+])
+
+gistUFO = make_graph([
+    "./ontologies/gistUFO.ttl",
+    "./ontologies/gistCore14.0.0/gistCore14.0.0.ttl",
+    "./ontologies/gistCore14.0.0/gistSubClassAssertions14.0.0.ttl",
+    "./ontologies/gUFO1.0.0/gUFO1.0.0.ttl",
+])
 
 
 def run_query_set(query_directory, query_kind):
