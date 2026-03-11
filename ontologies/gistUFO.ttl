@@ -90,7 +90,7 @@ gist:Category
 gist:Collection
 	a gufo:Type ;
 	rdfs:subClassOf gufo:Individual ;
-	gist:ufoMappingNote "In the initial mapping gist:Collection was a subclass of gufo:Object. However, some subclasses of gist:Collection have abstract instances, so we are generalizing this mapping to gufo:Individual."^^xsd:string ;
+	gist:ufoMappingNote "In our initial mapping gist:Collection was a subclass of gufo:Object. However, some subclasses of gist:Collection have abstract instances, so we are generalizing this mapping to gufo:Individual."^^xsd:string ;
 	.
 
 gist:Commitment
@@ -276,7 +276,7 @@ gist:GeoRegion
 
 gist:GeoRoute
 	a gufo:Type ;
-	gist:ufoMappingNote "Removing the mapping to gufo:Collection, as all the members of a geo route are likely abstract. Compare with gist:UnitGroup."^^xsd:string ;
+	gist:ufoMappingNote "Removing the mapping to gufo:Collection, as all the members of a gist:GeoRoute are likely abstract. Compare with gist:UnitGroup."^^xsd:string ;
 	.
 
 gist:GeoVolume
