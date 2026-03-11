@@ -15,47 +15,70 @@ gistx = Namespace("https://w3id.org/semanticarts/ns/ontology/gistx/")
 
 DEBUG = True
 
-g = Graph()
+NAMESPACES = {
+    "gist": gist, "owl": owl, "rdf": rdf, "rdfs": rdfs,
+    "sh": sh, "skos": skos, "xsd": xsd, "saox": saox, "gistx": gistx,
+}
 
-g.bind("gist", gist)
-g.bind("owl", owl)
-g.bind("rdf", rdf)
-g.bind("rdfs", rdfs)
-g.bind("sh", sh)
-g.bind("skos", skos)
-g.bind("xsd", xsd)
-g.bind("saox", saox)
-g.bind("gistx", gistx)
+def make_graph(sources):
+    g = Graph()
+    for prefix, ns in NAMESPACES.items():
+        g.bind(prefix, ns)
+    for src in sources:
+        g.parse(src)
+    return g
 
-g.parse("../ontologies/gistUFO.ttl")
+initial_mapping = make_graph([
+    "./ontologies/gistToGufoTypes.ttl",
+    "./ontologies/gistToGufoIndividuals.ttl",
+    "./ontologies/gistCore14.0.0/gistCore14.0.0.ttl",
+    "./ontologies/gistCore14.0.0/gistSubClassAssertions14.0.0.ttl",
+    "./ontologies/gUFO1.0.0/gUFO1.0.0.ttl",
+])
+
+gistUFO = make_graph([
+    "./ontologies/gistUFO.ttl",
+    "./ontologies/gistCore14.0.0/gistCore14.0.0.ttl",
+    "./ontologies/gistCore14.0.0/gistSubClassAssertions14.0.0.ttl",
+    "./ontologies/gUFO1.0.0/gUFO1.0.0.ttl",
+])
+
 
 def run_query_set(query_directory, query_kind):
     print(f"Running {query_kind} queries...")
     violation_count = 0
     violation_dict = {}
-    for i in os.listdir(f"../queries/{query_directory}"):
+    for i in os.listdir(f"./queries/validation/{query_directory}"):
         if DEBUG:
             print(f"Running {i}")
 
-        with open(f"../queries/{query_directory}/" + i) as query_file:
+        with open(f"./queries/validation/{query_directory}/" + i) as query_file:
             query = query_file.read()
-            results = g.query(query)
+            results = initial_mapping.query(query)
             violation_count += len(results)
             if DEBUG:
-                print(f"Found {len(results)} violations.")
+                print(f"-Initial mapping: Found {len(results)} violations.")
             if len(results) > 0:
                 violation_dict[i] = results
+                
+            results2 = gistUFO.query(query)
+            violation_count += len(results2)
+            if DEBUG:
+                print(f"-gistUFO: Found {len(results2)} violations.")
+            if len(results2) > 0:
+                violation_dict[i] = results2
 
     print(f"Found {violation_count} {query_kind} violations total.")
     for k, v in violation_dict.items():
         print(f"Violations in {k}:")
         for row in v:
-            print(f"{row.invalid} due to: {row.error_msg}")
+            print(f"{row.invalid_class} due to: {row.error_msg}")
     
 # If this is every made into a command line tool, probably just have a few query kind options and alter main to just run the specified kind
 def main():
     run_query_set("stereotype_validation", "Stereotype")
     run_query_set("antipattern_detection", "Anti-Patterns")
+    run_query_set("mapping_checks", "Mapping Checks")
 
 if __name__ == "__main__": 
     main()

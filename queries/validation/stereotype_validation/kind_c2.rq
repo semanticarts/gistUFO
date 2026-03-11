@@ -1,0 +1,27 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+# Kind Constraint 2
+
+# A «Kind» cannot have types that inherit identity («Subkind», «Role» and «Phase») as its direct or indirect super-type.
+
+SELECT ?invalid_class ?superclass ?error_msg
+WHERE {
+
+    VALUES ?identity_inheritor {
+        gufo:Subkind
+        gufo:Role
+        gufo:Phase
+    }
+
+    ?superclass a ?identity_inheritor .
+
+    ?invalid_class a gufo:Kind ;
+        rdfs:subClassOf+ ?superclass .
+
+
+    BIND("A Kind cannot have types that inherit identity (Subkind, Role and Phase) as its direct or indirect super-type." AS ?error_msg)
+}

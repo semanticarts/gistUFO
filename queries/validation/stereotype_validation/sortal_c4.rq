@@ -1,33 +1,32 @@
 prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
-prefix gistx: <https://w3id.org/semanticarts/ns/taxonomy/gist/>
-prefix ontouml: <https://w3id.org/ontouml#>
 prefix owl: <http://www.w3.org/2002/07/owl#>
 prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-prefix skos: <http://www.w3.org/2004/02/skos/core#>
-prefix xml: <http://www.w3.org/XML/1998/namespace>
-prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
 
+# from the nemo repository https://github.com/nemo-ufes/ufo-types/blob/master/models/sparql-queries.rq, reformatted.
 
-# from the nemo repository https://github.com/nemo-ufes/ufo-types/blob/master/models/sparql-queries.rq, reformatted for ours.
-# Non-sortal types must be specialized by sortal types or share a common supertype to a sortal type
-# Examples Legally_Recognized_Conjugal_Relationship and Long-Term_Agreement
+# Non-sortal types must be specialized by sortal types or share a common supertype to a sortal type.
 
-select distinct ?invalid ?error_msg
-where {
-    ?invalid rdf:type/rdfs:subClassOf* gufo:NonSortal .
-    filter not exists {
+SELECT DISTINCT ?invalid_class ?error_msg
+WHERE {
+
+    ?invalid_class rdf:type/rdfs:subClassOf* gufo:NonSortal .
+
+    FILTER NOT EXISTS {
         { 
             ?sortal rdf:type/rdfs:subClassOf* gufo:Sortal .
-            ?sortal rdfs:subClassOf* ?invalid .
+            ?sortal rdfs:subClassOf* ?invalid_class .
         }
         union
         {
             ?otherNonSortal rdf:type/rdfs:subClassOf* gufo:NonSortal .
             ?sortal rdf:type/rdfs:subClassOf* gufo:Sortal .
             ?sortal rdfs:subClassOf+ ?otherNonSortal .
-            ?invalid rdfs:subClassOf+ ?otherNonSortal .
+            ?invalid_class rdfs:subClassOf+ ?otherNonSortal .
         }
     }
-    BIND("This non-sortal class is neither superclass to a sortal nor does it share a common superclass with a sortal class" AS ?error_msg)
+
+    BIND("This non-sortal class is neither superclass to a sortal nor does it share a common superclass with a sortal class." AS ?error_msg)
+
 }

@@ -1,0 +1,27 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+ 
+# Phase Constraint 3
+
+# A «Phase» cannot be a direct subtype of a «RoleMixin» or «Category».
+
+# if A rdf:type Phase and B rdf:type RoleMixin || Category, A cannot directly subclass B
+
+SELECT ?invalid_class ?superclass ?error_msg
+WHERE {
+
+    VALUES ?superclass_type {
+        gufo:RoleMixin
+        gufo:Category
+    }
+
+    ?superclass a ?superclass_type .
+
+    ?invalid_class a gufo:Phase ;
+        rdfs:subClassOf ?superclass . 
+
+    BIND("A Phase cannot be a direct subclass of a RoleMixin or Category." AS ?error_msg)
+}
