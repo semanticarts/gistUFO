@@ -27,17 +27,17 @@ g.bind("xsd", xsd)
 g.bind("saox", saox)
 g.bind("gistx", gistx)
 
-g.parse("../ontologies/gistUFO.ttl")
+g.parse("./ontologies/gistUFO.ttl")
 
 def run_query_set(query_directory, query_kind):
     print(f"Running {query_kind} queries...")
     violation_count = 0
     violation_dict = {}
-    for i in os.listdir(f"../queries/{query_directory}"):
+    for i in os.listdir(f"./queries/validation/{query_directory}"):
         if DEBUG:
             print(f"Running {i}")
 
-        with open(f"../queries/{query_directory}/" + i) as query_file:
+        with open(f"./queries/validation/{query_directory}/" + i) as query_file:
             query = query_file.read()
             results = g.query(query)
             violation_count += len(results)
@@ -56,6 +56,7 @@ def run_query_set(query_directory, query_kind):
 def main():
     run_query_set("stereotype_validation", "Stereotype")
     run_query_set("antipattern_detection", "Anti-Patterns")
+    run_query_set("mapping_checks", "Mapping Checks")
 
 if __name__ == "__main__": 
     main()
