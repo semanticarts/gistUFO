@@ -28,10 +28,6 @@ gufo:Endurant
 	a gufo:Category ;
 	.
 
-gufo:Event
-	a <http://purl.org/nemo/gufo#> ;
-	.
-
 gufo:ExtrinsicAspect
 	a gufo:Category ;
 	.
@@ -62,10 +58,6 @@ gufo:IntrinsicMode
 
 gufo:Object
 	a gufo:Category ;
-	.
-
-gufo:Participation
-	a <http://purl.org/nemo/gufo#> ;
 	.
 
 gufo:Quality
