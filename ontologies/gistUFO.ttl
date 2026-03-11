@@ -21,112 +21,15 @@
 		<https://w3id.org/semanticarts/ontology/gistCore14.0.0>
 		;
 	owl:versionIRI <https://w3id.org/semanticarts/ontology/gistUFOX.x.x> ;
-	skos:definition """gistUFO is the union of gist, gUFO, and a mapping between them. There are three components to the mapping:
+	skos:definition """gistUFO is the union of gist, gUFO, and a mapping between them. There are two components to the mapping:
 	
-	(1) A mapping from gist classes to gUFO classes on the gufo:Individual side of the hierarchy using rdfs:subClassOf;
-	(2) A mapping from gist classes to gUFO classes on the gufo:Type side of the hierarchy using rdf:type;
-	(3) A mapping from gUFO classes to gUFO classes on the gufo:Type side of the hierarchy using rdf:type.
+	(1) a mapping from gist classes to gUFO classes on the gufo:Individual side of the hierarchy using rdfs:subClassOf;
+	(2) a mapping from gist classes to gUFO classes on the gufo:Type side of the hierarchy using rdf:type.
 	
 	An initial version of each of these mappings is stored in our GitHub respository. The version of the mapping contained in gistUFO uses these mappings as a starting place but makes amendments to preserve logical consistency.
 	"""^^xsd:string ;
 	skos:prefLabel "gistUFO"^^xsd:string ;
 	gist:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI ;
-	.
-
-gufo:AbstractIndividual
-	a gufo:AbstractIndividualType ;
-	.
-
-gufo:Aspect
-	a gufo:Category ;
-	.
-
-gufo:Collection
-	a gufo:Category ;
-	.
-
-gufo:ConcreteIndividual
-	a gufo:ConcreteIndividualType ;
-	.
-
-gufo:Endurant
-	a gufo:Category ;
-	.
-
-gufo:ExtrinsicAspect
-	a gufo:Category ;
-	.
-
-gufo:ExtrinsicMode
-	a gufo:Category ;
-	.
-
-gufo:FixedCollection
-	a gufo:Category ;
-	.
-
-gufo:FunctionalComplex
-	a gufo:Category ;
-	.
-
-gufo:Instant
-	a gufo:AbstractIndividualType ;
-	.
-
-gufo:IntrinsicAspect
-	a gufo:Category ;
-	.
-
-gufo:IntrinsicMode
-	a gufo:Category ;
-	.
-
-gufo:Object
-	a gufo:Category ;
-	.
-
-gufo:Quality
-	a gufo:Category ;
-	.
-
-gufo:QualityValue
-	a gufo:AbstractIndividualType ;
-	.
-
-gufo:QualityValueAttributionSituation
-	a gufo:SituationType ;
-	.
-
-gufo:Quantity
-	a gufo:Category ;
-	.
-
-gufo:Relator
-	a gufo:Category ;
-	.
-
-gufo:Situation
-	a gufo:SituationType ;
-	.
-
-gufo:TemporaryConstitutionSituation
-	a gufo:SituationType ;
-	.
-
-gufo:TemporaryInstantiationSituation
-	a gufo:SituationType ;
-	.
-
-gufo:TemporaryParthoodSituation
-	a gufo:SituationType ;
-	.
-
-gufo:TemporaryRelationshipSituation
-	a gufo:SituationType ;
-	.
-
-gufo:VariableCollection
-	a gufo:Category ;
 	.
 
 gist:Account
