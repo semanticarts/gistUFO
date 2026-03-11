@@ -31,7 +31,7 @@ where {
   
   ?subClass rdfs:subClassOf ?invalid_class_iri .   # is within the mapped ontology
   
-  filter not exists {?subClass rdfs:subClassOf ?gufoClass .}
+  filter not exists {?subClass rdfs:subClassOf+ ?gufoClass .}
   
   ?invalid_class_iri     skos:prefLabel ?invalid_class .
   ?subClass  skos:prefLabel ?subClassLabel .
