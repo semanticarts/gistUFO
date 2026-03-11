@@ -27,7 +27,7 @@ WHERE {
     UNION 
     {
         ?invalid_class a gufo:Role . 
-        FILTER NOT EXISTS { ?invalid_class rdfs:subClassOf+/rdf:type gufo:Kind . }
+        FILTER NOT EXISTS { ?invalid_class rdfs:subClassOf+ ?super_class . ?super_class rdf:type gufo:Kind . }
     }
 
     BIND("A Role must always have exactly one identity provider as an ancestor." AS ?error_msg)

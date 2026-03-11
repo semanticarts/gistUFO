@@ -1,0 +1,330 @@
+# imports: https://w3id.org/semanticarts/ontology/gistCore14.0.0
+
+@prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/semanticarts/ontology/gistSubClassAssertions>
+	a owl:Ontology ;
+	owl:imports <https://w3id.org/semanticarts/ontology/gistCore14.0.0> ;
+	owl:versionIRI <https://w3id.org/semanticarts/ontology/gistSubClassAssertions14.0.0> ;
+	skos:definition "Supplementary subclass assertions for gistCore."^^xsd:string ;
+	skos:prefLabel "gist Subclass Assertions"^^xsd:string ;
+	skos:scopeNote "This ontology contains supplementary subclass assertions to aid some automated reasoners. For example, while an OWL DL reasoner infers from the class equivalence that gist:Commitment is a subclass of gist:Intention, an RL reasoner does not. More precisely, the ontology contains (1) direct subclass assertions derived using an OWL DL reasoner and (2) the subclass assertions that are already explicit in gistCore."^^xsd:string ;
+	gist:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+	.
+
+gist:Account
+	rdfs:subClassOf gist:Agreement ;
+	.
+
+gist:Address
+	rdfs:subClassOf gist:Content ;
+	.
+
+gist:AddressUsageType
+	rdfs:subClassOf gist:Category ;
+	.
+
+gist:Agreement
+	rdfs:subClassOf gist:Intention ;
+	.
+
+gist:Assignment
+	rdfs:subClassOf gist:TemporalRelation ;
+	.
+
+gist:Behavior
+	rdfs:subClassOf gist:Category ;
+	.
+
+gist:Building
+	rdfs:subClassOf gist:Landmark ;
+	.
+
+gist:BundledCatalogItem
+	rdfs:subClassOf gist:CatalogItem ;
+	.
+
+gist:CatalogItem
+	rdfs:subClassOf gist:Specification ;
+	.
+
+gist:Collection
+	rdfs:subClassOf gist:Composite ;
+	.
+
+gist:Commitment
+	rdfs:subClassOf gist:Intention ;
+	.
+
+gist:ContemporaryEvent
+	rdfs:subClassOf gist:Event ;
+	.
+
+gist:ContentExpression
+	rdfs:subClassOf gist:Content ;
+	.
+
+gist:ContingentEvent
+	rdfs:subClassOf gist:Event ;
+	.
+
+gist:ContingentObligation
+	rdfs:subClassOf gist:Commitment ;
+	.
+
+gist:Contract
+	rdfs:subClassOf gist:Agreement ;
+	.
+
+gist:ContractTerm
+	rdfs:subClassOf gist:Specification ;
+	.
+
+gist:ControlledVocabulary
+	rdfs:subClassOf gist:Collection ;
+	.
+
+gist:CountryGeoRegion
+	rdfs:subClassOf gist:GovernedGeoRegion ;
+	.
+
+gist:CountryGovernment
+	rdfs:subClassOf gist:GovernmentOrganization ;
+	.
+
+gist:DegreeOfCommitment
+	rdfs:subClassOf gist:Category ;
+	.
+
+gist:Determination
+	rdfs:subClassOf gist:Event ;
+	.
+
+gist:Discipline
+	rdfs:subClassOf gist:Category ;
+	.
+
+gist:ElectronicAddress
+	rdfs:subClassOf gist:Address ;
+	.
+
+gist:ElectronicAddressType
+	rdfs:subClassOf gist:Category ;
+	.
+
+gist:Equipment
+	rdfs:subClassOf gist:PhysicalIdentifiableItem ;
+	.
+
+gist:EquipmentType
+	rdfs:subClassOf gist:Category ;
+	.
+
+gist:EventSpecification
+	rdfs:subClassOf gist:Specification ;
+	.
+
+gist:FormattedContent
+	rdfs:subClassOf gist:ContentExpression ;
+	.
+
+gist:Function
+	rdfs:subClassOf gist:Intention ;
+	.
+
+gist:GeneralMediaType
+	rdfs:subClassOf gist:Category ;
+	.
+
+gist:GeoPoint
+	rdfs:subClassOf gist:GeoLocation ;
+	.
+
+gist:GeoRegion
+	rdfs:subClassOf gist:GeoLocation ;
+	.
+
+gist:GeoRoute
+	rdfs:subClassOf gist:OrderedCollection ;
+	.
+
+gist:GeoVolume
+	rdfs:subClassOf gist:GeoLocation ;
+	.
+
+gist:GovernedGeoRegion
+	rdfs:subClassOf gist:GeoRegion ;
+	.
+
+gist:GovernmentOrganization
+	rdfs:subClassOf gist:Organization ;
+	.
+
+gist:HistoricalEvent
+	rdfs:subClassOf gist:Event ;
+	.
+
+gist:ID
+	rdfs:subClassOf gist:Content ;
+	.
+
+gist:IntergovernmentalOrganization
+	rdfs:subClassOf gist:Organization ;
+	.
+
+gist:KnowledgeConcept
+	rdfs:subClassOf gist:IntellectualProperty ;
+	.
+
+gist:Landmark
+	rdfs:subClassOf gist:PhysicalIdentifiableItem ;
+	.
+
+gist:LivingThing
+	rdfs:subClassOf gist:PhysicalIdentifiableItem ;
+	.
+
+gist:MediaType
+	rdfs:subClassOf gist:Category ;
+	.
+
+gist:Medium
+	rdfs:subClassOf gist:Category ;
+	.
+
+gist:Message
+	rdfs:subClassOf gist:ContentExpression ;
+	.
+
+gist:Network
+	rdfs:subClassOf gist:Composite ;
+	.
+
+gist:NetworkLink
+	rdfs:subClassOf gist:Component ;
+	.
+
+gist:NetworkNode
+	rdfs:subClassOf gist:Component ;
+	.
+
+gist:Offer
+	rdfs:subClassOf gist:ContingentObligation ;
+	.
+
+gist:OrderedCollection
+	rdfs:subClassOf gist:Collection ;
+	.
+
+gist:OrderedMember
+	rdfs:subClassOf gist:Component ;
+	.
+
+gist:Permission
+	rdfs:subClassOf gist:Intention ;
+	.
+
+gist:Person
+	rdfs:subClassOf gist:LivingThing ;
+	.
+
+gist:PhysicalActionType
+	rdfs:subClassOf gist:Category ;
+	.
+
+gist:PhysicalAddress
+	rdfs:subClassOf gist:Address ;
+	.
+
+gist:PhysicalAddressType
+	rdfs:subClassOf gist:Category ;
+	.
+
+gist:PhysicalEvent
+	rdfs:subClassOf gist:Event ;
+	.
+
+gist:ProductCategory
+	rdfs:subClassOf gist:Category ;
+	.
+
+gist:ProductSpecification
+	rdfs:subClassOf gist:CatalogItem ;
+	.
+
+gist:Project
+	rdfs:subClassOf gist:Task ;
+	.
+
+gist:ReferenceValue
+	rdfs:subClassOf gist:Magnitude ;
+	.
+
+gist:RenderedContent
+	rdfs:subClassOf gist:FormattedContent ;
+	.
+
+gist:Requirement
+	rdfs:subClassOf gist:Intention ;
+	.
+
+gist:Restriction
+	rdfs:subClassOf gist:Intention ;
+	.
+
+gist:ScheduledEvent
+	rdfs:subClassOf gist:Event ;
+	.
+
+gist:ScheduledTask
+	rdfs:subClassOf
+		gist:ScheduledEvent ,
+		gist:Task
+		;
+	.
+
+gist:ServiceSpecification
+	rdfs:subClassOf gist:CatalogItem ;
+	.
+
+gist:Specification
+	rdfs:subClassOf gist:Intention ;
+	.
+
+gist:SubCountryGovernment
+	rdfs:subClassOf gist:GovernmentOrganization ;
+	.
+
+gist:System
+	rdfs:subClassOf gist:Composite ;
+	.
+
+gist:Tag
+	rdfs:subClassOf gist:Category ;
+	.
+
+gist:Task
+	rdfs:subClassOf gist:Event ;
+	.
+
+gist:TaskTemplate
+	rdfs:subClassOf gist:Template ;
+	.
+
+gist:Text
+	rdfs:subClassOf gist:ContentExpression ;
+	.
+
+gist:Transaction
+	rdfs:subClassOf gist:Event ;
+	.
+
+gist:UnitGroup
+	rdfs:subClassOf gist:Collection ;
+	.
+

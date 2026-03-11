@@ -11,10 +11,8 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 
 SELECT DISTINCT ?invalid_class ?error_msg 
 WHERE {
-
-    ?invalid_class a owl:Class ;
-        
-        ^gist:hasParticipant ?relator_subclass1, ?relator_subclass2 .
+    
+    FILTER(?relator_subclass1 > ?relator_subclass2)
 
     ?relator_subclass1 a owl:Class ;
         
@@ -23,6 +21,8 @@ WHERE {
     ?relator_subclass2 a owl:Class ;
         
         rdfs:subClassOf [ a owl:Restriction ; owl:onProperty gist:hasParticipant ; owl:someValuesFrom ?invalid_class ] .
+        
+    ?invalid_class a owl:Class .
 
     BIND("This class is an instance of the MultDep anti-pattern." AS ?error_msg)
 

@@ -15,19 +15,37 @@ gistx = Namespace("https://w3id.org/semanticarts/ns/ontology/gistx/")
 
 DEBUG = True
 
-g = Graph()
+initial_mapping = Graph()
+initial_mapping.bind("gist", gist)
+initial_mapping.bind("owl", owl)
+initial_mapping.bind("rdf", rdf)
+initial_mapping.bind("rdfs", rdfs)
+initial_mapping.bind("sh", sh)
+initial_mapping.bind("skos", skos)
+initial_mapping.bind("xsd", xsd)
+initial_mapping.bind("saox", saox)
+initial_mapping.bind("gistx", gistx)
+initial_mapping.parse("./ontologies/gistToGufoTypes.ttl")
+initial_mapping.parse("./ontologies/gistToGufoIndividuals.ttl")
+initial_mapping.parse("./ontologies/gistCore14.0.0/gistCore14.0.0.ttl")
+initial_mapping.parse("./ontologies/gistCore14.0.0/gistSubClassAssertions14.0.0.ttl")
+initial_mapping.parse("./ontologies/gUFO1.0.0/gUFO1.0.0.ttl")
 
-g.bind("gist", gist)
-g.bind("owl", owl)
-g.bind("rdf", rdf)
-g.bind("rdfs", rdfs)
-g.bind("sh", sh)
-g.bind("skos", skos)
-g.bind("xsd", xsd)
-g.bind("saox", saox)
-g.bind("gistx", gistx)
+gistUFO = Graph()
+gistUFO.bind("gist", gist)
+gistUFO.bind("owl", owl)
+gistUFO.bind("rdf", rdf)
+gistUFO.bind("rdfs", rdfs)
+gistUFO.bind("sh", sh)
+gistUFO.bind("skos", skos)
+gistUFO.bind("xsd", xsd)
+gistUFO.bind("saox", saox)
+gistUFO.bind("gistx", gistx)
+gistUFO.parse("./ontologies/gistUFO.ttl")
+gistUFO.parse("./ontologies/gistCore14.0.0/gistCore14.0.0.ttl")
+gistUFO.parse("./ontologies/gistCore14.0.0/gistSubClassAssertions14.0.0.ttl")
+gistUFO.parse("./ontologies/gUFO1.0.0/gUFO1.0.0.ttl")
 
-g.parse("./ontologies/gistUFO.ttl")
 
 def run_query_set(query_directory, query_kind):
     print(f"Running {query_kind} queries...")
@@ -39,18 +57,25 @@ def run_query_set(query_directory, query_kind):
 
         with open(f"./queries/validation/{query_directory}/" + i) as query_file:
             query = query_file.read()
-            results = g.query(query)
+            results = initial_mapping.query(query)
             violation_count += len(results)
             if DEBUG:
-                print(f"Found {len(results)} violations.")
+                print(f"-Initial mapping: Found {len(results)} violations.")
             if len(results) > 0:
                 violation_dict[i] = results
+                
+            results2 = gistUFO.query(query)
+            violation_count += len(results2)
+            if DEBUG:
+                print(f"-gistUFO: Found {len(results2)} violations.")
+            if len(results2) > 0:
+                violation_dict[i] = results2
 
     print(f"Found {violation_count} {query_kind} violations total.")
     for k, v in violation_dict.items():
         print(f"Violations in {k}:")
         for row in v:
-            print(f"{row.invalid} due to: {row.error_msg}")
+            print(f"{row.invalid_class} due to: {row.error_msg}")
     
 # If this is every made into a command line tool, probably just have a few query kind options and alter main to just run the specified kind
 def main():

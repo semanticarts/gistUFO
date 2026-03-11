@@ -11,7 +11,7 @@ prefix gufo: <http://purl.org/nemo/gufo#>
 SELECT ?invalid_class ?rigid_ancestor ?error_msg
 WHERE{
 
-    ?rigid_ancestor_type rdfs:subClassOf gufo:RigidType .
+    ?rigid_ancestor_type rdfs:subClassOf gufo:AntiRigidType .
 
     ?rigid_ancestor a ?rigid_ancestor_type .
 
