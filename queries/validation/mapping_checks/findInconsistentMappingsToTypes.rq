@@ -11,7 +11,7 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix gufo: <http://purl.org/nemo/gufo#> 
 prefix ex: <https://example.org/>
 
-select distinct ?message
+select distinct ?invalid_class ?error_msg
 
 where {
   
@@ -20,20 +20,20 @@ where {
           (gufo:Sortal        gufo:Sortal)    
           }
   
-  ?class rdf:type ?gufoClass .
+  ?invalid_class_iri rdf:type ?gufoClass .
   filter(contains(str(?class),     "gist"))
   filter(contains(str(?gufoClass), "gufo"))
   
-  ?subClass rdfs:subClassOf ?class .
+  ?subClass rdfs:subClassOf ?invalid_class_iri .
   
   filter not exists {?subClass rdf:type ?requiredSubClassType .}
   
-  ?class    skos:prefLabel ?classLabel .
+  ?invalid_class_iri skos:prefLabel ?invalid_class .
   ?subClass skos:prefLabel ?subClassLabel .
   ?gufoType rdfs:label     ?gufoTypeLabel .
          
   
-  bind(concat("gist ", ?classLabel, " is a gufo ", ?gufoTypeLabel, " so its subclass ", ?subClassLabel, " should also be, but is not.") as ?message)
+  bind(concat("gist ", ?invalid_class, " is a gufo ", ?gufoTypeLabel, " so its subclass ", ?subClassLabel, " should also be, but is not.") as ?error_msg)
  
   }
 order by ?class
