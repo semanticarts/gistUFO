@@ -12,25 +12,25 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix gufo: <http://purl.org/nemo/gufo#> 
 prefix ex: <https://example.org/>
 
-select distinct ?message # ?subClass ?class ?gufoClass
+select distinct ?invalid_class ?error_msg # ?subClass ?gufoClass
 
 where {  
   
-  ?class rdfs:subClassOf ?gufoClass .         # all the gufo classes that ?class maps to (with inference turned on)
-  filter(contains(str(?class),     "gist"))
+  ?invalid_class_iri rdfs:subClassOf ?gufoClass .         # all the gufo classes that ?invalid_class_iri maps to (with inference turned on)
+  filter(contains(str(?invalid_class_iri),     "gist"))
   filter(contains(str(?gufoClass), "gufo"))
   
-  # every subclass of ?class should also map to the same gufo Individual class as its parent
+  # every subclass of ?invalid_class_iri should also map to the same gufo Individual class as its parent
   
-  ?subClass rdfs:subClassOf ?class .
+  ?subClass rdfs:subClassOf ?invalid_class_iri .
   
   filter not exists {?subClass rdfs:subClassOf ?gufoClass .}
   
-  ?class     skos:prefLabel ?classLabel .
+  ?invalid_class_iri     skos:prefLabel ?invalid_class .
   ?subClass  skos:prefLabel ?subClassLabel .
   ?gufoClass rdfs:label     ?gufoClassLabel .
   
-  bind(concat("gist ", ?classLabel, " is a subclass of gUFO ", ?gufoClassLabel, " so its subclass ", ?subClassLabel, " should also be a subclass, but it is not.") as ?message)
+  bind(concat("gist ", ?invalid_class, " is a subclass of gUFO ", ?gufoClassLabel, " so its subclass ", ?subClassLabel, " should also be a subclass, but it is not.") as ?message)
   
 }
-order by ?class
+order by ?invalid_class_iri
