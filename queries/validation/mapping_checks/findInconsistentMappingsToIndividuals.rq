@@ -1,4 +1,5 @@
 # after mapping an ontology to subclasses of gufo:Individual, look for subclasses in the ontology that are not mapped the same as the parent
+# run with reasoning turned on
 
 prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> 
 prefix gistd: <https://w3id.org/semanticarts/ns/data/gist/> 
@@ -11,36 +12,25 @@ prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix gufo: <http://purl.org/nemo/gufo#> 
 prefix ex: <https://example.org/>
 
-select distinct ?invalid_class ?error_msg
+select distinct ?message # ?subClass ?class ?gufoClass
 
 where {  
   
-  ?invalid_class_iri rdfs:subClassOf ?gufoClass .         # all the gufo classes that ?invalid_class_iri maps to
-  filter(contains(str(?invalid_class_iri),     "gist"))
+  ?class rdfs:subClassOf ?gufoClass .         # all the gufo classes that ?class maps to (with inference turned on)
+  filter(contains(str(?class),     "gist"))
   filter(contains(str(?gufoClass), "gufo"))
   
+  # every subclass of ?class should also map to the same gufo Individual class as its parent
   
-  filter not exists  { 
-        ?invalid_class_iri rdfs:subClassOf ?gufoClass2 .        # remove ones that are parents, leaving only the most granular mappings
-        filter(contains(str(?invalid_class_iri),      "gist"))
-        filter(contains(str(?gufoClass2), "gufo"))
-        ?gufoClass2 rdfs:subClassOf+ ?gufoClass .
-        }
+  ?subClass rdfs:subClassOf ?class .
   
-  # every subclass of ?invalid_class_iri should also map to the same gufo Individual class as its parent
+  filter not exists {?subClass rdfs:subClassOf ?gufoClass .}
   
-  ?subClass rdfs:subClassOf ?invalid_class_iri .   # is within the mapped ontology
-  
-  filter not exists {?subClass rdfs:subClassOf+ ?gufoClass .}
-  
-  ?invalid_class_iri     skos:prefLabel ?invalid_class .
+  ?class     skos:prefLabel ?classLabel .
   ?subClass  skos:prefLabel ?subClassLabel .
   ?gufoClass rdfs:label     ?gufoClassLabel .
   
-            
-  
-  bind(concat("gist ", ?invalid_class, " is a subclass of gUFO ", ?gufoClassLabel, " so its subclass ", ?subClassLabel, " should also be a subclass, but it is not.") as ?error_msg)
+  bind(concat("gist ", ?classLabel, " is a subclass of gUFO ", ?gufoClassLabel, " so its subclass ", ?subClassLabel, " should also be a subclass, but it is not.") as ?message)
   
 }
-order by ?invalid_class_iri
-
+order by ?class
