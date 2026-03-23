@@ -1,0 +1,37 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> 
+prefix gistd: <https://w3id.org/semanticarts/ns/data/gist/> 
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix skos: <http://www.w3.org/2004/02/skos/core#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix gufo: <http://purl.org/nemo/gufo#> 
+prefix ex: <https://example.org/>
+
+# check subclass consistency
+# subclass of AbstractIndividual must also be an AbstractIndividual, a subclass of an Aspect must also be an Aspect, a subclass of a class that is an AntiRigidType must be an AntiRigidType.
+
+select ?invalid_class ?error_msg
+
+where {
+  
+  values (?gufoClass               ?violation) {
+          (gufo:AbstractIndividual  gufo:AbstractIndividual)    
+          (gufo:AntiRigidType       gufo:AntiRigidType)
+          (gufo:Aspect              gufo:Aspect)
+          (gufo:ConcreteIndividual  gufo:ConcreteIndividual)
+          (gufo:Endurant            gufo:Endurant)
+          (gufo:Event               gufo:Event)
+          (gufo:Situation           gufo:Situation)
+          (gufo:Sortal              gufo:Sortal)    
+          }
+  
+  ?invalid_class rdf:type|rdfs:subClassOf ?gufoClass .
+  filter(contains(str(?invalid_class), "gist"))
+  
+  ?violation rdfs:subClassOf ?invalid_class .
+  filter not exists {?violation rdf:type|rdfs:subClassOf ?requiredSubClassType .}
+  
+  BIND(CONCAT("This class is of type ", str(?gufoClass), " and its sub classes must be of type ", str(?requiredSubClassType), ", but the subClass ", str(?violation), " is not of that type.") as ?error_msg)
+
+  }

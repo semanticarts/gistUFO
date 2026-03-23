@@ -1,0 +1,21 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+# Generalization Set with Mixed Rigidity
+
+# A generalization set whose common super-type is rigid and from all its generalizations, at least one comes from an anti-rigid type and at least one comes from a rigid type.
+
+SELECT DISTINCT ?invalid_class ?error_msg
+WHERE{
+
+    ?invalid_class ^rdfs:subClassOf ?subclass1 , ?subclass2 .
+
+    ?subclass1 a gufo:RigidType .
+
+    ?subclass2 a gufo:AntiRigidType .
+
+    BIND("This class is an instance of the GSRig anti-pattern." AS ?error_msg)
+
+}

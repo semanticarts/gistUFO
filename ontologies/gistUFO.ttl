@@ -1,0 +1,577 @@
+# imports: http://purl.org/nemo/gufo#/1.0.0
+# imports: https://w3id.org/semanticarts/ontology/gistCore14.0.0
+
+@prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/semanticarts/ontology/gistUFO>
+	a owl:Ontology ;
+	owl:imports
+		<http://purl.org/nemo/gufo#/1.0.0> ,
+		<https://w3id.org/semanticarts/ontology/gistCore14.0.0>
+		;
+	owl:versionIRI <https://w3id.org/semanticarts/ontology/gistUFOX.x.x> ;
+	skos:definition """gistUFO is the union of gist, gUFO, and a mapping between them. There are two components to the mapping:
+	
+	(1) a mapping from gist classes to gUFO classes on the gufo:Individual side of the hierarchy using rdfs:subClassOf;
+	(2) a mapping from gist classes to gUFO classes on the gufo:Type side of the hierarchy using rdf:type.
+	
+	An initial version of each of these mappings is stored in our GitHub respository. The version of the mapping contained in gistUFO uses these mappings as a starting place but makes amendments to preserve logical consistency.
+	"""^^xsd:string ;
+	skos:prefLabel "gistUFO"^^xsd:string ;
+	gist:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI ;
+	.
+
+gist:Account
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:Address
+	a gufo:Category ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
+	.
+
+gist:AddressUsageType
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Agreement
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:Aspect
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
+	.
+
+gist:Assignment
+	a gufo:SituationType ;
+	rdfs:subClassOf gufo:TemporaryRelationshipSituation ;
+	.
+
+gist:Behavior
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Building
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:BundledCatalogItem
+	a gufo:EndurantType ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:CatalogItem
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Category
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Collection
+	a gufo:Type ;
+	rdfs:subClassOf gufo:Individual ;
+	gist:ufoMappingNote "In our initial mapping gist:Collection was a subclass of gufo:Object. However, some subclasses of gist:Collection have abstract instances, so we are generalizing this mapping to gufo:Individual."^^xsd:string ;
+	.
+
+gist:Commitment
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:Component
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Individual ;
+	.
+
+gist:Composite
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Individual ;
+	.
+
+gist:ContemporaryEvent
+	a gufo:EventType ;
+	rdfs:subClassOf gufo:Event ;
+	.
+
+gist:Content
+	a gufo:Category ;
+	rdfs:subClassOf
+		gufo:Endurant ,
+		[
+			a owl:Class ;
+			owl:unionOf (
+				gufo:ExtrinsicMode
+				gufo:Object
+			) ;
+		]
+		;
+	gist:ufoMappingNote
+		"Originally mapped to gufo:Object, but employing union pattern to account for gist:ID, gist:Address, and gist:Message, which are subclasses of gufo:ExtrinsicMode."^^xsd:string ,
+		"Retaining mapping to gufo:Endurant so that gist:Content falls under gufo:Endurant when viewing in Protege."^^xsd:string
+		;
+	.
+
+gist:ContentExpression
+	a gufo:Category ;
+	rdfs:subClassOf [
+		a owl:Class ;
+		owl:unionOf (
+			gufo:ExtrinsicMode
+			gufo:Object
+		) ;
+	] ;
+	gist:ufoMappingNote "Originally mapped to gufo:Object, but employing union pattern to account for gist:Message, which is a subclass of gufo:ExtrinsicMode."^^xsd:string ;
+	.
+
+gist:ContingentEvent
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
+	.
+
+gist:ContingentObligation
+	a gufo:Phase ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:Contract
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:ContractTerm
+	a gufo:Role ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:ControlledVocabulary
+	a gufo:EndurantType ;
+	rdfs:subClassOf gufo:VariableCollection ;
+	.
+
+gist:CountryGeoRegion
+	a gufo:Role ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
+	.
+
+gist:CountryGovernment
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:DegreeOfCommitment
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Determination
+	a gufo:EventType ;
+	rdfs:subClassOf gufo:Event ;
+	.
+
+gist:Discipline
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:ElectronicAddress
+	a gufo:Category ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
+	.
+
+gist:ElectronicAddressType
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Equipment
+	a gufo:Category ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:EquipmentType
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Event
+	a gufo:EndurantType ;
+	rdfs:subClassOf
+		gufo:Individual ,
+		[
+			a owl:Class ;
+			owl:unionOf (
+				gufo:Aspect
+				gufo:Event
+			) ;
+		]
+		;
+	gist:ufoMappingNote
+		"Originally mapped to gufo:Event. Using union pattern to account for subclasses of gist:Event that are mapped to subclasses of gufo:Aspect."^^xsd:string ,
+		"Retaining mapping to gufo:Individual so that gist:Event falls under gufo:Individual when viewing in Protege."^^xsd:string
+		;
+	.
+
+gist:EventSpecification
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:FormattedContent
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Function
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
+	.
+
+gist:GeneralMediaType
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:GeoLocation
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Endurant ;
+	gist:ufoMappingNote "Originally mapped to gufo:Object. However, there was an error in the formal definition of gist:GeoRoute that generated an inconsistency, so the mapping is generalized to gufo:Endurant for now."^^xsd:string ;
+	.
+
+gist:GeoPoint
+	a gufo:SubKind ;
+	gist:ufoMappingNote "Originally mapped to gufo:Object. However, there was an error in the formal definition of gist:GeoRoute that generated an inconsistency, so this mapping is left out of gistUFO for now."^^xsd:string ;
+	.
+
+gist:GeoRegion
+	a gufo:SubKind ;
+	rdfs:subClassOf [
+		a owl:Class ;
+		owl:unionOf (
+			gufo:FixedCollection
+			gufo:ExtrinsicMode
+		) ;
+	] ;
+	gist:ufoMappingNote "Originally mapped to gufo:FixedCollection. Using union pattern to account for instances of gist:GovernedGeoRegion."^^xsd:string ;
+	.
+
+gist:GeoRoute
+	a gufo:Type ;
+	gist:ufoMappingNote "Removing the mapping to gufo:Collection, as all the members of a gist:GeoRoute are likely abstract. Compare with gist:UnitGroup."^^xsd:string ;
+	.
+
+gist:GeoVolume
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:FixedCollection ;
+	.
+
+gist:GovernedGeoRegion
+	a gufo:Role ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
+	.
+
+gist:GovernmentOrganization
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:HistoricalEvent
+	a gufo:EventType ;
+	rdfs:subClassOf gufo:Event ;
+	.
+
+gist:ID
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
+	.
+
+gist:IntellectualProperty
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Intention
+	a gufo:Type ;
+	rdfs:subClassOf
+		gufo:Individual ,
+		[
+			a owl:Class ;
+			owl:unionOf (
+				gufo:AbstractIndividual
+				gufo:Endurant
+			) ;
+		]
+		;
+	gist:ufoMappingNote
+		"Mapped to the union of gufo:AbstractIndividual and gufo:Endurant, as instances of gist:Function are likely to be abstract and other subclasses of gist:Intention fall under gufo:Endurant. This mapping accounts for all cases while remaining as specific as possible."^^xsd:string ,
+		"Mapping to gufo:Individual is retained so that gist:Intention falls under gufo:Individual when viewing in Protege."^^xsd:string
+		;
+	.
+
+gist:IntergovernmentalOrganization
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:KnowledgeConcept
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Landmark
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Language
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:LivingThing
+	a gufo:Category ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:Magnitude
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Quality ;
+	.
+
+gist:MediaType
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Medium
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Message
+	a gufo:Role ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
+	.
+
+gist:Network
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
+	.
+
+gist:NetworkLink
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
+	.
+
+gist:NetworkNode
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
+	.
+
+gist:Offer
+	a gufo:Phase ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:OrderedCollection
+	a gufo:EndurantType ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
+	.
+
+gist:OrderedMember
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:Organization
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:Permission
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:Person
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:PhysicalActionType
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:PhysicalAddress
+	a gufo:Category ;
+	rdfs:subClassOf gufo:ExtrinsicMode ;
+	.
+
+gist:PhysicalAddressType
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:PhysicalEvent
+	a gufo:EventType ;
+	rdfs:subClassOf gufo:Event ;
+	.
+
+gist:PhysicalIdentifiableItem
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:PhysicalSubstance
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Quantity ;
+	.
+
+gist:ProductCategory
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:ProductSpecification
+	a gufo:Role ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Project
+	a gufo:EventType ;
+	rdfs:subClassOf gufo:Event ;
+	.
+
+gist:ReferenceValue
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:Quality ;
+	.
+
+gist:RenderedContent
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Requirement
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:Restriction
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Relator ;
+	.
+
+gist:ScheduledEvent
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:IntrinsicMode ;
+	.
+
+gist:ScheduledTask
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:IntrinsicMode ;
+	.
+
+gist:SchemaMetaData
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:ServiceSpecification
+	a gufo:Role ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Specification
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:SubCountryGovernment
+	a gufo:SubKind ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:System
+	a gufo:Category ;
+	rdfs:subClassOf gufo:FunctionalComplex ;
+	.
+
+gist:Tag
+	a gufo:AbstractIndividualType ;
+	rdfs:subClassOf gufo:QualityValue ;
+	.
+
+gist:Task
+	a gufo:EndurantType ;
+	rdfs:subClassOf [
+		a owl:Class ;
+		owl:unionOf (
+			gufo:Aspect
+			gufo:Event
+		) ;
+	] ;
+	gist:ufoMappingNote "Mapped to union of gufo:Aspect and gufo:Event to account for instances of gist:ScheduledTask."^^xsd:string ;
+	.
+
+gist:TaskTemplate
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Template
+	a gufo:Category ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:TemporalRelation
+	a gufo:SituationType ;
+	rdfs:subClassOf gufo:TemporaryRelationshipSituation ;
+	.
+
+gist:Text
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:TimeInterval
+	a gufo:Kind ;
+	rdfs:subClassOf gufo:Object ;
+	.
+
+gist:Transaction
+	a gufo:EventType ;
+	rdfs:subClassOf gufo:Event ;
+	.
+
+gist:UnitGroup
+	a gufo:EndurantType ;
+	rdfs:subClassOf gufo:AbstractIndividual ;
+	.
+
+gist:UnitOfMeasure
+	rdfs:subClassOf gufo:AbstractIndividual ;
+	.
+
+gist:ufoMappingNote
+	a owl:AnnotationProperty ;
+	rdfs:subPropertyOf skos:editorialNote ;
+	skos:definition "Information regarding the mapping between gist and UFO ontologies, how a resource was mapped, or clarifications on the mapping."^^xsd:string ;
+	skos:prefLabel "UFO mapping note"^^xsd:string ;
+	.
+

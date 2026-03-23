@@ -1,0 +1,106 @@
+@prefix ex: <https://example.org/> .
+@prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> .
+@prefix gistd: <https://w3id.org/semanticarts/ns/data/gist/> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+gufo:AbstractIndividual
+	a gufo:AbstractIndividualType ;
+	.
+
+gufo:Aspect
+	a gufo:Category ;
+	.
+
+gufo:Collection
+	a gufo:Category ;
+	.
+
+gufo:ConcreteIndividual
+	a gufo:ConcreteIndividualType ;
+	.
+
+gufo:Endurant
+	a gufo:Category ;
+	.
+
+gufo:ExtrinsicAspect
+	a gufo:Category ;
+	.
+
+gufo:ExtrinsicMode
+	a gufo:Category ;
+	.
+
+gufo:FixedCollection
+	a gufo:Category ;
+	.
+
+gufo:FunctionalComplex
+	a gufo:Category ;
+	.
+
+gufo:Instant
+	a gufo:AbstractIndividualType ;
+	.
+
+gufo:IntrinsicAspect
+	a gufo:Category ;
+	.
+
+gufo:IntrinsicMode
+	a gufo:Category ;
+	.
+
+gufo:Object
+	a gufo:Category ;
+	.
+
+gufo:Quality
+	a gufo:Category ;
+	.
+
+gufo:QualityValue
+	a gufo:AbstractIndividualType ;
+	.
+
+gufo:QualityValueAttributionSituation
+	a gufo:SituationType ;
+	.
+
+gufo:Quantity
+	a gufo:Category ;
+	.
+
+gufo:Relator
+	a gufo:Category ;
+	.
+
+gufo:Situation
+	a gufo:SituationType ;
+	.
+
+gufo:TemporaryConstitutionSituation
+	a gufo:SituationType ;
+	.
+
+gufo:TemporaryInstantiationSituation
+	a gufo:SituationType ;
+	.
+
+gufo:TemporaryParthoodSituation
+	a gufo:SituationType ;
+	.
+
+gufo:TemporaryRelationshipSituation
+	a gufo:SituationType ;
+	.
+
+gufo:VariableCollection
+	a gufo:Category ;
+	.
+

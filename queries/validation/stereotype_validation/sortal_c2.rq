@@ -1,0 +1,33 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+# from the nemo repository https://github.com/nemo-ufes/ufo-types/blob/master/models/sparql-queries.rq, reformatted.
+
+# Sortals cannot specialize multiple ultimate sortals.
+
+SELECT ?invalid_class ?error_msg
+WHERE {
+    {
+        SELECT ?invalid_class (count(?invalid_class) as ?n)
+        WHERE {
+            { ?invalid_class rdf:type gufo:SubKind . }
+
+            UNION { ?invalid_class rdf:type gufo:Phase . }
+
+            UNION { ?invalid_class rdf:type gufo:Role . }
+
+            ?invalid_class rdfs:subClassOf+ ?ultimateSortal .
+
+            ?ultimateSortal rdf:type gufo:Kind .
+        }
+        GROUP BY ?invalid_class
+    }
+
+    BIND(CONCAT("This sortal is the subclass of ", STR(?n), " ultimate sortals.") AS ?error_msg)
+
+    filter(?n > 1)
+
+}

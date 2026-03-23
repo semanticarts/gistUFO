@@ -1,0 +1,42 @@
+# after mapping to subclasses of gufo:Type and inferring relationships, look for inconsistent mappings to Types
+# run with reasoning turned on
+
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/> 
+prefix gistd: <https://w3id.org/semanticarts/ns/data/gist/> 
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix skos: <http://www.w3.org/2004/02/skos/core#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+
+prefix gufo: <http://purl.org/nemo/gufo#> 
+prefix ex: <https://example.org/>
+
+select distinct ?invalid_class ?error_msg
+
+where {
+  
+  values (?gufoClass          ?requiredSubClassType) {      # restriction on subclass of a class with type gufoClass     
+          (gufo:AntiRigidType gufo:AntiRigidType)
+          (gufo:Sortal        gufo:Sortal)    
+          }
+  
+  ?invalid_class_iri rdf:type ?gufoClass .
+  filter(contains(str(?class),     "gist"))
+  filter(contains(str(?gufoClass), "gufo"))
+  
+  ?subClass rdfs:subClassOf ?invalid_class_iri .
+
+  
+  
+  filter not exists {?subClass rdf:type ?requiredSubClassType .}
+  
+  ?invalid_class_iri    skos:prefLabel ?invalid_class .
+  ?subClass skos:prefLabel ?subClassLabel .
+  ?gufoType rdfs:label     ?gufoTypeLabel .
+         
+  
+  bind(concat("gist ", ?invalid_class, " is a gufo ", ?gufoTypeLabel, " so its subclass ", ?subClassLabel, " should also be, but is not.") as ?message)
+ 
+  }
+order by ?class

@@ -1,0 +1,22 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+ 
+# Phase Constraint 2
+
+# A «Phase» must always be part of a partition (a generalization set disjoint and complete). 
+
+SELECT ?invalid_class ?error_msg
+WHERE {
+
+    ?invalid_class a gufo:Phase ;
+        
+        rdfs:subClassOf ?superclass .
+
+    FILTER NOT EXISTS { ?superclass owl:disjointUnionOf/rdf:rest*/rdf:first ?invalid_class . } 
+
+    BIND("A Phase must always be part of a partition (a generalization set disjoint and complete)." AS ?error_msg)
+
+}

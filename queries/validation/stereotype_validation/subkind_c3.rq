@@ -1,0 +1,27 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+# Subkind Constraint 3 
+
+# Since every instance of a «Subkind» follows the same identity principle, a «Subkind» cannot have an mixin type («Category», «Mixin», «RoleMixin») as a descendant.
+
+SELECT ?invalid_class ?subclass ?error_msg
+WHERE {
+
+    ?invalid_class a gufo:SubKind .
+
+    VALUES ?subclass_type {
+        gufo:Category
+        gufo:Mixin
+        gufo:RoleMixin
+    } 
+
+    ?subclass a ?subclass_type ;
+        rdfs:subClassOf+ ?invalid_class . 
+
+    BIND("Since every instance of a Subkind follows the same identity principle, a Subkind cannot have a mixin type as a descendant." AS ?error_msg)
+    
+}

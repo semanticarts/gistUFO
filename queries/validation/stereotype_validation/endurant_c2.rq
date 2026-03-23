@@ -1,0 +1,26 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+# from the nemo repository https://github.com/nemo-ufes/ufo-types/blob/master/models/sparql-queries.rq, reformatted.
+
+# Every specialization of endurant instantiates a single endurant type.
+
+select ?invalid_class ?error_msg
+where {
+    {
+        select ?invalid_class (count(?invalid_class) as ?n)
+        where {
+            { ?invalid_class rdfs:subClassOf gufo:Object . }
+            union { ?invalid_class rdfs:subClassOf gufo:Relator . }
+            union { ?invalid_class rdfs:subClassOf gufo:Quality . }
+            union { ?invalid_class rdfs:subClassOf gufo:ExtrinsicMode . }
+            union { ?invalid_class rdfs:subClassOf gufo:IntrinsicMode . }
+        }
+        group by ?invalid_class
+    }
+    filter (?n > 1)
+    BIND("This class is a subClass of multiple Endurant Classes, and its members will therefore instantiate multiple Endurant Types" AS ?error_msg)
+}

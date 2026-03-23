@@ -1,0 +1,23 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+# Relator Mediating Rigid Types
+
+# A «Relator» connected to one or more rigid types through mediations.
+# When a type is connected to a mediation association, it means that it is externally dependent, i.e. for an individual to instantiate it, it must be related to another type. Usually, mediations define roles and roleMixins – anti-rigid types.
+
+SELECT DISTINCT ?invalid_class ?rigid_class ?error_msg
+    WHERE {
+
+    ?invalid_class a owl:Class ;
+
+        rdfs:subClassOf [ a owl:Restriction ; owl:onProperty gist:hasParticipant ; owl:someValuesFrom ?rigid_class ] .
+
+    ?rigid_class a gufo:RigidType .
+
+    BIND("This class is an instance of the RelRig anti-pattern." AS ?error_msg)
+    
+}

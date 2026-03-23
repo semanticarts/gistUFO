@@ -1,0 +1,28 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+# Deceiving Intersection
+
+# An occurrence of the DecInt anti-pattern occurs when a type specializes two or more concrete types.
+
+SELECT DISTINCT ?invalid_class ?error_msg
+WHERE {
+
+    ?super1 rdfs:subClassOf* gufo:ConcreteIndividualType .
+
+    ?super2 rdfs:subClassOf* gufo:ConcreteIndividualType .
+
+    ?invalid_class rdfs:subClassOf ?super1, ?super2 .
+
+    { ?super1 owl:disjointWith ?super2 }
+    UNION
+    { ?super2 owl:disjointWith ?super1 }
+
+    FILTER (?super1 != ?super2)
+
+    BIND("This class is an instance of the DecInt anti-pattern." AS ?error_msg)
+
+}

@@ -1,0 +1,27 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+ 
+# Role Constraint 4
+
+# A «Role» cannot be a super-type of a mixin types («Category», «RoleMixin», «Mixin»).
+
+SELECT ?invalid_class ?mixin_subclass ?error_msg
+WHERE {
+
+    VALUES ?mixin_type {
+        gufo:Category
+        gufo:RoleMixin
+        gufo:Mixin
+    }
+
+    ?mixin_subclass a ?mixin_type .
+
+    ?invalid_class a gufo:Role ;
+        ^rdfs:subClassOf ?mixin_subclass .
+
+    BIND("A Role cannot be a super-type of a mixin type (Category, RoleMixin, Mixin)." AS ?error_msg)
+    
+}

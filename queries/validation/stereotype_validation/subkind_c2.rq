@@ -1,0 +1,23 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+# Subkind Constraint 2
+
+# Because it is a rigid type, a «Subkind» cannot have an anti-rigid type («Role», «Phase», «RoleMixin») as an ancestor.
+
+SELECT ?invalid_class ?anti_rigid_superclass ?error_msg
+WHERE {
+
+    ?anti_rigid_type rdfs:subClassOf* gufo:AntiRigidType .
+
+    ?anti_rigid_superclass a ?anti_rigid_type .
+
+    ?invalid_class a gufo:SubKind ;
+        rdfs:subClassOf+ ?anti_rigid_superclass
+
+    BIND ("A Subkind cannot have an anti-rigid type (Role, Phase, RoleMixin) as an ancestor." AS ?error_msg)
+    
+}

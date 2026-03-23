@@ -1,0 +1,34 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+ 
+# Phase Constraint 1 
+
+# A «Phase» must always have exactly one identity provider as an ancestor (a direct or indirect super-type).
+
+# This query only checks for gufo:Kind, as it is the only gUFO Type that provides identity. 
+
+SELECT ?invalid_class ?identity_provider ?identity_provider_2 ?error_msg
+WHERE {
+
+    {
+        ?invalid_class a gufo:Phase . 
+
+        ?identity_provider a gufo:Kind .
+
+        ?identity_provider_2 a gufo:Kind .
+
+        ?invalid_class rdfs:subClassOf+ ?identity_provider, ?identity_provider_2 .
+
+        FILTER (STR(?identity_provider) < STR(?identity_provider_2))
+    }
+    UNION 
+    {
+        ?invalid_class a gufo:Phase . 
+        FILTER NOT EXISTS { ?invalid_class rdfs:subClassOf+/rdf:type gufo:Kind . }
+    }
+
+    BIND("A Phase must always have exactly one identity provider as an ancestor." AS ?error_msg)
+}

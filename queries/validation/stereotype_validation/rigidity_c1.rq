@@ -1,0 +1,27 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+# Rigidity Constraint 1 
+
+# Anti-rigid classes may not be superclasses of Rigid or Semi-Rigid classes. 
+
+SELECT ?invalid_class ?subClass ?error_msg
+WHERE{
+  
+  VALUES ?rigidity {
+  gufo:RigidType
+  gufo:SemiRigidType
+  }
+
+  ?invalid_class a gufo:AntiRigidType . 
+
+  ?subClass rdfs:subClassOf ?invalid_class .
+
+  ?subClass a ?rigidity .
+
+  BIND("Anti-Rigid classes may not be the direct or indirect Super-Type of any Semi-Rigid or Rigid classes." AS ?error_msg)
+
+}

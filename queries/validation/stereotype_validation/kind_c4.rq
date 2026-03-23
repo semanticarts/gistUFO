@@ -1,0 +1,22 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+# Kind Constraint 4
+
+# As a rigid type, a «Kind» cannot have any anti-rigid type («Role», «RoleMixin» and «Phase») as its direct or indirect super-type.
+
+SELECT ?invalid_class ?superclass ?error_msg
+WHERE {
+
+    ?anti_rigid_type rdfs:subClassOf gufo:AntiRigidType .
+
+    ?anti_rigid_class a ?anti_rigid_type . 
+
+    ?invalid_class a gufo:Kind ;
+        rdfs:subClassOf+ ?anti_rigid_class .
+
+    BIND("As a rigid type, a Kind cannot have any anti-rigid type (Role, RoleMixin, and Phase) as its direct or direct super-type." AS ?error_msg)
+}

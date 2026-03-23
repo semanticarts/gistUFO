@@ -1,0 +1,22 @@
+prefix gist: <https://w3id.org/semanticarts/ns/ontology/gist/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix gufo: <http://purl.org/nemo/gufo#>
+
+# from the nemo repository https://github.com/nemo-ufes/ufo-types/blob/master/models/sparql-queries.rq, reformatted.
+
+# Non-sortal types cannot specialize sortal types.
+
+SELECT DISTINCT ?invalid_class ?error_msg
+WHERE {
+
+    ?invalid_class rdf:type/rdfs:subClassOf* gufo:NonSortal .
+
+    ?invalid_class rdfs:subClassOf+ ?sortal .
+
+    ?sortal rdf:type/rdfs:subClassOf* gufo:Sortal .
+
+    BIND("This non-sortal class is a subclass of a sortal class." AS ?error_msg)
+
+}
